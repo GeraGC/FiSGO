@@ -1,0 +1,212 @@
+
+## Function Definitions -------------------------
+group_list_nt := [];
+group_list_t := [];
+file := "Test.txt";
+degree := 1;
+notfound_list := [];
+unknown_projectives := [];
+confirmed_candidates_list := [];
+
+callProjectivesCatch := function(x)
+local result;
+    BreakOnError := false;
+    result := CALL_WITH_CATCH(G -> ProjectivesInfo(CharacterTable(G)), [ x ])[1];;
+    BreakOnError := true;
+    return result;
+end;
+
+PGLCandidateAnalysis := function()
+PrintTo(file, "");
+AppendTo(file, Concatenation("\n\n ====","Non Trivial Multiplier","==== \n\n"));
+for g in group_list_nt do
+    if not IsCharacterTable(CharacterTable(g)) then Add(notfound_list, g); continue; fi;
+    AppendTo(file, Concatenation("\n ----",g,"---- \n"));
+    AppendTo(file, CharacterDegrees(CharacterTable(g)), "\n");
+	for c in CharacterDegrees(CharacterTable(g)) do
+    	if degree = c[1] then Add(confirmed_candidates_list, g); break; fi;
+    od;
+	if callProjectivesCatch(g) then
+		projective_degrees := [];
+		for r in ProjectivesInfo(CharacterTable(g)) do
+			AppendTo(file, r.name," ",List(r.chars, i->i[1]), "\n");
+			Append(projective_degrees, List(r.chars, i->i[1]));
+		od;
+		if degree in projective_degrees then Add(confirmed_candidates_list, g); continue; fi;
+	else
+		AppendTo(file, "No projective info \n");
+		Add(unknown_projectives,g);
+	fi;
+    
+od;
+AppendTo(file, Concatenation("\n\n ====","Trivial Multiplier","==== \n\n"));
+for g in group_list_t do
+    if not IsCharacterTable(CharacterTable(g)) then Add(notfound_list, g); continue; fi;
+    AppendTo(file, Concatenation("\n ----",g,"---- \n"));
+    AppendTo(file, CharacterDegrees(CharacterTable(g)), "\n");
+    for c in CharacterDegrees(CharacterTable(g)) do
+    	if degree = c[1] then Add(confirmed_candidates_list, g); break; fi;
+    od;
+od;
+AppendTo(file, Concatenation("\n\n ====","Missing groups","==== \n\n"));
+for g in notfound_list do
+    AppendTo(file, g, " ,");
+od;	
+AppendTo(file, Concatenation("\n\n ====","Unknown projective information groups","==== \n\n"));
+for g in unknown_projectives do
+    AppendTo(file, g, " ,");
+od;	
+AppendTo(file, Concatenation("\n\n ====","Confirmed groups","==== \n\n"));
+for g in confirmed_candidates_list do
+    AppendTo(file, g, " ,"); 
+od;
+notfound_list := [];
+confirmed_candidates_list := [];
+unknown_projectives := [];
+end;;
+
+## PGL 5 Search -------------------------
+
+group_list_nt := ["A5", "A6", "A7", "A8", "A9", "A10", "A11", "M12", "M22", "J2", "L3(2)", "L3(4)", "L2(49)", "L2(11)", "U4(2)", "U3(5)"];
+group_list_t := ["M11", "L2(8)", "U3(3)"];
+file := "SimpleGroupCandidatesPGL5.txt";
+degree := 5;
+PGLCandidateAnalysis();
+
+# Not found "U3(19)",  "L2(169)", "O5(13)", "U3(17)"
+
+## PGL 6 Search -------------------------
+group_list_nt := ["A5", "A6", "A7", "A8", "A9", "A10", "A11", "A12", "A13", "A14", "A15", "A16", "M12", "M22", "J2", "HS", "McL", "Suz", "L3(2)", "L3(4)", "L4(3)", "L2(27)", "L2(25)", "L2(49)", "L2(11)", "L2(13)", "O7(2)", "O7(3)", "S6(3)", "O5(5)", "O5(7)", "O8+(2)", "G2(4)", "G2(3)", "U4(2)", "U6(2)", "U4(3)", "U3(5)", "U4(5)", "Sz(8)"];
+group_list_t := ["M11", "L2(8)", "L2(64)", "L3(3)", "L5(3)", "L3(9)", "O5(8)", "U5(2)", "U3(4)", "U3(3)", "3D4(2)", "2F4(2)""];
+file := "SimpleGroupCandidatesPGL6.txt";
+degree := 6;
+PGLCandidateAnalysis();
+
+## PGL 7 Search -------------------------
+group_list_nt := ["A5", "A6", "A7", "A8", "A9", "A10", "A11", "A12", "A13", "A14", "A15", "M12", "M22", "J2", "HS", "McL", "L3(2)", "L3(4)", "L4(3)", "L2(27)", "L2(25)", "L2(49)", "L2(11)", "L2(13)", "O7(2)", "O5(5)", "O5(7)", "G2(3)", "U4(2)", "U4(3)", "U3(5)", "U4(5)", "Sz(8)"];
+group_list_t := ["M11", "L2(8)", "L2(64)", "L3(3)", "L3(9)", "U5(2)", "U3(4)", "U3(3)"];
+file := "SimpleGroupCandidatesPGL7.txt";
+degree := 7;
+PGLCandidateAnalysis();
+
+## PGL 8 Search -------------------------
+group_list_nt := ["A5", "A6", "A7", "A8", "A9", "A10", "A11", "A12", "A13", "A14", "A15", "A16", "A17", "A18", "M12", "M22", "J2", "Fi22", "HS", "McL", "Suz", "L2(17)", "L3(2)", "L3(4)", "L3(16)", "L4(3)", "L2(27)", "L2(25)", "L2(49)", "L2(11)", "L2(13)", "L2(169)", "O7(2)", "O7(3)", "S6(3)", "O5(5)", "O5(7)", "O5(13)", "O8+(2)", "F4(2)", "G2(4)", "G2(3)", "U3(17)", "U4(2)", "U6(2)", "U4(3)", "U3(5)", "U4(5)", "O8-(2)", "Sz(8)"];
+group_list_t := ["M11", "He", "L4(4)", "L2(8)", "L2(16)", "L2(64)", "L3(3)", "L3(9)", "O9(2)", "O5(4)", "O7(4)", "O5(8)", "O8+(4)", "U5(2)", "U3(4)", "U4(4)", "U3(3)", "O10-(2)", "3D4(2)", "2F4(2)""];
+file := "SimpleGroupCandidatesPGL8.txt";
+degree := 8;
+PGLCandidateAnalysis();
+
+## PGL 9 Search -------------------------
+group_list_nt := ["A5", "A6", "A7", "A8", "A9", "A10", "A11", "A12", "A13", "A14", "A15", "A16", "A17", "A18", "A19", "M12", "M22", "J2", "J3", "HS", "McL", "Suz", "L3(2)", "L3(4)", "L3(16)", "L4(3)", "L6(3)", "L2(27)", "L2(25)", "L3(7)", "L4(7)", "L2(49)", "L2(11)", "L2(13)", "L2(169)", "L2(17)", "L2(19)", "O7(2)", "O7(3)", "S6(3)", "O5(5)", "O5(7)", "O5(13)", "O8+(2)", "O8+(3)", "G2(4)", "G2(3)", "U4(2)", "U6(2)", "U3(8)", "U4(3)", "U3(5)", "U4(5)", "U3(17)", "O8-(2)", "Sz(8)"];
+group_list_t := ["M11", "J1", "He", "HN", "L4(4)", "L2(8)", "L2(16)", "L2(64)", "L3(3)", "L5(3)", "L3(9)", "L3(11)", "O5(4)", "O5(8)", "U5(2)", "U3(4)", "U4(4)", "U3(3)", "U3(19)", "3D4(2)", "2F4(2)""];
+file := "SimpleGroupCandidatesPGL9.txt";
+degree := 9;
+PGLCandidateAnalysis();
+
+## PGL 10 Search -------------------------
+group_list_nt := ["A5", "A6", "A7", "A8", "A9", "A10", "A11", "A12", "A13", "A14", "A15", "A16", "A17", "A18", "A19", "A20", "A21", "A22", "M12", "M22", "J2", "J3", "Fi22", "HS", "McL", "Suz", "L3(2)", "L3(4)", "L3(16)", "L4(3)", "L2(27)", "L2(25)", "L3(7)", "L4(7)", "L2(49)", "L2(11)", "L2(13)", "L2(169)", "L2(17)", "L2(19)", "O7(2)", "O7(3)", "S6(3)", "O5(5)", "O5(7)", "O5(13)", "O8+(2)", "O8+(3)", "F4(2)", "G2(4)", "G2(3)", "U4(2)", "U6(2)", "U3(8)", "U4(3)", "U3(5)", "U4(5)", "U3(17)", "O8-(2)", "Sz(8)"];
+group_list_t := ["M11", "J1", "He", "HN", "L4(4)", "L2(8)", "L2(16)", "L2(64)", "L3(3)", "L5(3)", "L3(9)", "L3(11)", "O9(2)", "O5(4)", "O7(4)", "O5(8)", "O8+(4)", "U5(2)", "U3(4)", "U4(4)", "U4(8)", "U3(3)", "U3(19)", "O10-(2)", "3D4(2)", "2F4(2)""];
+file := "SimpleGroupCandidatesPGL10.txt";
+degree := 10;
+PGLCandidateAnalysis();
+
+## PGL 11 Search -------------------------
+group_list_nt := ["A5", "A6", "A7", "A8", "A9", "A10", "A11", "A12", "A13", "A14", "A15", "A16", "A17", "A18", "A19", "A20", "A21", "A22", "A23", "M12", "M22", "J2", "J3", "Fi22", "HS", "McL", "Suz", "L3(2)", "L3(4)", "L3(16)", "L4(3)", "L2(27)", "L2(25)", "L3(7)", "L4(7)", "L2(49)", "L2(11)", "L2(13)", "L2(169)", "L2(17)", "L2(19)", "L2(23)", "O7(2)", "O7(3)", "S6(3)", "O5(5)", "O5(7)", "O5(13)", "O8+(2)", "O8+(3)", "G2(4)", "G2(3)", "U4(2)", "U6(2)", "U3(8)", "U4(3)", "U3(5)", "U4(5)", "U3(17)", "U3(23)", "O8-(2)", "Sz(8)"];
+group_list_t := ["M11", "M23", "M24", "J1", "Co2", "Co3", "Fi23", "He", "HN", "L4(4)", "L2(8)", "L2(16)", "L2(64)", "L3(3)", "L5(3)", "L3(9)", "L3(11)", "O9(2)", "O5(4)", "O7(4)", "O5(8)", "U5(2)", "U3(4)", "U4(4)", "U4(8)", "U3(3)", "U3(19)", "3D4(2)", "2F4(2)""];
+file := "SimpleGroupCandidatesPGL11.txt";
+degree := 11;
+PGLCandidateAnalysis();
+
+
+## PGL 6 Simplified Search -------------------------
+group_list_nt := ["A5", "A6", "A7", "A8", "A9", "A10", "J2", "L3(2)", "L3(4)", "L2(49)", "O7(2)", "O5(7)", "O8+(2)", "U4(2)", "U4(3)", "U3(5)"];
+group_list_t := ["L2(8)", "U3(3)"];
+file := "SimpleGroupCandidatesSimplifiedPGL6.txt";
+degree := 6;
+PGLCandidateAnalysis();
+
+## PGL 7 Simplified Search -------------------------
+group_list_nt := [];
+group_list_t := [];
+file := "SimpleGroupCandidatesSimplifiedPGL7.txt";
+degree := 7;
+PGLCandidateAnalysis();
+
+## PGL 8 Simplified Search -------------------------
+group_list_nt := ["A5", "A6", "A7", "A8", "A9", "A10", "J2", "L3(2)", "L3(4)", "L2(49)", "O7(2)", "O5(7)", "O8+(2)", "U4(2)", "U4(3)", "U3(5)"];
+group_list_t := ["L2(8)", "U3(3)"];
+file := "SimpleGroupCandidatesSimplifiedPGL8.txt";
+degree := 8;
+PGLCandidateAnalysis();
+
+## PGL 9 Simplified Search -------------------------
+group_list_nt := ["A5", "A6", "A7", "A8", "A9", "A10", "J2", "L3(2)", "L3(4)", "L2(49)", "O7(2)", "O5(7)", "O8+(2)", "U4(2)", "U4(3)", "U3(5)"];
+group_list_t := ["L2(8)", "U3(3)"];
+file := "SimpleGroupCandidatesSimplifiedPGL9.txt";
+degree := 9;
+PGLCandidateAnalysis();
+
+## PGL 10 Simplified Search -------------------------
+group_list_nt := ["A5", "A6", "A7", "A8", "A9", "A10", "A11", "A12", "M12", "M22", "J2", "HS", "McL", "L3(2)", "L3(4)", "L2(49)", "L2(11)", "O7(2)", "O5(7)", "O8+(2)", "U4(2)", "U6(2)", "U4(3)", "U3(5)"];
+group_list_t := ["M11", "L2(8)", "U5(2)", "U3(3)"];
+file := "SimpleGroupCandidatesSimplifiedPGL10.txt";
+degree := 10;
+PGLCandidateAnalysis();
+
+
+
+## PGL 12 Search -------------------------
+group_list_nt := ["A5", "A6", "A7", "A8", "A9", "A10", "A11", "A12", "A13", "A14", "A15", "A16", "A17", "A18", "A19", "A20", "A21", "A22", "A23", "A24", "A25", "A26", "A27", "A28", "M12", "M22", "J2", "J3", "Co1", "Fi22", "HS", "McL", "Suz", "L3(2)", "L3(4)", "L3(16)", "L4(3)", "L6(3)", "L2(27)", "L2(25)", "L3(7)", "L4(7)", "L2(49)", "L2(11)", "L2(13)", "L2(169)", "L2(17)", "L2(19)", "L2(23)", "O7(2)", "O7(3)", "S6(3)", "O5(5)", "O5(7)", "O5(13)", "O8+(2)", "O8+(3)", "F4(2)", "G2(4)", "G2(3)", "U4(2)", "U6(2)", "U3(8)", "U4(3)", "U3(5)", "U4(5)", "U3(17)", "U3(23)", "O8-(2)", "2E6(3)", "Sz(8)"]; 
+group_list_t := ["M11", "M23", "M24", "J1", "Co2", "Co3", "Fi23", "He", "HN", "L4(4)", "L2(8)", "L2(16)", "L2(64)", "L3(3)", "L5(3)", "L3(9)", "L3(11)", "O9(2)", "O5(4)", "O7(4)", "O5(8)", "O8+(4)", "U5(2)", "U3(4)", "U4(4)", "U4(8)", "U3(3)", "U3(19)", "O10-(2)", "3D4(2)", "2F4(2)'"];
+file := "SimpleGroupCandidatesPGL12.txt";
+degree := 12;
+PGLCandidateAnalysis();
+
+## PGL 13 Search -------------------------
+group_list_nt := ["A5", "A6", "A7", "A8", "A9", "A10", "A11", "A12", "A13", "A14", "A15", "A16", "A17", "A18", "A19", "A20", "A21", "A22", "A23", "A24", "A25", "A26", "A27", "M12", "M22", "J2", "J3", "Co1", "Fi22", "HS", "McL", "Suz", "L3(2)", "L3(4)", "L3(16)", "L4(3)", "L6(3)", "L2(27)", "L2(25)", "L3(7)", "L4(7)", "L2(49)", "L2(11)", "L2(13)", "L2(169)", "L2(17)", "L2(19)", "L2(23)", "O7(2)", "O7(3)", "S6(3)", "O5(5)", "O5(7)", "O5(13)", "O8+(2)", "O8+(3)", "G2(4)", "G2(3)", "U4(2)", "U6(2)", "U3(8)", "U4(3)", "U3(5)", "U4(5)", "U3(17)", "U3(23)", "O8-(2)", "Sz(8)"];
+group_list_t := ["M11", "M23", "M24", "J1", "Co2", "Co3", "Fi23", "He", "HN", "L4(4)", "L2(8)", "L2(16)", "L2(64)", "L3(3)", "L5(3)", "L3(9)", "L3(11)", "O9(2)", "O5(4)", "O7(4)", "O5(8)", "U5(2)", "U3(4)", "U4(4)", "U4(8)", "U3(3)", "U3(19)", "O10-(2)", "3D4(2)", "2F4(2)'"];
+file := "SimpleGroupCandidatesPGL13.txt";
+degree := 13;
+PGLCandidateAnalysis();
+
+## PGL 14 Search -------------------------
+group_list_nt := ["A5", "A6", "A7", "A8", "A9", "A10", "A11", "A12", "A13", "A14", "A15", "A16", "A17", "A18", "A19", "A20", "A21", "A22", "A23", "A24", "A25", "A26", "A27", "A28", "A29", "A30", "M12", "M22", "J2", "J3", "Co1", "Fi22", "Fi24'", "HS", "McL", "Ru", "Suz", "L3(2)", "L3(4)", "L3(16)", "L4(3)", "L6(3)", "L2(27)", "L2(25)", "L3(7)", "L4(7)", "L2(49)", "L2(11)", "L2(13)", "L2(169)", "L2(17)", "L2(289)", "L2(19)", "L2(23)", "L2(29)", "O7(2)", "O7(3)", "S6(3)", "O5(5)", "O5(7)", "O5(13)", "O5(17)", "O8+(2)", "O8+(3)", "F4(2)", "G2(4)", "G2(3)", "U4(2)", "U6(2)", "U3(8)", "U4(3)", "U3(5)", "U4(5)", "U3(17)", "U4(17)", "U3(23)", "O8-(2)", "2E6(3)", "Sz(8)"];
+group_list_t := ["M11", "M23", "M24", "J1", "Co2", "Co3", "Fi23", "He", "HN", "L4(4)", "L2(8)", "L2(16)", "L2(64)", "L3(3)", "L5(3)", "L3(9)", "L3(11)", "O9(2)", "O5(4)", "O7(4)", "O5(8)", "O8+(4)", "U5(2)", "U3(4)", "U4(4)", "U4(8)", "U3(3)", "U3(19)", "O10-(2)", "3D4(2)", "2F4(2)'"];
+file := "SimpleGroupCandidatesPGL14.txt";
+degree := 14;
+PGLCandidateAnalysis();
+
+## PGL 15 Search -------------------------
+group_list_nt := ["A5", "A6", "A7", "A8", "A9", "A10", "A11", "A12", "A13", "A14", "A15", "A16", "A17", "A18", "A19", "A20", "A21", "A22", "A23", "A24", "A25", "A26", "A27", "A28", "A29", "A30", "A31", "M12", "M22", "J2", "J3", "Co1", "Fi22", "Fi24'", "HS", "McL", "Ru", "Suz", "ON", "L3(2)", "L3(4)", "L3(16)", "L4(3)", "L6(3)", "L2(27)", "L4(5)", "L2(25)", "L3(25)", "L2(125)", "L3(7)", "L4(7)", "L2(49)", "L2(11)", "L2(13)", "L2(169)", "L2(17)", "L2(289)", "L2(19)", "L2(23)", "L2(29)", "L2(31)", "O7(2)", "O7(3)", "S6(3)", "O5(5)", "O7(5)", "S6(5)", "O5(7)", "O5(13)", "O5(17)", "O8+(2)", "O8+(3)", "O8+(5)", "F4(2)", "G2(4)", "G2(3)", "U4(2)", "U6(2)", "U3(8)", "U4(3)", "U3(5)", "U4(5)", "U3(17)", "U4(17)", "U3(23)", "O8-(2)", "Sz(8)"];
+group_list_t := ["M11", "M23", "M24", "J1", "Co2", "Co3", "Fi23", "He", "HN", "Th", "L5(2)", "L6(2)", "L4(4)", "L5(4)", "L2(8)", "L2(16)", "L2(32)", "L2(64)", "L3(3)", "L5(3)", "L3(9)", "L3(5)", "L3(11)", "O9(2)", "O11(2)", "O5(4)", "O7(4)", "O5(8)", "O10+(2)", "O8+(4)", "G2(5)", "U5(2)", "U3(4)", "U4(4)", "U4(8)", "U3(3)", "U3(19)", "U3(31)", "O10-(2)", "3D4(2)", "2F4(2)'"];
+file := "SimpleGroupCandidatesPGL15.txt";
+degree := 15;
+PGLCandidateAnalysis();
+
+## PGL 16 Search -------------------------
+group_list_nt := ["A5", "A6", "A7", "A8", "A9", "A10", "A11", "A12", "A13", "A14", "A15", "A16", "A17", "A18", "A19", "A20", "A21", "A22", "A23", "A24", "A25", "A26", "A27", "A28", "A29", "A30", "A31", "A32", "A33", "A34", "A35", "A36", "M12", "M22", "J2", "J3", "Co1", "Fi22", "Fi24'", "HS", "McL", "Ru", "Suz", "ON", "L3(2)", "L3(4)", "L6(4)", "L3(16)", "L4(3)", "L6(3)", "L2(27)", "L4(5)", "L2(25)", "L3(25)", "L2(125)", "L3(7)", "L4(7)", "L2(49)", "L2(11)", "L2(13)", "L2(169)", "L2(17)", "L2(289)", "L2(19)", "L2(23)", "L2(29)", "L2(31)", "O7(2)", "O7(3)", "S6(3)", "O5(5)", "O7(5)", "S6(5)", "O5(7)", "O5(13)", "O5(17)", "O8+(2)", "O8+(3)", "O8+(5)", "F4(2)", "G2(4)", "G2(3)", "U4(2)", "U6(2)", "U3(8)", "U4(3)", "U3(5)", "U4(5)", "U3(17)", "U4(17)", "U3(23)", "O8-(2)", "2E6(3)", "Sz(8)"];
+group_list_t := ["M11", "M23", "M24", "J1", "Co2", "Co3", "Fi23", "He", "HN", "Th", "L5(2)", "L6(2)", "L4(4)", "L5(4)", "L2(8)", "L2(16)", "L2(32)", "L2(64)", "L3(3)", "L5(3)", "L3(9)", "L3(5)", "L3(11)", "O9(2)", "O11(2)", "O13(2)", "O5(4)", "O7(4)", "O5(8)", "O10+(2)", "O12+(2)", "O8+(4)", "G2(5)", "U5(2)", "U3(4)", "U4(4)", "U4(8)", "U3(3)", "U3(19)", "U3(31)", "O10-(2)", "O12-(2)", "3D4(2)", "2F4(2)'"];
+file := "SimpleGroupCandidatesPGL16.txt";
+degree := 16;
+PGLCandidateAnalysis();
+
+## PGL 17 Search -------------------------
+group_list_nt := ["A5", "A6", "A7", "A8", "A9", "A10", "A11", "A12", "A13", "A14", "A15", "A16", "A17", "A18", "A19", "A20", "A21", "A22", "A23", "A24", "A25", "A26", "A27", "A28", "A29", "A30", "A31", "A32", "A33", "A34", "A35", "M12", "M22", "J2", "J3", "Co1", "Fi22", "Fi24'", "HS", "McL", "Ru", "Suz", "ON", "L3(2)", "L3(4)", "L6(4)", "L3(16)", "L4(3)", "L6(3)", "L2(27)", "L4(5)", "L2(25)", "L3(25)", "L2(125)", "L3(7)", "L4(7)", "L2(49)", "L2(11)", "L2(13)", "L2(169)", "L2(17)", "L2(289)", "L2(19)", "L2(23)", "L2(29)", "L2(31)", "O7(2)", "O7(3)", "S6(3)", "O5(5)", "O7(5)", "S6(5)", "O5(7)", "O5(13)", "O5(17)", "O8+(2)", "O8+(3)", "O8+(5)", "F4(2)", "G2(4)", "G2(3)", "U4(2)", "U6(2)", "U3(8)", "U4(3)", "U3(5)", "U4(5)", "U3(17)", "U4(17)", "U3(23)", "O8-(2)", "Sz(8)"];
+group_list_t := ["M11", "M23", "M24", "J1", "Co2", "Co3", "Fi23", "He", "HN", "Th", "L5(2)", "L6(2)", "L4(4)", "L5(4)", "L2(8)", "L2(16)", "L2(32)", "L2(64)", "L3(3)", "L5(3)", "L3(9)", "L3(5)", "L3(11)", "O9(2)", "O11(2)", "O5(4)", "O7(4)", "O5(8)", "O10+(2)", "O12+(2)", "O8+(4)", "G2(5)", "U5(2)", "U3(4)", "U4(4)", "U4(8)", "U3(3)", "U3(19)", "U3(31)", "O10-(2)", "O12-(2)", "3D4(2)", "2F4(2)'"];
+file := "SimpleGroupCandidatesPGL17.txt";
+degree := 17;
+PGLCandidateAnalysis();
+
+## PGL 18 Search -------------------------
+group_list_nt := ["A5", "A6", "A7", "A8", "A9", "A10", "A11", "A12", "A13", "A14", "A15", "A16", "A17", "A18", "A19", "A20", "A21", "A22", "A23", "A24", "A25", "A26", "A27", "A28", "A29", "A30", "A31", "A32", "A33", "A34", "A35", "A36", "A37", "A38", "A39", "A40", "M12", "M22", "J2", "J3", "Co1", "Fi22", "Fi24'", "HS", "McL", "Ru", "Suz", "ON", "L3(2)", "L3(4)", "L6(4)", "L3(16)", "L4(3)", "L6(3)", "L2(27)", "L4(5)", "L2(25)", "L3(25)", "L2(125)", "L2(37)", "L3(7)", "L4(7)", "L2(49)", "L2(11)", "L2(1331)", "L2(13)", "L2(169)", "L2(17)", "L2(289)", "L2(19)", "L2(23)", "L2(29)", "L2(31)", "L2(961)", "O7(2)", "O7(3)", "S6(3)", "O5(5)", "O7(5)", "S6(5)", "O5(7)", "O5(13)", "O5(17)", "O5(31)", "O8+(2)", "O8+(3)", "O8+(5)", "F4(2)", "G2(4)", "G2(3)", "U4(2)", "U6(2)", "U3(8)", "U4(3)", "U3(5)", "U4(5)", "U3(11)", "U3(17)", "U4(17)", "U3(23)", "U4(31)", "O8-(2)", "2E6(3)", "Sz(8)"];
+group_list_t := ["M11", "M23", "M24", "J1", "Co2", "Co3", "Fi23", "He", "HN", "Th", "L5(2)", "L6(2)", "L4(4)", "L5(4)", "L2(8)", "L2(16)", "L2(32)", "L2(64)", "L3(3)", "L5(3)", "L3(9)", "L3(5)", "L3(11)", "O9(2)", "O11(2)", "O13(2)", "O5(4)", "O7(4)", "O5(8)", "O10+(2)", "O12+(2)", "O8+(4)", "G2(5)", "G2(11)", "U5(2)", "U3(4)", "U4(4)", "U4(8)", "U3(3)", "U3(27)", "U3(19)", "U3(31)", "O10-(2)", "O12-(2)", "3D4(2)", "R(27)", "2F4(2)'"];
+file := "SimpleGroupCandidatesPGL18.txt";
+degree := 18;
+PGLCandidateAnalysis();
+
+## PGL 19 Search -------------------------
+group_list_nt := ["A5", "A6", "A7", "A8", "A9", "A10", "A11", "A12", "A13", "A14", "A15", "A16", "A17", "A18", "A19", "A20", "A21", "A22", "A23", "A24", "A25", "A26", "A27", "A28", "A29", "A30", "A31", "A32", "A33", "A34", "A35", "A36", "A37", "A38", "A39", "M12", "M22", "J2", "J3", "Co1", "Fi22", "Fi24'", "HS", "McL", "Ru", "Suz", "ON", "L3(2)", "L3(4)", "L6(4)", "L3(16)", "L4(3)", "L6(3)", "L2(27)", "L4(5)", "L2(25)", "L3(25)", "L2(125)", "L2(37)", "L3(7)", "L4(7)", "L2(49)", "L2(11)", "L2(1331)", "L2(13)", "L2(169)", "L2(17)", "L2(289)", "L2(19)", "L2(23)", "L2(29)", "L2(31)", "L2(961)", "O7(2)", "O7(3)", "S6(3)", "O5(5)", "O7(5)", "S6(5)", "O5(7)", "O5(13)", "O5(17)", "O5(31)", "O8+(2)", "O8+(3)", "O8+(5)", "F4(2)", "G2(4)", "G2(3)", "U4(2)", "U6(2)", "U3(8)", "U4(3)", "U3(5)", "U4(5)", "U3(11)", "U3(17)", "U4(17)", "U3(23)", "U4(31)", "O8-(2)", "Sz(8)"];
+group_list_t := ["M11", "M23", "M24", "J1", "Co2", "Co3", "Fi23", "He", "HN", "Th", "L5(2)", "L6(2)", "L4(4)", "L5(4)", "L2(8)", "L2(16)", "L2(32)", "L2(64)", "L3(3)", "L5(3)", "L3(9)", "L3(5)", "L3(11)", "O9(2)", "O11(2)", "O5(4)", "O7(4)", "O5(8)", "O10+(2)", "O12+(2)", "O8+(4)", "G2(5)", "G2(11)", "U5(2)", "U3(4)", "U4(4)", "U4(8)", "U3(3)", "U3(27)", "U3(19)", "U3(31)", "O10-(2)", "O12-(2)", "3D4(2)", "R(27)", "2F4(2)'"];
+file := "SimpleGroupCandidatesPGL19.txt";
+degree := 19;
+PGLCandidateAnalysis();
