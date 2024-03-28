@@ -1,0 +1,20 @@
+
+
+ ====Non Trivial Multiplier==== 
+
+
+
+ ====Trivial Multiplier==== 
+
+
+
+ ====Missing groups==== 
+
+
+
+ ====Unknown projective information groups==== 
+
+
+
+ ====Confirmed groups==== 
+
