@@ -636,7 +636,7 @@ No projective info
 
  ====Missing groups==== 
 
-A20 ,A21 ,A22 ,A23 ,A24 ,A25 ,A26 ,A27 ,A28 ,L3(16) ,L6(3) ,L4(7) ,L2(169) ,O5(13) ,U3(17) ,U3(23) ,2E6(3) ,O8+(4) ,U4(8) ,U3(19) ,
+A20 ,A21 ,A22 ,A23 ,A24 ,A25 ,A26 ,A27 ,A28 ,L3(16) ,L6(3) ,L4(7) ,L2(169) ,O5(13) ,2E6(3) ,U4(8) ,
 
  ====Unknown projective information groups==== 
 
