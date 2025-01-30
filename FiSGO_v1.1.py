@@ -1,7 +1,3 @@
-from os import remove
-from readline import append_history_file
-from threading import currentThread
-
 
 SPORADIC_ORDERS = {'M11' : {2:4, 3:2, 5:1, 11:1},
                    'M12' : {2:6, 3:3, 5:1, 11:1},
