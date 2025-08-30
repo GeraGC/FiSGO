@@ -1,0 +1,92 @@
+[
+  {
+    "code": ["CA-1-4", "CA-1-2_2", "CA-1-5", "CA-1-5_1", "AA-5"],
+    "degree": 2,
+    "irreps": 2
+  },
+
+  {
+    "code": ["CA-1-3_2", "CA-1-9", "AA-6"],
+    "degree": 3,
+    "irreps": 4
+  },
+
+  {
+    "code": ["CA-2-2", "CA-2-2_1", "CA-1-7", "CA-1-7_1"],
+    "degree": 3,
+    "irreps": 2
+  },
+
+  {
+    "code": ["CA-2-4", "CA-2-2_2"],
+    "degree": 6,
+    "irreps": 6
+  },
+
+  {
+    "code": ["CA-3-2", "CA-3-2_1", "AA-8"],
+    "degree": 7,
+    "irreps": 1
+  },
+
+  {
+    "code": ["CA-3-3", "CA-3-3_1"],
+    "degree": 26,
+    "irreps": 2
+  },
+
+  {
+    "code": ["SA-3-2", "SA-3-2_1", "CB-2-3", "CB-2-3_1"],
+    "degree": 4,
+    "irreps": 2
+  },
+
+  {
+    "code": ["SA-3-3", "SA-3-3_1"],
+    "degree": 6,
+    "irreps": 4
+  },
+
+  {
+    "code": ["CD-4-3", "CD-4-3_1"],
+    "degree": 260,
+    "irreps": 6
+  },
+
+  {
+    "code": ["CD-4-2", "CD-4-2_1"],
+    "degree": 8,
+    "irreps": 3
+  },
+
+  {
+    "code": ["CB-3-3", "CD-3-3_1"],
+    "degree": 27,
+    "irreps": 2
+  },
+
+  {
+    "code": ["F4-2", "F4-2_1"],
+    "degree": 52,
+    "irreps": 1
+  },
+
+  {
+    "code": ["G2-3", "G2-3_1"],
+    "degree": 14,
+    "irreps": 1
+  },
+
+  {
+    "code": ["G2-2_2", "G2-4"],
+    "degree": 12,
+    "irreps": 1
+  },
+
+  {
+    "code": ["TT"],
+    "degree": 26,
+    "irreps": 2
+  }
+
+]
