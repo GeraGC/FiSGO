@@ -500,7 +500,7 @@ class Alternating(UniParamSimpleGroup):
 
 class ChevalleyA(BiParamSimpleGroup):
     def __init__(self, n: int, q: int | tuple[int, int], validate = True):
-        """
+        r"""
         Class representing the classical Chevalley group |A_n(q)|, a simple group of Lie type. See `Wikipedia`_.
 
         The q parameter is a prime power and can be given as an integer or a pair of integers. Example: q = 9 and
@@ -1610,7 +1610,7 @@ def simple_group(code):
 
 
 def simple_group_ids():
-    """
+    r"""
     Returns a dictionary relating simple group IDs and their classes. IDs are the first two characters of a simple group
     code and serve to identify the family of simple groups. We list the IDs and the corresponding groups and number of
     parameters.
