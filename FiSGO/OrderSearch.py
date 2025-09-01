@@ -1,6 +1,6 @@
 import math
-import PrimesHandler as ph
-import SimpleGroups as sg
+import FiSGO.PrimesHandler as ph
+import FiSGO.SimpleGroups as sg
 
 
 # TODO: Test all candidates functions

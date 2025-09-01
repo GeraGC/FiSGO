@@ -1,10 +1,9 @@
 import json
 import logging
 import math
-from typing import Any
-
-import PrimesHandler as Ph
+import FiSGO.PrimesHandler as Ph
 import re
+from typing import Any
 
 # TODO: Module documentation
 # TODO: Alternating groups smallest pirrep degree
