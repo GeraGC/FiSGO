@@ -1,6 +1,6 @@
 import os
 import sys
-sys.path.insert(0, os.path.abspath('../..')) # Source code dir relative to this file
+sys.path.insert(0, os.path.abspath('..')) # Source code dir relative to this file
 
 # Configuration file for the Sphinx documentation builder.
 # -- Project information
@@ -19,8 +19,14 @@ extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.autosummary',
     'sphinx.ext.intersphinx',
-    'myst_parser'
+    'sphinx.ext.viewcode',
+    'sphinx_autodoc_typehints'
+#    'myst_parser'
 ]
+
+intersphinx_mapping = {
+    "python": ("https://docs.python.org/3/", None),
+}
 
 autosummary_generate = True
 
