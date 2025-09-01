@@ -76,6 +76,7 @@ class SimpleGroup:
     def compute_order(self) -> int:
         """
         Computes the order of the group.
+
         :return: Order of the group.
         """
         pass
@@ -117,6 +118,7 @@ class SimpleGroup:
     def p_sylow_power(self, p: int) -> int:
         """
         Given a prime number p, it returns exponent n of the size of its p-Sylow subgroup(s), p**n.
+
         :param p: Prime number.
         :return: Number n such that the p-Sylow subgroup(s) of the simple group have order p**n.
         """
@@ -156,6 +158,7 @@ class SimpleGroup:
     def code(self) -> str:
         """
         Returns the code of the simple group.
+
         :return: Code of the simple group.
         """
         pass
@@ -1676,6 +1679,7 @@ def simple_group_ids():
 def sporadic_group_ids():
     """
     Returns a list with all sporadic simple group IDs. The notations have been taken from `Wikipedia`_.
+
     :return: A list with all sporadic simple group IDs.
 
     NOTE: The ID for the Fischer simple group Fi24' is "Fi24\'".

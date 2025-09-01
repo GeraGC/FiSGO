@@ -167,6 +167,7 @@ def powers_sequence(prime: int, n: int) -> int:
     contained in [3,6,9,12,15,18,21,24,27,30,...].
 
     CAUTION: We index the sequence starting at n=1.
+
     :param prime: A prime number.
     :param n: A positive integer.
     :return: The n-th term of the described sequence.
@@ -201,6 +202,7 @@ def candidate_from_power(max_power: int, prime: int) -> int:
 def smallest_factorial_from_bound(bound: int) -> int:
     """
     Given a positive integer 'bound' it returns the largest integer n such that n! <= bound.
+
     :param bound: A positive integer.
     :return: The largest integer n such that n! <= bound.
     """
@@ -555,6 +557,7 @@ def candidates_E7(prime_bounds: list[int], abs_bound = None, return_codes = Fals
     """
     Returns a list of all exceptional Chevalley |E7|, simple groups of Lie type, whose order divides prime_bounds and is
     less than or equal to abs_bound.
+
     :param prime_bounds: Contains a list with the maximum powers for each prime, example: [2,0,1,0,3] means the order
         of the group must divide 2^2*5^1*11^3.
     :param abs_bound: An integer providing an upper bound to the order of the group, if None, then it is constructed
@@ -572,6 +575,7 @@ def candidates_E8(prime_bounds: list[int], abs_bound = None, return_codes = Fals
     """
     Returns a list of all exceptional Chevalley |E8|, simple groups of Lie type, whose order divides prime_bounds and is
     less than or equal to abs_bound.
+
     :param prime_bounds: Contains a list with the maximum powers for each prime, example: [2,0,1,0,3] means the order
         of the group must divide 2^2*5^1*11^3.
     :param abs_bound: An integer providing an upper bound to the order of the group, if None, then it is constructed
@@ -589,6 +593,7 @@ def candidates_F4(prime_bounds: list[int], abs_bound = None, return_codes = Fals
     """
     Returns a list of all exceptional Chevalley |F4|, simple groups of Lie type, whose order divides prime_bounds and is
     less than or equal to abs_bound.
+
     :param prime_bounds: Contains a list with the maximum powers for each prime, example: [2,0,1,0,3] means the order
         of the group must divide 2^2*5^1*11^3.
     :param abs_bound: An integer providing an upper bound to the order of the group, if None, then it is constructed
@@ -606,6 +611,7 @@ def candidates_G2(prime_bounds: list[int], abs_bound = None, return_codes = Fals
     """
     Returns a list of all exceptional Chevalley |G2|, simple groups of Lie type, whose order divides prime_bounds and is
     less than or equal to abs_bound.
+
     :param prime_bounds: Contains a list with the maximum powers for each prime, example: [2,0,1,0,3] means the order
         of the group must divide 2^2*5^1*11^3.
     :param abs_bound: An integer providing an upper bound to the order of the group, if None, then it is constructed
@@ -623,6 +629,7 @@ def candidates_SA(prime_bounds: list[int], abs_bound = None, return_codes = Fals
     """
     Returns a list of all classical Steinberg |SA|, simple groups of Lie type, whose order divides prime_bounds and is
     less than or equal to abs_bound.
+
     :param prime_bounds: Contains a list with the maximum powers for each prime, example: [2,0,1,0,3] means the order
         of the group must divide 2^2*5^1*11^3.
     :param abs_bound: An integer providing an upper bound to the order of the group, if None, then it is constructed
@@ -686,6 +693,7 @@ def candidates_SD(prime_bounds: list[int], abs_bound = None, return_codes = Fals
     """
     Returns a list of all classical Steinberg |SD|, simple groups of Lie type, whose order divides prime_bounds and is
     less than or equal to abs_bound.
+
     :param prime_bounds: Contains a list with the maximum powers for each prime, example: [2,0,1,0,3] means the order
         of the group must divide 2^2*5^1*11^3.
     :param abs_bound: An integer providing an upper bound to the order of the group, if None, then it is constructed
@@ -749,6 +757,7 @@ def candidates_2E(prime_bounds: list[int], abs_bound = None, return_codes = Fals
     """
     Returns a list of all exceptional Steinberg |2E|, simple groups of Lie type, whose order divides prime_bounds and is
     less than or equal to abs_bound.
+
     :param prime_bounds: Contains a list with the maximum powers for each prime, example: [2,0,1,0,3] means the order
         of the group must divide 2^2*5^1*11^3.
     :param abs_bound: An integer providing an upper bound to the order of the group, if None, then it is constructed
@@ -798,6 +807,7 @@ def candidates_3D(prime_bounds: list[int], abs_bound = None, return_codes = Fals
     """
     Returns a list of all exceptional Steinberg |3D|, simple groups of Lie type, whose order divides prime_bounds and is
     less than or equal to abs_bound.
+
     :param prime_bounds: Contains a list with the maximum powers for each prime, example: [2,0,1,0,3] means the order
         of the group must divide 2^2*5^1*11^3.
     :param abs_bound: An integer providing an upper bound to the order of the group, if None, then it is constructed
@@ -843,6 +853,7 @@ def candidates_SZ(prime_bounds: list[int], abs_bound = None, return_codes = Fals
     """
     Returns a list of all Suzuki |SZ| groups, simple groups of Lie type, whose order divides prime_bounds and is
     less than or equal to abs_bound.
+
     :param prime_bounds: Contains a list with the maximum powers for each prime, example: [2,0,1,0,3] means the order
         of the group must divide 2^2*5^1*11^3.
     :param abs_bound: An integer providing an upper bound to the order of the group, if None, then it is constructed
@@ -882,6 +893,7 @@ def candidates_RF(prime_bounds: list[int], abs_bound = None, return_codes = Fals
     """
     Returns a list of all Ree |RF| groups, simple groups of Lie type, whose order divides prime_bounds and is
     less than or equal to abs_bound.
+
     :param prime_bounds: Contains a list with the maximum powers for each prime, example: [2,0,1,0,3] means the order
         of the group must divide 2^2*5^1*11^3.
     :param abs_bound: An integer providing an upper bound to the order of the group, if None, then it is constructed
@@ -919,6 +931,7 @@ def candidates_RF(prime_bounds: list[int], abs_bound = None, return_codes = Fals
 def candidates_TT(prime_bounds: list[int], abs_bound = None, return_codes = False):
     """
     Returns the Tits group |TT| if its order divides prime_bounds and is less than or equal to abs_bound.
+
     :param prime_bounds: Contains a list with the maximum powers for each prime, example: [2,0,1,0,3] means the order
         of the group must divide 2^2*5^1*11^3.
     :param abs_bound: An integer providing an upper bound to the order of the group, if None, then it is constructed
@@ -949,6 +962,7 @@ def candidates_RG(prime_bounds: list[int], abs_bound = None, return_codes = Fals
     """
     Returns a list of all Ree |RG| groups, simple groups of Lie type, whose order divides prime_bounds and is
     less than or equal to abs_bound.
+
     :param prime_bounds: Contains a list with the maximum powers for each prime, example: [2,0,1,0,3] means the order
         of the group must divide 2^2*5^1*11^3.
     :param abs_bound: An integer providing an upper bound to the order of the group, if None, then it is constructed
@@ -988,6 +1002,7 @@ def candidates_SP(prime_bounds: list[int], abs_bound = None, return_codes = Fals
     """
     Returns a list of all sporadic simple groups whose order divides prime_bounds and is
     less than or equal to abs_bound.
+
     :param prime_bounds: Contains a list with the maximum powers for each prime, example: [2,0,1,0,3] means the order
         of the group must divide 2^2*5^1*11^3.
     :param abs_bound: An integer providing an upper bound to the order of the group, if None, then it is constructed
