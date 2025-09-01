@@ -547,6 +547,7 @@ def candidates_E6(prime_bounds: list[int], abs_bound = None, return_codes = Fals
     :param return_codes: If False, the function returns a list of derived objects from the SimpleGroup class. If True,
         the function returns a list of strings, each string represents a simple group code. See SimpleGroups.simple_group_ids.
     :return: Returns a list, the contents depend on the return_codes parameter.
+
     .. |E6| replace:: E\ :sub:`6`\ (q)
     """
     return candidates_exceptional_chevalley(prime_bounds, abs_bound, 36, sg.CHEVALLEY_E6_POWER_INDICES,
@@ -565,6 +566,7 @@ def candidates_E7(prime_bounds: list[int], abs_bound = None, return_codes = Fals
     :param return_codes: If False, the function returns a list of derived objects from the SimpleGroup class. If True,
         the function returns a list of strings, each string represents a simple group code. See SimpleGroups.simple_group_ids.
     :return: Returns a list, the contents depend on the return_codes parameter.
+
     .. |E7| replace:: E\ :sub:`7`\ (q)
     """
     return candidates_exceptional_chevalley(prime_bounds, abs_bound, 63, sg.CHEVALLEY_E7_POWER_INDICES,
@@ -583,6 +585,7 @@ def candidates_E8(prime_bounds: list[int], abs_bound = None, return_codes = Fals
     :param return_codes: If False, the function returns a list of derived objects from the SimpleGroup class. If True,
         the function returns a list of strings, each string represents a simple group code. See SimpleGroups.simple_group_ids.
     :return: Returns a list, the contents depend on the return_codes parameter.
+
     .. |E8| replace:: E\ :sub:`8`\ (q)
     """
     return candidates_exceptional_chevalley(prime_bounds, abs_bound, 120, sg.CHEVALLEY_E8_POWER_INDICES,
@@ -601,6 +604,7 @@ def candidates_F4(prime_bounds: list[int], abs_bound = None, return_codes = Fals
     :param return_codes: If False, the function returns a list of derived objects from the SimpleGroup class. If True,
         the function returns a list of strings, each string represents a simple group code. See SimpleGroups.simple_group_ids.
     :return: Returns a list, the contents depend on the return_codes parameter.
+
     .. |F4| replace:: F\ :sub:`4`\ (q)
     """
     return candidates_exceptional_chevalley(prime_bounds, abs_bound, 24, sg.CHEVALLEY_F4_POWER_INDICES,
@@ -619,6 +623,7 @@ def candidates_G2(prime_bounds: list[int], abs_bound = None, return_codes = Fals
     :param return_codes: If False, the function returns a list of derived objects from the SimpleGroup class. If True,
         the function returns a list of strings, each string represents a simple group code. See SimpleGroups.simple_group_ids.
     :return: Returns a list, the contents depend on the return_codes parameter.
+
     .. |G2| replace:: G\ :sub:`2`\ (q)
     """
     return candidates_exceptional_chevalley(prime_bounds, abs_bound, 6, sg.CHEVALLEY_G2_POWER_INDICES,
@@ -637,6 +642,7 @@ def candidates_SA(prime_bounds: list[int], abs_bound = None, return_codes = Fals
     :param return_codes: If False, the function returns a list of derived objects from the SimpleGroup class. If True,
         the function returns a list of strings, each string represents a simple group code. See SimpleGroups.simple_group_ids.
     :return: Returns a list, the contents depend on the return_codes parameter.
+
     .. |SA| replace:: :sup:`2`\ A\ :sub:`n`\ (q\ :sup:`2`)
     """
     group_candidates = []
@@ -701,6 +707,7 @@ def candidates_SD(prime_bounds: list[int], abs_bound = None, return_codes = Fals
     :param return_codes: If False, the function returns a list of derived objects from the SimpleGroup class. If True,
         the function returns a list of strings, each string represents a simple group code. See SimpleGroups.simple_group_ids.
     :return: Returns a list, the contents depend on the return_codes parameter.
+
     .. |SD| replace:: :sup:`2`\ D\ :sub:`n`\ (q\ :sup:`2`)
     """
     group_candidates = []
@@ -765,6 +772,7 @@ def candidates_2E(prime_bounds: list[int], abs_bound = None, return_codes = Fals
     :param return_codes: If False, the function returns a list of derived objects from the SimpleGroup class. If True,
         the function returns a list of strings, each string represents a simple group code. See SimpleGroups.simple_group_ids.
     :return: Returns a list, the contents depend on the return_codes parameter.
+
     .. |2E| replace:: :sup:`2`\ E\ :sub:`6`\ (q\ :sup:`2`)
     """
     # First compatibility check
@@ -815,6 +823,7 @@ def candidates_3D(prime_bounds: list[int], abs_bound = None, return_codes = Fals
     :param return_codes: If False, the function returns a list of derived objects from the SimpleGroup class. If True,
         the function returns a list of strings, each string represents a simple group code. See SimpleGroups.simple_group_ids.
     :return: Returns a list, the contents depend on the return_codes parameter.
+
     .. |3D| replace:: :sup:`3`\ D\ :sub:`4`\ (q\ :sup:`3`)
     """
     # First compatibility check
@@ -861,6 +870,7 @@ def candidates_SZ(prime_bounds: list[int], abs_bound = None, return_codes = Fals
     :param return_codes: If False, the function returns a list of derived objects from the SimpleGroup class. If True,
         the function returns a list of strings, each string represents a simple group code. See SimpleGroups.simple_group_ids.
     :return: Returns a list, the contents depend on the return_codes parameter.
+
     .. |SZ| replace:: :sup:`2`\ B\ :sub:`2`\ (2\ :sup:`2n+1`)
     """
     # Suzuki groups all have a power 2**6
@@ -901,6 +911,7 @@ def candidates_RF(prime_bounds: list[int], abs_bound = None, return_codes = Fals
     :param return_codes: If False, the function returns a list of derived objects from the SimpleGroup class. If True,
         the function returns a list of strings, each string represents a simple group code. See SimpleGroups.simple_group_ids.
     :return: Returns a list, the contents depend on the return_codes parameter.
+
     .. |RF| replace:: :sup:`2`\ F\ :sub:`4`\ (2\ :sup:`2n+1`)
     """
     # Ree 2F4 groups all have a power 2**36
@@ -939,6 +950,7 @@ def candidates_TT(prime_bounds: list[int], abs_bound = None, return_codes = Fals
     :param return_codes: If False, the function returns a list of derived objects from the SimpleGroup class. If True,
         the function returns a list of strings, each string represents a simple group code. See SimpleGroups.simple_group_ids.
     :return: Returns a list, the contents depend on the return_codes parameter.
+
     .. |TT| replace:: :sup:`2`\ F\ :sub:`4`\ (2\)'
     """
     # We check prime order compatibility
@@ -970,6 +982,7 @@ def candidates_RG(prime_bounds: list[int], abs_bound = None, return_codes = Fals
     :param return_codes: If False, the function returns a list of derived objects from the SimpleGroup class. If True,
         the function returns a list of strings, each string represents a simple group code. See SimpleGroups.simple_group_ids.
     :return: Returns a list, the contents depend on the return_codes parameter.
+
     .. |RG| replace:: :sup:`2`\ G\ :sub:`2`\ (3\ :sup:`2n+1`)
     """
 
