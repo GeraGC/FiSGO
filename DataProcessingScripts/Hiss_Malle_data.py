@@ -3,7 +3,7 @@ import re
 import logging
 from typing import Any
 
-from PrimesHandler import contained_power
+from FiSGO.PrimesHandler import contained_power
 
 def json_lookup_property(file_path: str, field: str, match: Any, return_field: str) -> Any:
     """
@@ -100,7 +100,7 @@ def main():
                 id_string = irrep["G"].split(".")[1]
             else:
                 id_string = irrep["G"]
-            with open("../PrecomputedData/sporadic_groups_data.json", "r") as sporadic_file:
+            with open("../FiSGO/PrecomputedData/sporadic_groups_data.json", "r") as sporadic_file:
                 sporadic_data = json.load(sporadic_file)
             for group in sporadic_data:
                 if id_string in group["latex_name"]:
@@ -112,10 +112,10 @@ def main():
             new_irrep["code"] = None
         hiss_malle_data.append(new_irrep)
 
-    with open("../PrecomputedData/Hiss_Malle_data.json", "w") as hiss_malle_file:
+    with open("../FiSGO/PrecomputedData/Hiss_Malle_data.json", "w") as hiss_malle_file:
         json.dump(hiss_malle_data, hiss_malle_file, ensure_ascii=False, indent=4)
 
 
 if __name__ == "__main__":
     main()
-    print(json_lookup_property("../PrecomputedData/Hiss_Malle_data.json", "code", None, "name"))
+    print(json_lookup_property("../FiSGO/PrecomputedData/Hiss_Malle_data.json", "code", None, "name"))

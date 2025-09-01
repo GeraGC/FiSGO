@@ -1,5 +1,8 @@
-# Configuration file for the Sphinx documentation builder.
+import os
+import sys
+sys.path.insert(0, os.path.abspath('../..')) # Source code dir relative to this file
 
+# Configuration file for the Sphinx documentation builder.
 # -- Project information
 
 project = 'FiSGO'
@@ -18,6 +21,8 @@ extensions = [
     'sphinx.ext.intersphinx',
     'myst_parser'
 ]
+
+autosummary_generate = True
 
 intersphinx_mapping = {
     'python': ('https://docs.python.org/3/', None),

@@ -1,9 +1,4 @@
-import re
-
-import PrimesHandler as ph
-import math
-import SimpleGroups as sg
-import OrderSearch as OS
+from FiSGO import SimpleGroups as sg
 
 """
 A5 = sg.simple_group("CA-2-2_3")

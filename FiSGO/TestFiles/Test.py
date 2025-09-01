@@ -1,13 +1,4 @@
-import PrimesHandler as ph
-import math
-import random as rnd
-import re
-import json
-
-from PrimesHandler import prime_scanner
-from SimpleGroups import simple_group, simple_group_ids, sporadic_group_ids
-import OrderSearch
-
+from FiSGO.SimpleGroups import simple_group, simple_group_ids
 
 """powers_list, remainder = ph.prime_scanner(60, 4)
 print(ph.prime_reconstructor(powers_list, remainder))
