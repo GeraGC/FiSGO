@@ -19,7 +19,7 @@ extensions = [
     'sphinx.ext.intersphinx',
     'sphinx.ext.viewcode',
     'sphinx_autodoc_typehints',
-    'sphinx_rtd_dark_mode'
+    #'sphinx_rtd_dark_mode'
 ]
 
 intersphinx_mapping = {
@@ -51,7 +51,7 @@ html_theme = 'sphinx_rtd_theme'
 epub_show_urls = 'footnote'
 
 # Override some CSS settings
-html_css_files = ["readthedocs-custom.css"]
+html_css_files = ["readthedocs-custom.css", "rtd_dark.css"]
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
