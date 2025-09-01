@@ -27,3 +27,9 @@
 .wy-nav-content {
     max-width: 100% !important;
 }
+
+/* Make literal blocks wrap*/
+pre {
+    white-space: pre-wrap !important;
+    word-break: break-all;
+}
