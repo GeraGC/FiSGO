@@ -159,6 +159,7 @@ def prime_scanner(n:int , upper_bound: int, primes_path = PRIMES_PATH) -> tuple[
     Given integers n, upper_bound, returns a tuple containing:
         * [0] A list with contained_power(n, p) for each p prime smaller than upper_bound.
         * [1] Leftover factor, containing factors of primes higher than upper_bound.
+
     This function uses PrimesHandler.primes_lt to get the primes less than upper_bound.
 
     :param n: Integer.
@@ -212,6 +213,7 @@ def factor(n: int, primes_path = PRIMES_PATH, list_output = False) -> tuple[dict
     Given an integer n, it attempts to find the prime factors of n. Returns a tuple:
         * [0] - dictionary with prime:power entries
         * [1] - leftover factor
+
     A number has been successfully factorized if the leftover factor is 1. Otherwise, the leftover factor contains all
     prime factors not contained in the list in primes_path.
 
@@ -223,6 +225,7 @@ def factor(n: int, primes_path = PRIMES_PATH, list_output = False) -> tuple[dict
     :param primes_path: String, path to a file with an ordered list of prime numbers.
     :param list_output: Boolean, if True, the function returns a list of the exponents, otherwise, returns a
         dictionary whose keys are prime numbers and values their associated exponents. By default, set to False.
+
     :return: Tuple containing a list or dictionary of integers and an integer. The first contains the exponents of prime
         powers dividing n. The integer contains the leftover factor if not enough primes are available for a complete
         factorization. The first object of the tuple is a list if list_output is set to True, otherwise it returns a

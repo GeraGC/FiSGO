@@ -183,7 +183,7 @@ class SimpleGroup:
         different representations of that degree.
 
         :return: The degree of the smallest non-trivial complex projective representation and the number of different
-        representations of that degree.
+            representations of that degree.
         """
         # We first handle the possible exceptions
         with open("PrecomputedData/smallest_pirrep_degree_exceptions.json", "r") as exceptions_file:
