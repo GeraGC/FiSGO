@@ -5,6 +5,28 @@ import FiSGO.PrimesHandler as Ph
 import re
 from typing import Any
 
+"""
+Module implementing simple group objects.
+
+    .. |Tits| replace:: :sup:`2`\ F\ :sub:`4`\ (2\)'
+    .. |RG| replace:: :sup:`2`\ G\ :sub:`2`\ (3\ :sup:`2n+1`)
+    .. |RF| replace:: :sup:`2`\ F\ :sub:`4`\ (2\ :sup:`2n+1`)
+    .. |2E| replace:: :sup:`2`\ E\ :sub:`6`\ (q\ :sup:`2`)
+    .. |3D| replace:: :sup:`3`\ D\ :sub:`4`\ (q\ :sup:`3`)
+    .. |E6| replace:: E\ :sub:`6`\ (q)
+    .. |E7| replace:: E\ :sub:`7`\ (q)
+    .. |E8| replace:: E\ :sub:`8`\ (q)
+    .. |F4| replace:: F\ :sub:`4`\ (q)
+    .. |G2| replace:: G\ :sub:`2`\ (q)
+    .. |SZ| replace:: :sup:`2`\ B\ :sub:`2`\ (2\ :sup:`2n+1`)
+    .. |CA| replace:: A\ :sub:`n`\ (q)
+    .. |CB| replace:: B\ :sub:`n`\ (q)
+    .. |CC| replace:: C\ :sub:`n`\ (q)
+    .. |CD| replace:: D\ :sub:`n`\ (q)
+    .. |SA| replace:: :sup:`2`\ A\ :sub:`n`\ (q\ :sup:`2`)
+    .. |SD| replace:: :sup:`2`\ D\ :sub:`n`\ (q\ :sup:`2`)
+"""
+
 # TODO: Module documentation
 # TODO: Alternating groups smallest pirrep degree
 # TODO: Implement reading the Hiss-Malle data, recall that Th has an 'all' representation, denoted
