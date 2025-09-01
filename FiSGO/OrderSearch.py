@@ -114,10 +114,13 @@ def prime_bound_compatiblity(order: tuple[list[int], int], bound: list[int]) -> 
     other
 
     Example:
+
     >>> prime_bound_compatiblity(([1,2],1), [3,3])
     True
+
     >>> prime_bound_compatiblity(([1,2],7), [3,3])
     False
+
     >>> prime_bound_compatiblity(([2,6],1), [3,3])
     False
 
