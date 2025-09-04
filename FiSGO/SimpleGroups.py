@@ -459,6 +459,9 @@ class Cyclic(UniParamSimpleGroup):
     def smallest_pirrep_degree(self) -> tuple[int, int]:
         return 1, self.par
 
+    def normalized_code(self):
+        return self.code()
+
 
 class Alternating(UniParamSimpleGroup):
     def __init__(self, n: int, validate = True):
@@ -508,6 +511,9 @@ class Alternating(UniParamSimpleGroup):
 
     def GAP_name(self) -> str:
         return f"A{self.par}"
+
+    def normalized_code(self):
+        return self.code()
 
 
 class ChevalleyA(BiParamSimpleGroup):
@@ -674,7 +680,14 @@ class ChevalleyB(BiParamSimpleGroup):
             q_string = f"{self.q}"
         else:
             q_string = f"{self.q[0]}^{{{self.q[1]}}}"
-        return [f"B_{{{self.n}}}({q_string})", f"{{\\rm O}}_{{{2 * self.n + 1}}}({q_string})",
+        if self.q_value() % 2 == 0:
+            return [f"B_{{{self.n}}}({q_string})"]
+        elif self.n == 2:
+            return [f"B_{{{self.n}}}({q_string})", f"{{\\rm PSp}}_{{{2 * self.n}}}({q_string})",
+                    f"{{\\rm PSp}}({2 * self.n}, {q_string})", f"{{\\rm O}}_{{{2 * self.n + 1}}}({q_string})",
+                    f"\\Omega_{{{2 * self.n + 1}}}({q_string})"]
+        else:
+            return [f"B_{{{self.n}}}({q_string})", f"{{\\rm O}}_{{{2 * self.n + 1}}}({q_string})",
                 f"\\Omega_{{{2 * self.n + 1}}}({q_string})"]
 
     def GAP_name(self) -> str:
@@ -1437,6 +1450,9 @@ class Suzuki(UniParamSimpleGroup):
         q = 2**(2 * self.par + 1)
         return (q - 1) * (2 ** self.par), 2
 
+    def normalized_code(self):
+        return self.code()
+
 
 class Ree2F4(UniParamSimpleGroup):
     def __init__(self, n: int, validate = True):
@@ -1477,6 +1493,8 @@ class Ree2F4(UniParamSimpleGroup):
         q = 2**(2 * self.par + 1)
         return (q ** 3 + 1) * (q ** 2 - 1) * (2 ** self.par), 2
 
+    def normalized_code(self):
+        return self.code()
 
 class Tits(SimpleGroup):
     def __init__(self):
@@ -1545,6 +1563,10 @@ class Ree2G2(UniParamSimpleGroup):
         q = 3**(2 * self.par + 1)
         return q ** 2 - q + 1, 1
 
+    def normalized_code(self):
+        return self.code()
+
+
 class Sporadic(SimpleGroup):
     def __init__(self, id_: str):
         """
@@ -1607,6 +1629,9 @@ class Sporadic(SimpleGroup):
 
     def smallest_pirrep_degree(self) -> tuple[int, int]:
         return sporadic_lookup_property("id", self.id, "smallest_pirrep_degree")
+
+    def normalized_code(self) -> str:
+        return self.code()
 
 
 def simple_group(code):
