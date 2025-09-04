@@ -59,16 +59,16 @@ import FiSGO.PrimesHandler as ph
 # print(group.smallest_pirrep_degree())
 
 
-def f_zipped():
-    with bz2.open("../PrecomputedData/BuiltinPrimes.txt.bz2", "rt") as exceptions_file:
-        for i in range(20):
-            exceptions_file.readline().removesuffix("\n")
-
-
-def f_unzipped():
-    with open("../PrecomputedData/BuiltinPrimes.txt", "r") as exceptions_file:
-        for i in range(20):
-            exceptions_file.readline().removesuffix("\n")
+# def f_zipped():
+#     with bz2.open("../PrecomputedData/BuiltinPrimes.txt.bz2", "rt") as exceptions_file:
+#         for i in range(20):
+#             exceptions_file.readline().removesuffix("\n")
+#
+#
+# def f_unzipped():
+#     with open("../PrecomputedData/BuiltinPrimes.txt", "r") as exceptions_file:
+#         for i in range(20):
+#             exceptions_file.readline().removesuffix("\n")
 
 
 # print(timeit.timeit(sporadic_group_ids_zipped, number=100)/100)
@@ -76,3 +76,4 @@ def f_unzipped():
 
 # print(sporadic_lookup_property("id", "J2", "latex_name"))
 
+print(", ".join(str(i) for i in[3,4,5]))

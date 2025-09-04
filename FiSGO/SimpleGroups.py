@@ -202,9 +202,25 @@ class SimpleGroup:
         # Non-exceptional cases are handled in the derived classes
         return 0, 0
 
+    def hiss_malle_pirreps(self, degree: int | None = None, char: int = 0):
+        # TODO: Must somehow account for isomorphisms
+        """
+
+
+        :param degree:
+        :param char:
+        :return:
+        """
+
+        if degree is None:
+            if char == 0:
+                if self.smallest_pirrep_degree()[0] > 250:
+                    return []
+        return
+
 
 class UniParamSimpleGroup(SimpleGroup):
-    def __init__(self, par: int | tuple[int, int], validate = True):
+    def __init__(self, par: int | tuple[int, int], validate=True):
         """
         Base class for simple groups with one parameter.
 
@@ -1745,3 +1761,29 @@ def sporadic_lookup_property(field: str, match: Any, return_field: str) -> Any:
     except StopIteration:
         logging.warning(f"No match found for {field}={match}")
         return None
+
+
+def hiss_malle_json():
+    """
+    Interface to the compressed JSON file Hiss_Malle_data.json.bz2.
+
+    The file contains data on representations of degree less than 250, compiled by Gerard Hiss and Gunter Malle
+    in [HM1]_ and [HM2]_.
+    For more information on the data, see the README's of `HissMalleTableFormats`_ or `PrecomputedData`_.
+
+    The data can be accessed as a list of dictionaries, each dictionary having the same fields (keys).
+
+    :return: Returns a JSON Decoder object. The format is essentially that of a list of dictionaries.
+
+    .. _PrecomputedData: https://github.com/GeraGC/FiSGO/tree/a02a88256beee9d3dcc59a7fcc6abafc82445923/FiSGO/PrecomputedData
+    .. _HissMalleTableFormats: https://github.com/GeraGC/FiSGO/tree/a02a88256beee9d3dcc59a7fcc6abafc82445923/HissMalleTableFormats
+
+    .. [HM1] Hiss, G., & Malle, G. (2001). Low-Dimensional Representations of Quasi-Simple Groups. LMS Journal of Computation
+        and Mathematics, 4, 22–63.
+    .. [HM2] Hiss, G., & Malle, G. (2002). Corrigenda: Low-dimensional Representations of Quasi-simple Groups.
+        LMS Journal of Computation and Mathematics, 5, 95–126.
+    """
+
+    with ires.as_file(PRECOMPUTED_DATA_DIR.joinpath('hiss_malle_data.json.bz2')) as hiss_malle_data_path:
+        with bz2.open(hiss_malle_data_path, 'rt') as hiss_malle_data_file:
+            return json.load(hiss_malle_data_file)

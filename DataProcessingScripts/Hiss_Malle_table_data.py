@@ -116,7 +116,7 @@ def main():
             new_irrep["code"] = None
         hiss_malle_data.append(new_irrep)
 
-    with open("../FiSGO/PrecomputedData/Hiss_Malle_data.json", "w") as hiss_malle_file:
+    with open("Hiss_Malle_table_data.json", "w") as hiss_malle_file:
         json.dump(hiss_malle_data, hiss_malle_file, ensure_ascii=False, indent=4)
 
 
