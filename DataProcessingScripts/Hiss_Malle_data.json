@@ -19386,40 +19386,6 @@
         "code": "CA-2-2_7"
     },
     {
-        "degree": 256,
-        "name": "{\\rm PSL}_{2}(256)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            257,
-            2
-        ],
-        "code": "CA-2-2_8"
-    },
-    {
-        "degree": 255,
-        "name": "{\\rm PSL}_{2}(256)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            2
-        ],
-        "code": "CA-2-2_8"
-    },
-    {
-        "degree": 257,
-        "name": "{\\rm PSL}_{2}(256)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            2
-        ],
-        "code": "CA-2-2_8"
-    },
-    {
         "degree": 27,
         "name": "{\\rm PSL}_{2}(27)",
         "field": "Not implemented",
@@ -20048,30 +20014,6 @@
         "code": "CA-2-7_2"
     },
     {
-        "degree": 343,
-        "name": "{\\rm PSL}_{2}(343)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            2,
-            43,
-            7
-        ],
-        "code": "CA-2-7_3"
-    },
-    {
-        "degree": 342,
-        "name": "{\\rm PSL}_{2}(343)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            7
-        ],
-        "code": "CA-2-7_3"
-    },
-    {
         "degree": 171,
         "name": "{\\rm PSL}_{2}(343)",
         "field": "Not implemented",
@@ -20087,41 +20029,6 @@
         "name": "2.{\\rm PSL}_{2}(343)",
         "field": "Not implemented",
         "ind": 0,
-        "char": null,
-        "not_char": [
-            7,
-            2
-        ],
-        "code": "CA-2-7_3"
-    },
-    {
-        "degree": 342,
-        "name": "2.{\\rm PSL}_{2}(343)",
-        "field": "Not implemented",
-        "ind": -1,
-        "char": null,
-        "not_char": [
-            2,
-            7
-        ],
-        "code": "CA-2-7_3"
-    },
-    {
-        "degree": 344,
-        "name": "{\\rm PSL}_{2}(343)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            7
-        ],
-        "code": "CA-2-7_3"
-    },
-    {
-        "degree": 344,
-        "name": "2.{\\rm PSL}_{2}(343)",
-        "field": "Not implemented",
-        "ind": -1,
         "char": null,
         "not_char": [
             7,
@@ -20592,31 +20499,6 @@
         "code": "CA-2-17_1"
     },
     {
-        "degree": 289,
-        "name": "{\\rm PSL}_{2}(289)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            2,
-            5,
-            29,
-            17
-        ],
-        "code": "CA-2-17_2"
-    },
-    {
-        "degree": 288,
-        "name": "{\\rm PSL}_{2}(289)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            17
-        ],
-        "code": "CA-2-17_2"
-    },
-    {
         "degree": 144,
         "name": "{\\rm PSL}_{2}(289)",
         "field": "Not implemented",
@@ -20644,40 +20526,6 @@
         "name": "{\\rm PSL}_{2}(289)",
         "field": "Not implemented",
         "ind": 1,
-        "char": null,
-        "not_char": [
-            2,
-            17
-        ],
-        "code": "CA-2-17_2"
-    },
-    {
-        "degree": 288,
-        "name": "2.{\\rm PSL}_{2}(289)",
-        "field": "Not implemented",
-        "ind": -1,
-        "char": null,
-        "not_char": [
-            17
-        ],
-        "code": "CA-2-17_2"
-    },
-    {
-        "degree": 290,
-        "name": "{\\rm PSL}_{2}(289)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            17
-        ],
-        "code": "CA-2-17_2"
-    },
-    {
-        "degree": 290,
-        "name": "2.{\\rm PSL}_{2}(289)",
-        "field": "Not implemented",
-        "ind": -1,
         "char": null,
         "not_char": [
             2,
@@ -20770,30 +20618,6 @@
         "code": "CA-2-19_1"
     },
     {
-        "degree": 361,
-        "name": "{\\rm PSL}_{2}(361)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            2,
-            181,
-            19
-        ],
-        "code": "CA-2-19_2"
-    },
-    {
-        "degree": 360,
-        "name": "{\\rm PSL}_{2}(361)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            19
-        ],
-        "code": "CA-2-19_2"
-    },
-    {
         "degree": 180,
         "name": "{\\rm PSL}_{2}(361)",
         "field": "Not implemented",
@@ -20821,41 +20645,6 @@
         "name": "{\\rm PSL}_{2}(361)",
         "field": "Not implemented",
         "ind": 1,
-        "char": null,
-        "not_char": [
-            2,
-            19
-        ],
-        "code": "CA-2-19_2"
-    },
-    {
-        "degree": 360,
-        "name": "2.{\\rm PSL}_{2}(361)",
-        "field": "Not implemented",
-        "ind": -1,
-        "char": null,
-        "not_char": [
-            181,
-            19
-        ],
-        "code": "CA-2-19_2"
-    },
-    {
-        "degree": 362,
-        "name": "{\\rm PSL}_{2}(361)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            19
-        ],
-        "code": "CA-2-19_2"
-    },
-    {
-        "degree": 362,
-        "name": "2.{\\rm PSL}_{2}(361)",
-        "field": "Not implemented",
-        "ind": -1,
         "char": null,
         "not_char": [
             2,
@@ -24838,20 +24627,6 @@
         "code": "CA-2-241_1"
     },
     {
-        "degree": 251,
-        "name": "{\\rm PSL}_{2}(251)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            2,
-            3,
-            7,
-            251
-        ],
-        "code": "CA-2-251_1"
-    },
-    {
         "degree": 250,
         "name": "{\\rm PSL}_{2}(251)",
         "field": "Not implemented",
@@ -24898,56 +24673,6 @@
         "code": "CA-2-251_1"
     },
     {
-        "degree": 252,
-        "name": "{\\rm PSL}_{2}(251)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            5,
-            251
-        ],
-        "code": "CA-2-251_1"
-    },
-    {
-        "degree": 252,
-        "name": "2.{\\rm PSL}_{2}(251)",
-        "field": "Not implemented",
-        "ind": -1,
-        "char": null,
-        "not_char": [
-            5,
-            251,
-            2
-        ],
-        "code": "CA-2-251_1"
-    },
-    {
-        "degree": 257,
-        "name": "{\\rm PSL}_{2}(257)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            2,
-            3,
-            43,
-            257
-        ],
-        "code": "CA-2-257_1"
-    },
-    {
-        "degree": 256,
-        "name": "{\\rm PSL}_{2}(257)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            257
-        ],
-        "code": "CA-2-257_1"
-    },
-    {
         "degree": 128,
         "name": "{\\rm PSL}_{2}(257)",
         "field": "Not implemented",
@@ -24983,66 +24708,6 @@
         "code": "CA-2-257_1"
     },
     {
-        "degree": 256,
-        "name": "2.{\\rm PSL}_{2}(257)",
-        "field": "Not implemented",
-        "ind": -1,
-        "char": null,
-        "not_char": [
-            257
-        ],
-        "code": "CA-2-257_1"
-    },
-    {
-        "degree": 258,
-        "name": "{\\rm PSL}_{2}(257)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            2,
-            257
-        ],
-        "code": "CA-2-257_1"
-    },
-    {
-        "degree": 258,
-        "name": "2.{\\rm PSL}_{2}(257)",
-        "field": "Not implemented",
-        "ind": -1,
-        "char": null,
-        "not_char": [
-            2,
-            257
-        ],
-        "code": "CA-2-257_1"
-    },
-    {
-        "degree": 263,
-        "name": "{\\rm PSL}_{2}(263)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            2,
-            3,
-            11,
-            263
-        ],
-        "code": "CA-2-263_1"
-    },
-    {
-        "degree": 262,
-        "name": "{\\rm PSL}_{2}(263)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            263
-        ],
-        "code": "CA-2-263_1"
-    },
-    {
         "degree": 131,
         "name": "{\\rm PSL}_{2}(263)",
         "field": "Not implemented",
@@ -25064,68 +24729,6 @@
             2
         ],
         "code": "CA-2-263_1"
-    },
-    {
-        "degree": 262,
-        "name": "2.{\\rm PSL}_{2}(263)",
-        "field": "Not implemented",
-        "ind": -1,
-        "char": null,
-        "not_char": [
-            2,
-            263
-        ],
-        "code": "CA-2-263_1"
-    },
-    {
-        "degree": 264,
-        "name": "{\\rm PSL}_{2}(263)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            131,
-            263
-        ],
-        "code": "CA-2-263_1"
-    },
-    {
-        "degree": 264,
-        "name": "2.{\\rm PSL}_{2}(263)",
-        "field": "Not implemented",
-        "ind": -1,
-        "char": null,
-        "not_char": [
-            131,
-            263,
-            2
-        ],
-        "code": "CA-2-263_1"
-    },
-    {
-        "degree": 269,
-        "name": "{\\rm PSL}_{2}(269)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            2,
-            3,
-            5,
-            269
-        ],
-        "code": "CA-2-269_1"
-    },
-    {
-        "degree": 268,
-        "name": "{\\rm PSL}_{2}(269)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            269
-        ],
-        "code": "CA-2-269_1"
     },
     {
         "degree": 134,
@@ -25163,65 +24766,6 @@
         "code": "CA-2-269_1"
     },
     {
-        "degree": 268,
-        "name": "2.{\\rm PSL}_{2}(269)",
-        "field": "Not implemented",
-        "ind": -1,
-        "char": null,
-        "not_char": [
-            269
-        ],
-        "code": "CA-2-269_1"
-    },
-    {
-        "degree": 270,
-        "name": "{\\rm PSL}_{2}(269)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            67,
-            269
-        ],
-        "code": "CA-2-269_1"
-    },
-    {
-        "degree": 270,
-        "name": "2.{\\rm PSL}_{2}(269)",
-        "field": "Not implemented",
-        "ind": -1,
-        "char": null,
-        "not_char": [
-            2,
-            269
-        ],
-        "code": "CA-2-269_1"
-    },
-    {
-        "degree": 271,
-        "name": "{\\rm PSL}_{2}(271)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            2,
-            17,
-            271
-        ],
-        "code": "CA-2-271_1"
-    },
-    {
-        "degree": 270,
-        "name": "{\\rm PSL}_{2}(271)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            271
-        ],
-        "code": "CA-2-271_1"
-    },
-    {
         "degree": 135,
         "name": "{\\rm PSL}_{2}(271)",
         "field": "Not implemented",
@@ -25243,65 +24787,6 @@
             2
         ],
         "code": "CA-2-271_1"
-    },
-    {
-        "degree": 270,
-        "name": "2.{\\rm PSL}_{2}(271)",
-        "field": "Not implemented",
-        "ind": -1,
-        "char": null,
-        "not_char": [
-            2,
-            271
-        ],
-        "code": "CA-2-271_1"
-    },
-    {
-        "degree": 272,
-        "name": "{\\rm PSL}_{2}(271)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            271
-        ],
-        "code": "CA-2-271_1"
-    },
-    {
-        "degree": 272,
-        "name": "2.{\\rm PSL}_{2}(271)",
-        "field": "Not implemented",
-        "ind": -1,
-        "char": null,
-        "not_char": [
-            271,
-            2
-        ],
-        "code": "CA-2-271_1"
-    },
-    {
-        "degree": 277,
-        "name": "{\\rm PSL}_{2}(277)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            2,
-            139,
-            277
-        ],
-        "code": "CA-2-277_1"
-    },
-    {
-        "degree": 276,
-        "name": "{\\rm PSL}_{2}(277)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            277
-        ],
-        "code": "CA-2-277_1"
     },
     {
         "degree": 138,
@@ -25339,66 +24824,6 @@
         "code": "CA-2-277_1"
     },
     {
-        "degree": 276,
-        "name": "2.{\\rm PSL}_{2}(277)",
-        "field": "Not implemented",
-        "ind": -1,
-        "char": null,
-        "not_char": [
-            139,
-            277
-        ],
-        "code": "CA-2-277_1"
-    },
-    {
-        "degree": 278,
-        "name": "{\\rm PSL}_{2}(277)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            277
-        ],
-        "code": "CA-2-277_1"
-    },
-    {
-        "degree": 278,
-        "name": "2.{\\rm PSL}_{2}(277)",
-        "field": "Not implemented",
-        "ind": -1,
-        "char": null,
-        "not_char": [
-            2,
-            277
-        ],
-        "code": "CA-2-277_1"
-    },
-    {
-        "degree": 281,
-        "name": "{\\rm PSL}_{2}(281)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            2,
-            3,
-            47,
-            281
-        ],
-        "code": "CA-2-281_1"
-    },
-    {
-        "degree": 280,
-        "name": "{\\rm PSL}_{2}(281)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            281
-        ],
-        "code": "CA-2-281_1"
-    },
-    {
         "degree": 140,
         "name": "{\\rm PSL}_{2}(281)",
         "field": "Not implemented",
@@ -25434,64 +24859,6 @@
         "code": "CA-2-281_1"
     },
     {
-        "degree": 280,
-        "name": "2.{\\rm PSL}_{2}(281)",
-        "field": "Not implemented",
-        "ind": -1,
-        "char": null,
-        "not_char": [
-            281
-        ],
-        "code": "CA-2-281_1"
-    },
-    {
-        "degree": 282,
-        "name": "{\\rm PSL}_{2}(281)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            281
-        ],
-        "code": "CA-2-281_1"
-    },
-    {
-        "degree": 282,
-        "name": "2.{\\rm PSL}_{2}(281)",
-        "field": "Not implemented",
-        "ind": -1,
-        "char": null,
-        "not_char": [
-            2,
-            281
-        ],
-        "code": "CA-2-281_1"
-    },
-    {
-        "degree": 283,
-        "name": "{\\rm PSL}_{2}(283)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            2,
-            71,
-            283
-        ],
-        "code": "CA-2-283_1"
-    },
-    {
-        "degree": 282,
-        "name": "{\\rm PSL}_{2}(283)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            283
-        ],
-        "code": "CA-2-283_1"
-    },
-    {
         "degree": 141,
         "name": "{\\rm PSL}_{2}(283)",
         "field": "Not implemented",
@@ -25513,66 +24880,6 @@
             2
         ],
         "code": "CA-2-283_1"
-    },
-    {
-        "degree": 282,
-        "name": "2.{\\rm PSL}_{2}(283)",
-        "field": "Not implemented",
-        "ind": -1,
-        "char": null,
-        "not_char": [
-            2,
-            283
-        ],
-        "code": "CA-2-283_1"
-    },
-    {
-        "degree": 284,
-        "name": "{\\rm PSL}_{2}(283)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            283
-        ],
-        "code": "CA-2-283_1"
-    },
-    {
-        "degree": 284,
-        "name": "2.{\\rm PSL}_{2}(283)",
-        "field": "Not implemented",
-        "ind": -1,
-        "char": null,
-        "not_char": [
-            283,
-            2
-        ],
-        "code": "CA-2-283_1"
-    },
-    {
-        "degree": 293,
-        "name": "{\\rm PSL}_{2}(293)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            2,
-            3,
-            7,
-            293
-        ],
-        "code": "CA-2-293_1"
-    },
-    {
-        "degree": 292,
-        "name": "{\\rm PSL}_{2}(293)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            293
-        ],
-        "code": "CA-2-293_1"
     },
     {
         "degree": 146,
@@ -25610,66 +24917,6 @@
         "code": "CA-2-293_1"
     },
     {
-        "degree": 292,
-        "name": "2.{\\rm PSL}_{2}(293)",
-        "field": "Not implemented",
-        "ind": -1,
-        "char": null,
-        "not_char": [
-            293
-        ],
-        "code": "CA-2-293_1"
-    },
-    {
-        "degree": 294,
-        "name": "{\\rm PSL}_{2}(293)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            73,
-            293
-        ],
-        "code": "CA-2-293_1"
-    },
-    {
-        "degree": 294,
-        "name": "2.{\\rm PSL}_{2}(293)",
-        "field": "Not implemented",
-        "ind": -1,
-        "char": null,
-        "not_char": [
-            2,
-            293
-        ],
-        "code": "CA-2-293_1"
-    },
-    {
-        "degree": 307,
-        "name": "{\\rm PSL}_{2}(307)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            2,
-            7,
-            11,
-            307
-        ],
-        "code": "CA-2-307_1"
-    },
-    {
-        "degree": 306,
-        "name": "{\\rm PSL}_{2}(307)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            307
-        ],
-        "code": "CA-2-307_1"
-    },
-    {
         "degree": 153,
         "name": "{\\rm PSL}_{2}(307)",
         "field": "Not implemented",
@@ -25693,66 +24940,6 @@
         "code": "CA-2-307_1"
     },
     {
-        "degree": 306,
-        "name": "2.{\\rm PSL}_{2}(307)",
-        "field": "Not implemented",
-        "ind": -1,
-        "char": null,
-        "not_char": [
-            2,
-            307
-        ],
-        "code": "CA-2-307_1"
-    },
-    {
-        "degree": 308,
-        "name": "{\\rm PSL}_{2}(307)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            307
-        ],
-        "code": "CA-2-307_1"
-    },
-    {
-        "degree": 308,
-        "name": "2.{\\rm PSL}_{2}(307)",
-        "field": "Not implemented",
-        "ind": -1,
-        "char": null,
-        "not_char": [
-            307,
-            2
-        ],
-        "code": "CA-2-307_1"
-    },
-    {
-        "degree": 311,
-        "name": "{\\rm PSL}_{2}(311)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            2,
-            3,
-            13,
-            311
-        ],
-        "code": "CA-2-311_1"
-    },
-    {
-        "degree": 310,
-        "name": "{\\rm PSL}_{2}(311)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            311
-        ],
-        "code": "CA-2-311_1"
-    },
-    {
         "degree": 155,
         "name": "{\\rm PSL}_{2}(311)",
         "field": "Not implemented",
@@ -25774,65 +24961,6 @@
             2
         ],
         "code": "CA-2-311_1"
-    },
-    {
-        "degree": 310,
-        "name": "2.{\\rm PSL}_{2}(311)",
-        "field": "Not implemented",
-        "ind": -1,
-        "char": null,
-        "not_char": [
-            2,
-            311
-        ],
-        "code": "CA-2-311_1"
-    },
-    {
-        "degree": 312,
-        "name": "{\\rm PSL}_{2}(311)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            311
-        ],
-        "code": "CA-2-311_1"
-    },
-    {
-        "degree": 312,
-        "name": "2.{\\rm PSL}_{2}(311)",
-        "field": "Not implemented",
-        "ind": -1,
-        "char": null,
-        "not_char": [
-            311,
-            2
-        ],
-        "code": "CA-2-311_1"
-    },
-    {
-        "degree": 313,
-        "name": "{\\rm PSL}_{2}(313)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            2,
-            157,
-            313
-        ],
-        "code": "CA-2-313_1"
-    },
-    {
-        "degree": 312,
-        "name": "{\\rm PSL}_{2}(313)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            313
-        ],
-        "code": "CA-2-313_1"
     },
     {
         "degree": 156,
@@ -25870,66 +24998,6 @@
         "code": "CA-2-313_1"
     },
     {
-        "degree": 312,
-        "name": "2.{\\rm PSL}_{2}(313)",
-        "field": "Not implemented",
-        "ind": -1,
-        "char": null,
-        "not_char": [
-            157,
-            313
-        ],
-        "code": "CA-2-313_1"
-    },
-    {
-        "degree": 314,
-        "name": "{\\rm PSL}_{2}(313)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            313
-        ],
-        "code": "CA-2-313_1"
-    },
-    {
-        "degree": 314,
-        "name": "2.{\\rm PSL}_{2}(313)",
-        "field": "Not implemented",
-        "ind": -1,
-        "char": null,
-        "not_char": [
-            2,
-            313
-        ],
-        "code": "CA-2-313_1"
-    },
-    {
-        "degree": 317,
-        "name": "{\\rm PSL}_{2}(317)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            2,
-            3,
-            53,
-            317
-        ],
-        "code": "CA-2-317_1"
-    },
-    {
-        "degree": 316,
-        "name": "{\\rm PSL}_{2}(317)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            317
-        ],
-        "code": "CA-2-317_1"
-    },
-    {
         "degree": 158,
         "name": "{\\rm PSL}_{2}(317)",
         "field": "Not implemented",
@@ -25965,65 +25033,6 @@
         "code": "CA-2-317_1"
     },
     {
-        "degree": 316,
-        "name": "2.{\\rm PSL}_{2}(317)",
-        "field": "Not implemented",
-        "ind": -1,
-        "char": null,
-        "not_char": [
-            317
-        ],
-        "code": "CA-2-317_1"
-    },
-    {
-        "degree": 318,
-        "name": "{\\rm PSL}_{2}(317)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            79,
-            317
-        ],
-        "code": "CA-2-317_1"
-    },
-    {
-        "degree": 318,
-        "name": "2.{\\rm PSL}_{2}(317)",
-        "field": "Not implemented",
-        "ind": -1,
-        "char": null,
-        "not_char": [
-            2,
-            317
-        ],
-        "code": "CA-2-317_1"
-    },
-    {
-        "degree": 331,
-        "name": "{\\rm PSL}_{2}(331)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            2,
-            83,
-            331
-        ],
-        "code": "CA-2-331_1"
-    },
-    {
-        "degree": 330,
-        "name": "{\\rm PSL}_{2}(331)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            331
-        ],
-        "code": "CA-2-331_1"
-    },
-    {
         "degree": 165,
         "name": "{\\rm PSL}_{2}(331)",
         "field": "Not implemented",
@@ -26045,65 +25054,6 @@
             2
         ],
         "code": "CA-2-331_1"
-    },
-    {
-        "degree": 330,
-        "name": "2.{\\rm PSL}_{2}(331)",
-        "field": "Not implemented",
-        "ind": -1,
-        "char": null,
-        "not_char": [
-            2,
-            331
-        ],
-        "code": "CA-2-331_1"
-    },
-    {
-        "degree": 332,
-        "name": "{\\rm PSL}_{2}(331)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            331
-        ],
-        "code": "CA-2-331_1"
-    },
-    {
-        "degree": 332,
-        "name": "2.{\\rm PSL}_{2}(331)",
-        "field": "Not implemented",
-        "ind": -1,
-        "char": null,
-        "not_char": [
-            331,
-            2
-        ],
-        "code": "CA-2-331_1"
-    },
-    {
-        "degree": 337,
-        "name": "{\\rm PSL}_{2}(337)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            2,
-            13,
-            337
-        ],
-        "code": "CA-2-337_1"
-    },
-    {
-        "degree": 336,
-        "name": "{\\rm PSL}_{2}(337)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            337
-        ],
-        "code": "CA-2-337_1"
     },
     {
         "degree": 168,
@@ -26141,66 +25091,6 @@
         "code": "CA-2-337_1"
     },
     {
-        "degree": 336,
-        "name": "2.{\\rm PSL}_{2}(337)",
-        "field": "Not implemented",
-        "ind": -1,
-        "char": null,
-        "not_char": [
-            13,
-            337
-        ],
-        "code": "CA-2-337_1"
-    },
-    {
-        "degree": 338,
-        "name": "{\\rm PSL}_{2}(337)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            337
-        ],
-        "code": "CA-2-337_1"
-    },
-    {
-        "degree": 338,
-        "name": "2.{\\rm PSL}_{2}(337)",
-        "field": "Not implemented",
-        "ind": -1,
-        "char": null,
-        "not_char": [
-            2,
-            337
-        ],
-        "code": "CA-2-337_1"
-    },
-    {
-        "degree": 347,
-        "name": "{\\rm PSL}_{2}(347)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            2,
-            3,
-            29,
-            347
-        ],
-        "code": "CA-2-347_1"
-    },
-    {
-        "degree": 346,
-        "name": "{\\rm PSL}_{2}(347)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            347
-        ],
-        "code": "CA-2-347_1"
-    },
-    {
         "degree": 173,
         "name": "{\\rm PSL}_{2}(347)",
         "field": "Not implemented",
@@ -26222,68 +25112,6 @@
             2
         ],
         "code": "CA-2-347_1"
-    },
-    {
-        "degree": 346,
-        "name": "2.{\\rm PSL}_{2}(347)",
-        "field": "Not implemented",
-        "ind": -1,
-        "char": null,
-        "not_char": [
-            2,
-            347
-        ],
-        "code": "CA-2-347_1"
-    },
-    {
-        "degree": 348,
-        "name": "{\\rm PSL}_{2}(347)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            173,
-            347
-        ],
-        "code": "CA-2-347_1"
-    },
-    {
-        "degree": 348,
-        "name": "2.{\\rm PSL}_{2}(347)",
-        "field": "Not implemented",
-        "ind": -1,
-        "char": null,
-        "not_char": [
-            173,
-            347,
-            2
-        ],
-        "code": "CA-2-347_1"
-    },
-    {
-        "degree": 349,
-        "name": "{\\rm PSL}_{2}(349)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            2,
-            5,
-            7,
-            349
-        ],
-        "code": "CA-2-349_1"
-    },
-    {
-        "degree": 348,
-        "name": "{\\rm PSL}_{2}(349)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            349
-        ],
-        "code": "CA-2-349_1"
     },
     {
         "degree": 174,
@@ -26321,65 +25149,6 @@
         "code": "CA-2-349_1"
     },
     {
-        "degree": 348,
-        "name": "2.{\\rm PSL}_{2}(349)",
-        "field": "Not implemented",
-        "ind": -1,
-        "char": null,
-        "not_char": [
-            349
-        ],
-        "code": "CA-2-349_1"
-    },
-    {
-        "degree": 350,
-        "name": "{\\rm PSL}_{2}(349)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            349
-        ],
-        "code": "CA-2-349_1"
-    },
-    {
-        "degree": 350,
-        "name": "2.{\\rm PSL}_{2}(349)",
-        "field": "Not implemented",
-        "ind": -1,
-        "char": null,
-        "not_char": [
-            2,
-            349
-        ],
-        "code": "CA-2-349_1"
-    },
-    {
-        "degree": 353,
-        "name": "{\\rm PSL}_{2}(353)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            2,
-            3,
-            59,
-            353
-        ],
-        "code": "CA-2-353_1"
-    },
-    {
-        "degree": 352,
-        "name": "{\\rm PSL}_{2}(353)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            353
-        ],
-        "code": "CA-2-353_1"
-    },
-    {
         "degree": 176,
         "name": "{\\rm PSL}_{2}(353)",
         "field": "Not implemented",
@@ -26415,65 +25184,6 @@
         "code": "CA-2-353_1"
     },
     {
-        "degree": 352,
-        "name": "2.{\\rm PSL}_{2}(353)",
-        "field": "Not implemented",
-        "ind": -1,
-        "char": null,
-        "not_char": [
-            353
-        ],
-        "code": "CA-2-353_1"
-    },
-    {
-        "degree": 354,
-        "name": "{\\rm PSL}_{2}(353)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            353
-        ],
-        "code": "CA-2-353_1"
-    },
-    {
-        "degree": 354,
-        "name": "2.{\\rm PSL}_{2}(353)",
-        "field": "Not implemented",
-        "ind": -1,
-        "char": null,
-        "not_char": [
-            2,
-            353
-        ],
-        "code": "CA-2-353_1"
-    },
-    {
-        "degree": 359,
-        "name": "{\\rm PSL}_{2}(359)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            2,
-            3,
-            5,
-            359
-        ],
-        "code": "CA-2-359_1"
-    },
-    {
-        "degree": 358,
-        "name": "{\\rm PSL}_{2}(359)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            359
-        ],
-        "code": "CA-2-359_1"
-    },
-    {
         "degree": 179,
         "name": "{\\rm PSL}_{2}(359)",
         "field": "Not implemented",
@@ -26497,67 +25207,6 @@
         "code": "CA-2-359_1"
     },
     {
-        "degree": 358,
-        "name": "2.{\\rm PSL}_{2}(359)",
-        "field": "Not implemented",
-        "ind": -1,
-        "char": null,
-        "not_char": [
-            2,
-            359
-        ],
-        "code": "CA-2-359_1"
-    },
-    {
-        "degree": 360,
-        "name": "{\\rm PSL}_{2}(359)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            179,
-            359
-        ],
-        "code": "CA-2-359_1"
-    },
-    {
-        "degree": 360,
-        "name": "2.{\\rm PSL}_{2}(359)",
-        "field": "Not implemented",
-        "ind": -1,
-        "char": null,
-        "not_char": [
-            179,
-            359,
-            2
-        ],
-        "code": "CA-2-359_1"
-    },
-    {
-        "degree": 367,
-        "name": "{\\rm PSL}_{2}(367)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            2,
-            23,
-            367
-        ],
-        "code": "CA-2-367_1"
-    },
-    {
-        "degree": 366,
-        "name": "{\\rm PSL}_{2}(367)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            367
-        ],
-        "code": "CA-2-367_1"
-    },
-    {
         "degree": 183,
         "name": "{\\rm PSL}_{2}(367)",
         "field": "Not implemented",
@@ -26579,66 +25228,6 @@
             2
         ],
         "code": "CA-2-367_1"
-    },
-    {
-        "degree": 366,
-        "name": "2.{\\rm PSL}_{2}(367)",
-        "field": "Not implemented",
-        "ind": -1,
-        "char": null,
-        "not_char": [
-            2,
-            367
-        ],
-        "code": "CA-2-367_1"
-    },
-    {
-        "degree": 368,
-        "name": "{\\rm PSL}_{2}(367)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            367
-        ],
-        "code": "CA-2-367_1"
-    },
-    {
-        "degree": 368,
-        "name": "2.{\\rm PSL}_{2}(367)",
-        "field": "Not implemented",
-        "ind": -1,
-        "char": null,
-        "not_char": [
-            367,
-            2
-        ],
-        "code": "CA-2-367_1"
-    },
-    {
-        "degree": 373,
-        "name": "{\\rm PSL}_{2}(373)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            2,
-            11,
-            17,
-            373
-        ],
-        "code": "CA-2-373_1"
-    },
-    {
-        "degree": 372,
-        "name": "{\\rm PSL}_{2}(373)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            373
-        ],
-        "code": "CA-2-373_1"
     },
     {
         "degree": 186,
@@ -26676,65 +25265,6 @@
         "code": "CA-2-373_1"
     },
     {
-        "degree": 372,
-        "name": "2.{\\rm PSL}_{2}(373)",
-        "field": "Not implemented",
-        "ind": -1,
-        "char": null,
-        "not_char": [
-            373
-        ],
-        "code": "CA-2-373_1"
-    },
-    {
-        "degree": 374,
-        "name": "{\\rm PSL}_{2}(373)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            373
-        ],
-        "code": "CA-2-373_1"
-    },
-    {
-        "degree": 374,
-        "name": "2.{\\rm PSL}_{2}(373)",
-        "field": "Not implemented",
-        "ind": -1,
-        "char": null,
-        "not_char": [
-            2,
-            373
-        ],
-        "code": "CA-2-373_1"
-    },
-    {
-        "degree": 379,
-        "name": "{\\rm PSL}_{2}(379)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            2,
-            5,
-            19,
-            379
-        ],
-        "code": "CA-2-379_1"
-    },
-    {
-        "degree": 378,
-        "name": "{\\rm PSL}_{2}(379)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            379
-        ],
-        "code": "CA-2-379_1"
-    },
-    {
         "degree": 189,
         "name": "{\\rm PSL}_{2}(379)",
         "field": "Not implemented",
@@ -26758,65 +25288,6 @@
         "code": "CA-2-379_1"
     },
     {
-        "degree": 378,
-        "name": "2.{\\rm PSL}_{2}(379)",
-        "field": "Not implemented",
-        "ind": -1,
-        "char": null,
-        "not_char": [
-            2,
-            379
-        ],
-        "code": "CA-2-379_1"
-    },
-    {
-        "degree": 380,
-        "name": "{\\rm PSL}_{2}(379)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            379
-        ],
-        "code": "CA-2-379_1"
-    },
-    {
-        "degree": 380,
-        "name": "2.{\\rm PSL}_{2}(379)",
-        "field": "Not implemented",
-        "ind": -1,
-        "char": null,
-        "not_char": [
-            379,
-            2
-        ],
-        "code": "CA-2-379_1"
-    },
-    {
-        "degree": 383,
-        "name": "{\\rm PSL}_{2}(383)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            2,
-            3,
-            383
-        ],
-        "code": "CA-2-383_1"
-    },
-    {
-        "degree": 382,
-        "name": "{\\rm PSL}_{2}(383)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            383
-        ],
-        "code": "CA-2-383_1"
-    },
-    {
         "degree": 191,
         "name": "{\\rm PSL}_{2}(383)",
         "field": "Not implemented",
@@ -26838,69 +25309,6 @@
             2
         ],
         "code": "CA-2-383_1"
-    },
-    {
-        "degree": 382,
-        "name": "2.{\\rm PSL}_{2}(383)",
-        "field": "Not implemented",
-        "ind": -1,
-        "char": null,
-        "not_char": [
-            2,
-            383
-        ],
-        "code": "CA-2-383_1"
-    },
-    {
-        "degree": 384,
-        "name": "{\\rm PSL}_{2}(383)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            191,
-            383
-        ],
-        "code": "CA-2-383_1"
-    },
-    {
-        "degree": 384,
-        "name": "2.{\\rm PSL}_{2}(383)",
-        "field": "Not implemented",
-        "ind": -1,
-        "char": null,
-        "not_char": [
-            191,
-            383,
-            2
-        ],
-        "code": "CA-2-383_1"
-    },
-    {
-        "degree": 389,
-        "name": "{\\rm PSL}_{2}(389)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            2,
-            3,
-            5,
-            13,
-            389
-        ],
-        "code": "CA-2-389_1"
-    },
-    {
-        "degree": 388,
-        "name": "{\\rm PSL}_{2}(389)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            389
-        ],
-        "code": "CA-2-389_1"
     },
     {
         "degree": 194,
@@ -26938,65 +25346,6 @@
         "code": "CA-2-389_1"
     },
     {
-        "degree": 388,
-        "name": "2.{\\rm PSL}_{2}(389)",
-        "field": "Not implemented",
-        "ind": -1,
-        "char": null,
-        "not_char": [
-            389
-        ],
-        "code": "CA-2-389_1"
-    },
-    {
-        "degree": 390,
-        "name": "{\\rm PSL}_{2}(389)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            97,
-            389
-        ],
-        "code": "CA-2-389_1"
-    },
-    {
-        "degree": 390,
-        "name": "2.{\\rm PSL}_{2}(389)",
-        "field": "Not implemented",
-        "ind": -1,
-        "char": null,
-        "not_char": [
-            2,
-            389
-        ],
-        "code": "CA-2-389_1"
-    },
-    {
-        "degree": 397,
-        "name": "{\\rm PSL}_{2}(397)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            2,
-            199,
-            397
-        ],
-        "code": "CA-2-397_1"
-    },
-    {
-        "degree": 396,
-        "name": "{\\rm PSL}_{2}(397)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            397
-        ],
-        "code": "CA-2-397_1"
-    },
-    {
         "degree": 198,
         "name": "{\\rm PSL}_{2}(397)",
         "field": "Not implemented",
@@ -27030,66 +25379,6 @@
             397
         ],
         "code": "CA-2-397_1"
-    },
-    {
-        "degree": 396,
-        "name": "2.{\\rm PSL}_{2}(397)",
-        "field": "Not implemented",
-        "ind": -1,
-        "char": null,
-        "not_char": [
-            199,
-            397
-        ],
-        "code": "CA-2-397_1"
-    },
-    {
-        "degree": 398,
-        "name": "{\\rm PSL}_{2}(397)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            397
-        ],
-        "code": "CA-2-397_1"
-    },
-    {
-        "degree": 398,
-        "name": "2.{\\rm PSL}_{2}(397)",
-        "field": "Not implemented",
-        "ind": -1,
-        "char": null,
-        "not_char": [
-            2,
-            397
-        ],
-        "code": "CA-2-397_1"
-    },
-    {
-        "degree": 401,
-        "name": "{\\rm PSL}_{2}(401)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            2,
-            3,
-            67,
-            401
-        ],
-        "code": "CA-2-401_1"
-    },
-    {
-        "degree": 400,
-        "name": "{\\rm PSL}_{2}(401)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            401
-        ],
-        "code": "CA-2-401_1"
     },
     {
         "degree": 200,
@@ -27127,65 +25416,6 @@
         "code": "CA-2-401_1"
     },
     {
-        "degree": 400,
-        "name": "2.{\\rm PSL}_{2}(401)",
-        "field": "Not implemented",
-        "ind": -1,
-        "char": null,
-        "not_char": [
-            401
-        ],
-        "code": "CA-2-401_1"
-    },
-    {
-        "degree": 402,
-        "name": "{\\rm PSL}_{2}(401)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            401
-        ],
-        "code": "CA-2-401_1"
-    },
-    {
-        "degree": 402,
-        "name": "2.{\\rm PSL}_{2}(401)",
-        "field": "Not implemented",
-        "ind": -1,
-        "char": null,
-        "not_char": [
-            2,
-            401
-        ],
-        "code": "CA-2-401_1"
-    },
-    {
-        "degree": 409,
-        "name": "{\\rm PSL}_{2}(409)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            2,
-            5,
-            41,
-            409
-        ],
-        "code": "CA-2-409_1"
-    },
-    {
-        "degree": 408,
-        "name": "{\\rm PSL}_{2}(409)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            409
-        ],
-        "code": "CA-2-409_1"
-    },
-    {
         "degree": 204,
         "name": "{\\rm PSL}_{2}(409)",
         "field": "Not implemented",
@@ -27221,66 +25451,6 @@
         "code": "CA-2-409_1"
     },
     {
-        "degree": 408,
-        "name": "2.{\\rm PSL}_{2}(409)",
-        "field": "Not implemented",
-        "ind": -1,
-        "char": null,
-        "not_char": [
-            409
-        ],
-        "code": "CA-2-409_1"
-    },
-    {
-        "degree": 410,
-        "name": "{\\rm PSL}_{2}(409)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            409
-        ],
-        "code": "CA-2-409_1"
-    },
-    {
-        "degree": 410,
-        "name": "2.{\\rm PSL}_{2}(409)",
-        "field": "Not implemented",
-        "ind": -1,
-        "char": null,
-        "not_char": [
-            2,
-            409
-        ],
-        "code": "CA-2-409_1"
-    },
-    {
-        "degree": 419,
-        "name": "{\\rm PSL}_{2}(419)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            2,
-            3,
-            5,
-            7,
-            419
-        ],
-        "code": "CA-2-419_1"
-    },
-    {
-        "degree": 418,
-        "name": "{\\rm PSL}_{2}(419)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            419
-        ],
-        "code": "CA-2-419_1"
-    },
-    {
         "degree": 209,
         "name": "{\\rm PSL}_{2}(419)",
         "field": "Not implemented",
@@ -27302,65 +25472,6 @@
             2
         ],
         "code": "CA-2-419_1"
-    },
-    {
-        "degree": 418,
-        "name": "2.{\\rm PSL}_{2}(419)",
-        "field": "Not implemented",
-        "ind": -1,
-        "char": null,
-        "not_char": [
-            2,
-            419
-        ],
-        "code": "CA-2-419_1"
-    },
-    {
-        "degree": 420,
-        "name": "{\\rm PSL}_{2}(419)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            419
-        ],
-        "code": "CA-2-419_1"
-    },
-    {
-        "degree": 420,
-        "name": "2.{\\rm PSL}_{2}(419)",
-        "field": "Not implemented",
-        "ind": -1,
-        "char": null,
-        "not_char": [
-            419,
-            2
-        ],
-        "code": "CA-2-419_1"
-    },
-    {
-        "degree": 421,
-        "name": "{\\rm PSL}_{2}(421)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            2,
-            211,
-            421
-        ],
-        "code": "CA-2-421_1"
-    },
-    {
-        "degree": 420,
-        "name": "{\\rm PSL}_{2}(421)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            421
-        ],
-        "code": "CA-2-421_1"
     },
     {
         "degree": 210,
@@ -27398,65 +25509,6 @@
         "code": "CA-2-421_1"
     },
     {
-        "degree": 420,
-        "name": "2.{\\rm PSL}_{2}(421)",
-        "field": "Not implemented",
-        "ind": -1,
-        "char": null,
-        "not_char": [
-            211,
-            421
-        ],
-        "code": "CA-2-421_1"
-    },
-    {
-        "degree": 422,
-        "name": "{\\rm PSL}_{2}(421)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            421
-        ],
-        "code": "CA-2-421_1"
-    },
-    {
-        "degree": 422,
-        "name": "2.{\\rm PSL}_{2}(421)",
-        "field": "Not implemented",
-        "ind": -1,
-        "char": null,
-        "not_char": [
-            2,
-            421
-        ],
-        "code": "CA-2-421_1"
-    },
-    {
-        "degree": 431,
-        "name": "{\\rm PSL}_{2}(431)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            2,
-            3,
-            431
-        ],
-        "code": "CA-2-431_1"
-    },
-    {
-        "degree": 430,
-        "name": "{\\rm PSL}_{2}(431)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            431
-        ],
-        "code": "CA-2-431_1"
-    },
-    {
         "degree": 215,
         "name": "{\\rm PSL}_{2}(431)",
         "field": "Not implemented",
@@ -27478,66 +25530,6 @@
             2
         ],
         "code": "CA-2-431_1"
-    },
-    {
-        "degree": 430,
-        "name": "2.{\\rm PSL}_{2}(431)",
-        "field": "Not implemented",
-        "ind": -1,
-        "char": null,
-        "not_char": [
-            2,
-            431
-        ],
-        "code": "CA-2-431_1"
-    },
-    {
-        "degree": 432,
-        "name": "{\\rm PSL}_{2}(431)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            431
-        ],
-        "code": "CA-2-431_1"
-    },
-    {
-        "degree": 432,
-        "name": "2.{\\rm PSL}_{2}(431)",
-        "field": "Not implemented",
-        "ind": -1,
-        "char": null,
-        "not_char": [
-            431,
-            2
-        ],
-        "code": "CA-2-431_1"
-    },
-    {
-        "degree": 433,
-        "name": "{\\rm PSL}_{2}(433)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            2,
-            7,
-            31,
-            433
-        ],
-        "code": "CA-2-433_1"
-    },
-    {
-        "degree": 432,
-        "name": "{\\rm PSL}_{2}(433)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            433
-        ],
-        "code": "CA-2-433_1"
     },
     {
         "degree": 216,
@@ -27575,65 +25567,6 @@
         "code": "CA-2-433_1"
     },
     {
-        "degree": 432,
-        "name": "2.{\\rm PSL}_{2}(433)",
-        "field": "Not implemented",
-        "ind": -1,
-        "char": null,
-        "not_char": [
-            433
-        ],
-        "code": "CA-2-433_1"
-    },
-    {
-        "degree": 434,
-        "name": "{\\rm PSL}_{2}(433)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            433
-        ],
-        "code": "CA-2-433_1"
-    },
-    {
-        "degree": 434,
-        "name": "2.{\\rm PSL}_{2}(433)",
-        "field": "Not implemented",
-        "ind": -1,
-        "char": null,
-        "not_char": [
-            2,
-            433
-        ],
-        "code": "CA-2-433_1"
-    },
-    {
-        "degree": 439,
-        "name": "{\\rm PSL}_{2}(439)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            2,
-            5,
-            11,
-            439
-        ],
-        "code": "CA-2-439_1"
-    },
-    {
-        "degree": 438,
-        "name": "{\\rm PSL}_{2}(439)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            439
-        ],
-        "code": "CA-2-439_1"
-    },
-    {
         "degree": 219,
         "name": "{\\rm PSL}_{2}(439)",
         "field": "Not implemented",
@@ -27657,66 +25590,6 @@
         "code": "CA-2-439_1"
     },
     {
-        "degree": 438,
-        "name": "2.{\\rm PSL}_{2}(439)",
-        "field": "Not implemented",
-        "ind": -1,
-        "char": null,
-        "not_char": [
-            2,
-            439
-        ],
-        "code": "CA-2-439_1"
-    },
-    {
-        "degree": 440,
-        "name": "{\\rm PSL}_{2}(439)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            439
-        ],
-        "code": "CA-2-439_1"
-    },
-    {
-        "degree": 440,
-        "name": "2.{\\rm PSL}_{2}(439)",
-        "field": "Not implemented",
-        "ind": -1,
-        "char": null,
-        "not_char": [
-            439,
-            2
-        ],
-        "code": "CA-2-439_1"
-    },
-    {
-        "degree": 443,
-        "name": "{\\rm PSL}_{2}(443)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            2,
-            3,
-            37,
-            443
-        ],
-        "code": "CA-2-443_1"
-    },
-    {
-        "degree": 442,
-        "name": "{\\rm PSL}_{2}(443)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            443
-        ],
-        "code": "CA-2-443_1"
-    },
-    {
         "degree": 221,
         "name": "{\\rm PSL}_{2}(443)",
         "field": "Not implemented",
@@ -27738,66 +25611,6 @@
             2
         ],
         "code": "CA-2-443_1"
-    },
-    {
-        "degree": 442,
-        "name": "2.{\\rm PSL}_{2}(443)",
-        "field": "Not implemented",
-        "ind": -1,
-        "char": null,
-        "not_char": [
-            2,
-            443
-        ],
-        "code": "CA-2-443_1"
-    },
-    {
-        "degree": 444,
-        "name": "{\\rm PSL}_{2}(443)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            443
-        ],
-        "code": "CA-2-443_1"
-    },
-    {
-        "degree": 444,
-        "name": "2.{\\rm PSL}_{2}(443)",
-        "field": "Not implemented",
-        "ind": -1,
-        "char": null,
-        "not_char": [
-            443,
-            2
-        ],
-        "code": "CA-2-443_1"
-    },
-    {
-        "degree": 449,
-        "name": "{\\rm PSL}_{2}(449)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            2,
-            3,
-            5,
-            449
-        ],
-        "code": "CA-2-449_1"
-    },
-    {
-        "degree": 448,
-        "name": "{\\rm PSL}_{2}(449)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            449
-        ],
-        "code": "CA-2-449_1"
     },
     {
         "degree": 224,
@@ -27835,64 +25648,6 @@
         "code": "CA-2-449_1"
     },
     {
-        "degree": 448,
-        "name": "2.{\\rm PSL}_{2}(449)",
-        "field": "Not implemented",
-        "ind": -1,
-        "char": null,
-        "not_char": [
-            449
-        ],
-        "code": "CA-2-449_1"
-    },
-    {
-        "degree": 450,
-        "name": "{\\rm PSL}_{2}(449)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            449
-        ],
-        "code": "CA-2-449_1"
-    },
-    {
-        "degree": 450,
-        "name": "2.{\\rm PSL}_{2}(449)",
-        "field": "Not implemented",
-        "ind": -1,
-        "char": null,
-        "not_char": [
-            2,
-            449
-        ],
-        "code": "CA-2-449_1"
-    },
-    {
-        "degree": 457,
-        "name": "{\\rm PSL}_{2}(457)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            2,
-            229,
-            457
-        ],
-        "code": "CA-2-457_1"
-    },
-    {
-        "degree": 456,
-        "name": "{\\rm PSL}_{2}(457)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            457
-        ],
-        "code": "CA-2-457_1"
-    },
-    {
         "degree": 228,
         "name": "{\\rm PSL}_{2}(457)",
         "field": "Not implemented",
@@ -27928,67 +25683,6 @@
         "code": "CA-2-457_1"
     },
     {
-        "degree": 456,
-        "name": "2.{\\rm PSL}_{2}(457)",
-        "field": "Not implemented",
-        "ind": -1,
-        "char": null,
-        "not_char": [
-            229,
-            457
-        ],
-        "code": "CA-2-457_1"
-    },
-    {
-        "degree": 458,
-        "name": "{\\rm PSL}_{2}(457)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            457
-        ],
-        "code": "CA-2-457_1"
-    },
-    {
-        "degree": 458,
-        "name": "2.{\\rm PSL}_{2}(457)",
-        "field": "Not implemented",
-        "ind": -1,
-        "char": null,
-        "not_char": [
-            2,
-            457
-        ],
-        "code": "CA-2-457_1"
-    },
-    {
-        "degree": 461,
-        "name": "{\\rm PSL}_{2}(461)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            2,
-            3,
-            7,
-            11,
-            461
-        ],
-        "code": "CA-2-461_1"
-    },
-    {
-        "degree": 460,
-        "name": "{\\rm PSL}_{2}(461)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            461
-        ],
-        "code": "CA-2-461_1"
-    },
-    {
         "degree": 230,
         "name": "{\\rm PSL}_{2}(461)",
         "field": "Not implemented",
@@ -28024,64 +25718,6 @@
         "code": "CA-2-461_1"
     },
     {
-        "degree": 460,
-        "name": "2.{\\rm PSL}_{2}(461)",
-        "field": "Not implemented",
-        "ind": -1,
-        "char": null,
-        "not_char": [
-            461
-        ],
-        "code": "CA-2-461_1"
-    },
-    {
-        "degree": 462,
-        "name": "{\\rm PSL}_{2}(461)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            461
-        ],
-        "code": "CA-2-461_1"
-    },
-    {
-        "degree": 462,
-        "name": "2.{\\rm PSL}_{2}(461)",
-        "field": "Not implemented",
-        "ind": -1,
-        "char": null,
-        "not_char": [
-            2,
-            461
-        ],
-        "code": "CA-2-461_1"
-    },
-    {
-        "degree": 463,
-        "name": "{\\rm PSL}_{2}(463)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            2,
-            29,
-            463
-        ],
-        "code": "CA-2-463_1"
-    },
-    {
-        "degree": 462,
-        "name": "{\\rm PSL}_{2}(463)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            463
-        ],
-        "code": "CA-2-463_1"
-    },
-    {
         "degree": 231,
         "name": "{\\rm PSL}_{2}(463)",
         "field": "Not implemented",
@@ -28103,66 +25739,6 @@
             2
         ],
         "code": "CA-2-463_1"
-    },
-    {
-        "degree": 462,
-        "name": "2.{\\rm PSL}_{2}(463)",
-        "field": "Not implemented",
-        "ind": -1,
-        "char": null,
-        "not_char": [
-            2,
-            463
-        ],
-        "code": "CA-2-463_1"
-    },
-    {
-        "degree": 464,
-        "name": "{\\rm PSL}_{2}(463)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            463
-        ],
-        "code": "CA-2-463_1"
-    },
-    {
-        "degree": 464,
-        "name": "2.{\\rm PSL}_{2}(463)",
-        "field": "Not implemented",
-        "ind": -1,
-        "char": null,
-        "not_char": [
-            463,
-            2
-        ],
-        "code": "CA-2-463_1"
-    },
-    {
-        "degree": 467,
-        "name": "{\\rm PSL}_{2}(467)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            2,
-            3,
-            13,
-            467
-        ],
-        "code": "CA-2-467_1"
-    },
-    {
-        "degree": 466,
-        "name": "{\\rm PSL}_{2}(467)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            467
-        ],
-        "code": "CA-2-467_1"
     },
     {
         "degree": 233,
@@ -28188,68 +25764,6 @@
         "code": "CA-2-467_1"
     },
     {
-        "degree": 466,
-        "name": "2.{\\rm PSL}_{2}(467)",
-        "field": "Not implemented",
-        "ind": -1,
-        "char": null,
-        "not_char": [
-            2,
-            467
-        ],
-        "code": "CA-2-467_1"
-    },
-    {
-        "degree": 468,
-        "name": "{\\rm PSL}_{2}(467)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            233,
-            467
-        ],
-        "code": "CA-2-467_1"
-    },
-    {
-        "degree": 468,
-        "name": "2.{\\rm PSL}_{2}(467)",
-        "field": "Not implemented",
-        "ind": -1,
-        "char": null,
-        "not_char": [
-            233,
-            467,
-            2
-        ],
-        "code": "CA-2-467_1"
-    },
-    {
-        "degree": 479,
-        "name": "{\\rm PSL}_{2}(479)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            2,
-            3,
-            5,
-            479
-        ],
-        "code": "CA-2-479_1"
-    },
-    {
-        "degree": 478,
-        "name": "{\\rm PSL}_{2}(479)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            479
-        ],
-        "code": "CA-2-479_1"
-    },
-    {
         "degree": 239,
         "name": "{\\rm PSL}_{2}(479)",
         "field": "Not implemented",
@@ -28271,67 +25785,6 @@
             2
         ],
         "code": "CA-2-479_1"
-    },
-    {
-        "degree": 478,
-        "name": "2.{\\rm PSL}_{2}(479)",
-        "field": "Not implemented",
-        "ind": -1,
-        "char": null,
-        "not_char": [
-            2,
-            479
-        ],
-        "code": "CA-2-479_1"
-    },
-    {
-        "degree": 480,
-        "name": "{\\rm PSL}_{2}(479)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            239,
-            479
-        ],
-        "code": "CA-2-479_1"
-    },
-    {
-        "degree": 480,
-        "name": "2.{\\rm PSL}_{2}(479)",
-        "field": "Not implemented",
-        "ind": -1,
-        "char": null,
-        "not_char": [
-            239,
-            479,
-            2
-        ],
-        "code": "CA-2-479_1"
-    },
-    {
-        "degree": 487,
-        "name": "{\\rm PSL}_{2}(487)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            2,
-            61,
-            487
-        ],
-        "code": "CA-2-487_1"
-    },
-    {
-        "degree": 486,
-        "name": "{\\rm PSL}_{2}(487)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            487
-        ],
-        "code": "CA-2-487_1"
     },
     {
         "degree": 243,
@@ -28357,66 +25810,6 @@
         "code": "CA-2-487_1"
     },
     {
-        "degree": 486,
-        "name": "2.{\\rm PSL}_{2}(487)",
-        "field": "Not implemented",
-        "ind": -1,
-        "char": null,
-        "not_char": [
-            2,
-            487
-        ],
-        "code": "CA-2-487_1"
-    },
-    {
-        "degree": 488,
-        "name": "{\\rm PSL}_{2}(487)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            487
-        ],
-        "code": "CA-2-487_1"
-    },
-    {
-        "degree": 488,
-        "name": "2.{\\rm PSL}_{2}(487)",
-        "field": "Not implemented",
-        "ind": -1,
-        "char": null,
-        "not_char": [
-            487,
-            2
-        ],
-        "code": "CA-2-487_1"
-    },
-    {
-        "degree": 491,
-        "name": "{\\rm PSL}_{2}(491)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            2,
-            3,
-            41,
-            491
-        ],
-        "code": "CA-2-491_1"
-    },
-    {
-        "degree": 490,
-        "name": "{\\rm PSL}_{2}(491)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            491
-        ],
-        "code": "CA-2-491_1"
-    },
-    {
         "degree": 245,
         "name": "{\\rm PSL}_{2}(491)",
         "field": "Not implemented",
@@ -28440,65 +25833,6 @@
         "code": "CA-2-491_1"
     },
     {
-        "degree": 490,
-        "name": "2.{\\rm PSL}_{2}(491)",
-        "field": "Not implemented",
-        "ind": -1,
-        "char": null,
-        "not_char": [
-            2,
-            491
-        ],
-        "code": "CA-2-491_1"
-    },
-    {
-        "degree": 492,
-        "name": "{\\rm PSL}_{2}(491)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            491
-        ],
-        "code": "CA-2-491_1"
-    },
-    {
-        "degree": 492,
-        "name": "2.{\\rm PSL}_{2}(491)",
-        "field": "Not implemented",
-        "ind": -1,
-        "char": null,
-        "not_char": [
-            491,
-            2
-        ],
-        "code": "CA-2-491_1"
-    },
-    {
-        "degree": 499,
-        "name": "{\\rm PSL}_{2}(499)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            2,
-            5,
-            499
-        ],
-        "code": "CA-2-499_1"
-    },
-    {
-        "degree": 498,
-        "name": "{\\rm PSL}_{2}(499)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            499
-        ],
-        "code": "CA-2-499_1"
-    },
-    {
         "degree": 249,
         "name": "{\\rm PSL}_{2}(499)",
         "field": "Not implemented",
@@ -28514,41 +25848,6 @@
         "name": "2.{\\rm PSL}_{2}(499)",
         "field": "Not implemented",
         "ind": 0,
-        "char": null,
-        "not_char": [
-            499,
-            2
-        ],
-        "code": "CA-2-499_1"
-    },
-    {
-        "degree": 498,
-        "name": "2.{\\rm PSL}_{2}(499)",
-        "field": "Not implemented",
-        "ind": -1,
-        "char": null,
-        "not_char": [
-            2,
-            499
-        ],
-        "code": "CA-2-499_1"
-    },
-    {
-        "degree": 500,
-        "name": "{\\rm PSL}_{2}(499)",
-        "field": "Not implemented",
-        "ind": 1,
-        "char": null,
-        "not_char": [
-            499
-        ],
-        "code": "CA-2-499_1"
-    },
-    {
-        "degree": 500,
-        "name": "2.{\\rm PSL}_{2}(499)",
-        "field": "Not implemented",
-        "ind": -1,
         "char": null,
         "not_char": [
             499,
