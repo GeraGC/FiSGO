@@ -74,4 +74,5 @@ def f_unzipped():
 # print(timeit.timeit(sporadic_group_ids_zipped, number=100)/100)
 # print(timeit.timeit(sporadic_group_ids, number=100)/100)
 
-print(sporadic_lookup_property("id", "J2", "latex_name"))
+# print(sporadic_lookup_property("id", "J2", "latex_name"))
+

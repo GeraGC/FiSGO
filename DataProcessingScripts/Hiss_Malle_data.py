@@ -4,6 +4,7 @@ import logging
 from typing import Any
 
 from FiSGO.PrimesHandler import contained_power
+from FiSGO.SimpleGroups import simple_group
 
 def json_lookup_property(file_path: str, field: str, match: Any, return_field: str) -> Any:
     """
@@ -62,7 +63,10 @@ def main():
             if "PSU" in id_string:
                 code = f"SA-{n-1}-{q}"
             if "PSp" in id_string:
-                code = f"CC-{n//2}-{q}"
+                if n//2 == 2:
+                    code = f"CB-{n//2}-{q}"
+                else:
+                    code = f"CC-{n//2}-{q}"
         elif "A" in irrep["G"]:
             n = int(re.search(r"{\d*}", irrep["G"]).group(0)[1:-1])
             code = f"AA-{n}"
@@ -89,7 +93,7 @@ def main():
             else:
                 q = int(re.search(r"\(\d*\)", irrep["G"]).group(0)[1:-1])
                 n = (int(re.search(r"{\d*}", irrep["G"]).group(0)[1:-1]) - 1) // 2
-                code = f"SB-{n}-{q}"
+                code = f"CB-{n}-{q}"
         elif "F_{4}" in irrep["G"]:
             q = int(re.search(r"\(\d*\)", irrep["G"]).group(0)[1:-1])
             code = f"F4-{q}"
@@ -107,7 +111,7 @@ def main():
                     code = group["code"]
                     break
         try:
-            new_irrep["code"] = code
+            new_irrep["code"] = simple_group(code).normalized_code()
         except UnboundLocalError:
             new_irrep["code"] = None
         hiss_malle_data.append(new_irrep)
@@ -118,4 +122,4 @@ def main():
 
 if __name__ == "__main__":
     main()
-    print(json_lookup_property("../FiSGO/PrecomputedData/Hiss_Malle_data.json", "code", None, "name"))
+    # print(json_lookup_property("../FiSGO/DataProcessingScripts/Hiss_Malle_data.json", "code", None, "name"))
