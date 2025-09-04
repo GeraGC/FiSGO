@@ -100,7 +100,7 @@ def main():
                 id_string = irrep["G"].split(".")[1]
             else:
                 id_string = irrep["G"]
-            with open("../FiSGO/PrecomputedData/sporadic_groups_data.json", "r") as sporadic_file:
+            with open("sporadic_groups_data.json", "r") as sporadic_file:
                 sporadic_data = json.load(sporadic_file)
             for group in sporadic_data:
                 if id_string in group["latex_name"]:

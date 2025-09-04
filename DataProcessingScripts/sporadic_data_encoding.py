@@ -105,13 +105,13 @@ def main():
                 break
         to_dump.append(group_dict)
 
-    with open("../FiSGO/PrecomputedData/sporadic_groups_data.json", "w", encoding='utf-8') as f:
+    with open("sporadic_groups_data.json", "w", encoding='utf-8') as f:
         json.dump(to_dump, f, ensure_ascii=False, indent=4)
 
 
 def smallest_pirreps_search():
     smallest_pirreps = dict()
-    with open("../FiSGO/PrecomputedData/sporadic_groups_data.json", "r", encoding='utf-8') as sporadic_data_file:
+    with open("sporadic_groups_data.json", "r", encoding='utf-8') as sporadic_data_file:
         sporadic_data = json.load(sporadic_data_file)
         for group in sporadic_data:
             if group["multiplier"] == 1:

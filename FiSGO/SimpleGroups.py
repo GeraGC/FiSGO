@@ -1,39 +1,26 @@
+import bz2
 import json
 import logging
 import math
 import FiSGO.PrimesHandler as Ph
 import re
 from typing import Any
+import importlib.resources as ires
 
 """
 Module implementing simple group objects.
-
-    .. |Tits| replace:: :sup:`2`\ F\ :sub:`4`\ (2\)'
-    .. |RG| replace:: :sup:`2`\ G\ :sub:`2`\ (3\ :sup:`2n+1`)
-    .. |RF| replace:: :sup:`2`\ F\ :sub:`4`\ (2\ :sup:`2n+1`)
-    .. |2E| replace:: :sup:`2`\ E\ :sub:`6`\ (q\ :sup:`2`)
-    .. |3D| replace:: :sup:`3`\ D\ :sub:`4`\ (q\ :sup:`3`)
-    .. |E6| replace:: E\ :sub:`6`\ (q)
-    .. |E7| replace:: E\ :sub:`7`\ (q)
-    .. |E8| replace:: E\ :sub:`8`\ (q)
-    .. |F4| replace:: F\ :sub:`4`\ (q)
-    .. |G2| replace:: G\ :sub:`2`\ (q)
-    .. |SZ| replace:: :sup:`2`\ B\ :sub:`2`\ (2\ :sup:`2n+1`)
-    .. |CA| replace:: A\ :sub:`n`\ (q)
-    .. |CB| replace:: B\ :sub:`n`\ (q)
-    .. |CC| replace:: C\ :sub:`n`\ (q)
-    .. |CD| replace:: D\ :sub:`n`\ (q)
-    .. |SA| replace:: :sup:`2`\ A\ :sub:`n`\ (q\ :sup:`2`)
-    .. |SD| replace:: :sup:`2`\ D\ :sub:`n`\ (q\ :sup:`2`)
 """
 
 # TODO: Module documentation
 # TODO: Alternating groups smallest pirrep degree
 # TODO: Implement reading the Hiss-Malle data, recall that Th has an 'all' representation, denoted
 #   by None in both 'char' and 'not_char'.
+# TODO: Normalize codes in Hiss-Malle data.
 
 
 GLOBAL_VALIDATE = True
+
+PRECOMPUTED_DATA_DIR = ires.files("FiSGO.PrecomputedData")
 
 TITS_ORDER = [11, 3, 2, 0, 0, 1]
 
@@ -208,7 +195,7 @@ class SimpleGroup:
             representations of that degree.
         """
         # We first handle the possible exceptions
-        with open("PrecomputedData/smallest_pirrep_degree_exceptions.json", "r") as exceptions_file:
+        with PRECOMPUTED_DATA_DIR.joinpath("smallest_pirrep_degree_exceptions.json").open('r') as exceptions_file:
             for exception in json.load(exceptions_file):
                 if self.code() in exception["code"]:
                     return exception["degree"], exception["irreps"]
@@ -1708,9 +1695,10 @@ def sporadic_group_ids():
 
     .. _Wikipedia : https://en.wikipedia.org/wiki/List_of_finite_simple_groups#Summary
     """
-    with open("PrecomputedData/sporadic_groups_data.json", "r") as sporadic_data_file:
-        sporadic_data = json.load(sporadic_data_file)
-        return [group["id"] for group in sporadic_data]
+    with ires.as_file(PRECOMPUTED_DATA_DIR.joinpath('sporadic_groups_data.json.bz2')) as sporadic_data_path:
+        with bz2.open(sporadic_data_path, 'rt') as sporadic_data_file:
+            sporadic_data = json.load(sporadic_data_file)
+    return [group["id"] for group in sporadic_data]
 
 
 def sporadic_lookup_property(field: str, match: Any, return_field: str) -> Any:
@@ -1723,10 +1711,12 @@ def sporadic_lookup_property(field: str, match: Any, return_field: str) -> Any:
     :param return_field: Field to return if a match is found.
     :return: The value of the given return field if a match is found, otherwise None.
     """
-    with open("PrecomputedData/sporadic_groups_data.json", "r") as sporadic_data_file:
-        sporadic_data = json.load(sporadic_data_file)
-        try:
-            return next(group for group in sporadic_data if group[field] == match)[return_field]
-        except StopIteration:
-            logging.warning(f"No match found for {field}={match}")
-            return None
+
+    with ires.as_file(PRECOMPUTED_DATA_DIR.joinpath('sporadic_groups_data.json.bz2')) as sporadic_data_path:
+        with bz2.open(sporadic_data_path, 'rt') as sporadic_data_file:
+            sporadic_data = json.load(sporadic_data_file)
+    try:
+        return next(group for group in sporadic_data if group[field] == match)[return_field]
+    except StopIteration:
+        logging.warning(f"No match found for {field}={match}")
+        return None
