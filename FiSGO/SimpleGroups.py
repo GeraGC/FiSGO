@@ -15,8 +15,7 @@ Module implementing simple group objects.
 # TODO: Alternating groups smallest pirrep degree
 # TODO: Implement reading the Hiss-Malle data, recall that Th has an 'all' representation, denoted
 #   by None in both 'char' and 'not_char'.
-# TODO: Normalize codes in Hiss-Malle data.
-
+# TODO: General JSON wrapper: give file + give matches as dict + give return values as list
 
 GLOBAL_VALIDATE = True
 
