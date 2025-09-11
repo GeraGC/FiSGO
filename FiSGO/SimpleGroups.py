@@ -492,11 +492,11 @@ class Alternating(UniParamSimpleGroup):
 
     def isomorphisms(self):
         if self.par == 5:
-            return ["CA-1-4", "CA-1-5"]
+            return ["CA-1-2_2", "CA-1-5_1"]
         if self.par == 6:
-            return ["CA-1-9"]
+            return ["CA-1-3_2"]
         if self.par == 8:
-            return ["CA-3-2"]
+            return ["CA-3-2_1"]
         return []
 
     def code(self) -> str:
@@ -571,15 +571,15 @@ class ChevalleyA(BiParamSimpleGroup):
     def isomorphisms(self):
         if self.n == 1:
             if self.q == 4 or self.q == (2,2):
-                return ["AA-5", "CA-1-5"]
+                return ["AA-5", "CA-1-5_1"]
             if self.q == 5 or self.q == (5,1):
-                return ["AA-5", "CA-1-4"]
+                return ["AA-5", "CA-1-2_2"]
             if self.q == 7 or self.q == (7,1):
-                return ["CA-2-2"]
+                return ["CA-2-2_1"]
             if self.q == 9 or self.q == (9,1):
                 return ["AA-6"]
         if self.n == 2 and (self.q == 2 or self.q == (2,1)):
-            return ["CA-1-7"]
+            return ["CA-1-7_1"]
         if self.n == 3 and (self.q == 2 or self.q == (2, 1)):
             return ["AA-8"]
         return []
@@ -664,12 +664,12 @@ class ChevalleyB(BiParamSimpleGroup):
     def isomorphisms(self):
         if type(self.q) == int:
             if Ph.is_power(self.q, 2):
-                return ["CC-{0}-{1}".format(self.n, self.q)]
+                return [code_normalizer("CC-{0}-{1}".format(self.n, self.q))]
         else:
             if self.q[0] == 2:
                 return ["CC-{0}-{1}_{2}".format(self.n, self.q[0], self.q[1])]
         if self.n == 2 and (self.q == 3 or self.q == (3,1)):
-            return ["SA-3-2"]
+            return ["SA-3-2_1"]
         return []
 
     def latex_name(self) -> list[str]:
@@ -755,7 +755,7 @@ class ChevalleyC(BiParamSimpleGroup):
     def isomorphisms(self):
         if type(self.q) == int:
             if Ph.is_power(self.q, 2):
-                return ["CB-{0}-{1}".format(self.n, self.q)]
+                return [code_normalizer("CB-{0}-{1}".format(self.n, self.q))]
         else:
             if self.q[0] == 2:
                 return ["CB-{0}-{1}_{2}".format(self.n, self.q[0], self.q[1])]
@@ -1205,7 +1205,7 @@ class Steinberg2A(BiParamSimpleGroup):
 
     def isomorphisms(self):
         if self.n == 3 and (self.q == 2 or self.q == (2,1)):
-            return ["CB-2-3"]
+            return ["CB-2-3_1"]
         return []
 
     def latex_name(self) -> list[str]:
