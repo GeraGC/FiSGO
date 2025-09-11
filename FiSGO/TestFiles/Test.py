@@ -1,4 +1,4 @@
-from FiSGO.SimpleGroups import simple_group, simple_group_ids, sporadic_group_ids, sporadic_lookup_property
+from FiSGO.SimpleGroups import simple_group, simple_group_ids, sporadic_group_ids, sporadic_lookup_property, hiss_malle_json
 import bz2
 import timeit
 import json
@@ -75,5 +75,3 @@ import FiSGO.PrimesHandler as ph
 # print(timeit.timeit(sporadic_group_ids, number=100)/100)
 
 # print(sporadic_lookup_property("id", "J2", "latex_name"))
-
-print(", ".join(str(i) for i in[3,4,5]))

@@ -182,7 +182,7 @@ class SimpleGroup:
 
         :return: Normalized code of the simple group.
         """
-        pass
+        return code_normalizer(self.code())
 
     def smallest_pirrep_degree(self) -> tuple[int, int]:
         """
@@ -314,16 +314,6 @@ class UniParamSimpleGroup(SimpleGroup):
         else:
             return self.par[0]**self.par[1]
 
-    def normalized_code(self):
-        code = self.code()
-        if "_" in code:
-            return code
-        factors, res = Ph.factor(self.par)
-        if len(factors) > 1 or res != 1:
-            return code
-        code_split = code.split("-")
-        return f"{code_split[0]}-{list(factors.items())[0][0]}_{list(factors.items())[0][1]}"
-
 
 class BiParamSimpleGroup(SimpleGroup):
     def __init__(self, n: int, q: int | tuple[int, int], validate = True):
@@ -424,14 +414,6 @@ class BiParamSimpleGroup(SimpleGroup):
             return self.q
         else:
             return self.q[0]**self.q[1]
-
-    def normalized_code(self):
-        code = self.code()
-        if "_" in code:
-            return code
-        factors = list(Ph.factor(self.q)[0].items())[0]
-        code_split = code.split("-")
-        return f"{code_split[0]}-{code_split[1]}-{factors[0]}_{factors[1]}"
 
 
 class Cyclic(UniParamSimpleGroup):
@@ -1783,6 +1765,53 @@ def hiss_malle_json():
         LMS Journal of Computation and Mathematics, 5, 95–126.
     """
 
-    with ires.as_file(PRECOMPUTED_DATA_DIR.joinpath('hiss_malle_data.json.bz2')) as hiss_malle_data_path:
+    with ires.as_file(PRECOMPUTED_DATA_DIR.joinpath('Hiss_Malle_data.json.bz2')) as hiss_malle_data_path:
         with bz2.open(hiss_malle_data_path, 'rt') as hiss_malle_data_file:
             return json.load(hiss_malle_data_file)
+
+
+def json_request(loaded_json: list[dict] | dict, match_values: dict, return_fields: list) -> list[dict]:
+    """
+    Helper function to bulk request data from a JSON file. Given a loaded JSON object in the form of a list or dictionary,
+    a dictionary of match values, and a list of return fields, it returns a list of dictionaries with the specified return
+    fields for the objects matching the given match values.
+    :param loaded_json: A loaded JSON file, a list of dictionaries or a dictionary.
+    :param match_values: A dictionary of fields to match.
+    :param return_fields: A list of fields to return for a matching object.
+    :return: A list of dictionaries with the specified return fields for the objects matching the given match values.
+    """
+    if isinstance(loaded_json, dict):
+        loaded_json = [loaded_json]
+    matches = []
+    for obj in loaded_json:
+        match = True
+        for field, match_value in match_values.items():
+            if obj[field] != match_value:
+                match = False
+                break
+        if match:
+            matches.append({field: obj[field] for field in return_fields})
+    return matches
+
+
+def code_normalizer(code: str) -> str:
+    """
+    Given a simple group code, returns a normalized version of the code. Normalization is done by replacing the
+
+    :param code: The code to normalize.
+    :return: Normalized code.
+    """
+    if "_" in code:
+        # Code is already in a normalized form.
+        return code
+    code_split = code.split("-")
+    if code.count("-") == 2:
+        # The code corresponds to a biparametric group
+        q = int(code_split[-1])
+        factors = list(Ph.factor(q)[0].items())[0]
+        return f"{code_split[0]}-{code_split[1]}-{factors[0]}_{factors[1]}"
+    # The code corresponds to an uniparametric group
+    if code_split[0] in ["AA", "CY", "SZ", "RF", "TT", "SP", "RG"]:
+        return code
+    factors, res = Ph.factor(int(code_split[-1]))
+    return f"{code_split[0]}-{list(factors.items())[0][0]}_{list(factors.items())[0][1]}"
