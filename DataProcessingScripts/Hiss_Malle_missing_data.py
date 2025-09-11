@@ -82,7 +82,6 @@ def main():
     prime_powers.remove((2, 2))
     prime_powers.remove((3, 1))
     prime_powers.remove((3, 2))
-    prime_powers.remove((5, 1))
 
 
     for q in prime_powers:
@@ -114,7 +113,8 @@ def main():
             rep3["degree"] = q_value(q)+1
             rep3["not_char"] = [is_prime_power(q_value(q)-1)]
             append_base_char(rep3["not_char"], q)
-            hiss_malle_data.append(rep3)
+            if q_value(q)-1 != 1:
+                hiss_malle_data.append(rep3)
 
         elif q_value(q) % 4 == 1:
             rep1 = base_dict.copy()
@@ -139,13 +139,15 @@ def main():
             rep5["not_char"] = [is_prime_power((q_value(q) + 1) // 2)]
             append_base_char(rep5["not_char"], q)
             rep5["ind"] = -1
-            hiss_malle_data.append(rep5)
+            if (q_value(q) + 1) // 2 != 1:
+                hiss_malle_data.append(rep5)
 
             rep7 = base_dict.copy()
             rep7["degree"] = q_value(q) + 1
-            rep7["not_char"] = [is_prime_power((q_value(q) + 1) // 4)]
+            rep7["not_char"] = [is_prime_power((q_value(q) - 1) // 4)]
             append_base_char(rep7["not_char"], q)
-            hiss_malle_data.append(rep7)
+            if (q_value(q) - 1) // 4 != 1:
+                hiss_malle_data.append(rep7)
 
             rep8 = base_cover_dict.copy()
             rep8["degree"] = q_value(q) + 1
@@ -176,7 +178,8 @@ def main():
             rep6["degree"] = q_value(q) + 1
             rep6["not_char"] = [is_prime_power((q_value(q) - 1) // 2)]
             append_base_char(rep6["not_char"], q)
-            hiss_malle_data.append(rep6)
+            if (q_value(q) - 1) // 2 != 1:
+                hiss_malle_data.append(rep6)
 
             rep7 = base_cover_dict.copy()
             rep7["degree"] = q_value(q) + 1
@@ -184,8 +187,8 @@ def main():
             append_base_char(rep7["not_char"], q)
             append_base_char(rep7["not_char"], (2,1))
             rep7["ind"] = -1
-            hiss_malle_data.append(rep7)
-
+            if (q_value(q) - 1) // 2 != 1:
+                hiss_malle_data.append(rep7)
     
     with open("Hiss_Malle_missing_data.json", "w") as hiss_malle_file:
         json.dump(hiss_malle_data, hiss_malle_file, ensure_ascii=False, indent=4)

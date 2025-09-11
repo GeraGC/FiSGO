@@ -3619,6 +3619,55 @@
         "ind": -1
     },
     {
+        "d": 5,
+        "G": "{\\rm PSL}_{2}(5)",
+        "ell": "!2, 3, 5",
+        "field": "Not implemented",
+        "ind": 1
+    },
+    {
+        "d": 4,
+        "G": "{\\rm PSL}_{2}(5)",
+        "ell": "!5",
+        "field": "Not implemented",
+        "ind": 1
+    },
+    {
+        "d": 2,
+        "G": "{\\rm PSL}_{2}(5)",
+        "ell": "2",
+        "field": "Not implemented",
+        "ind": -1
+    },
+    {
+        "d": 2,
+        "G": "2.{\\rm PSL}_{2}(5)",
+        "ell": "!2, 5",
+        "field": "Not implemented",
+        "ind": -1
+    },
+    {
+        "d": 3,
+        "G": "{\\rm PSL}_{2}(5)",
+        "ell": "!2, 5",
+        "field": "Not implemented",
+        "ind": 1
+    },
+    {
+        "d": 4,
+        "G": "2.{\\rm PSL}_{2}(5)",
+        "ell": "!3, 5",
+        "field": "Not implemented",
+        "ind": -1
+    },
+    {
+        "d": 6,
+        "G": "2.{\\rm PSL}_{2}(5)",
+        "ell": "!2, 5",
+        "field": "Not implemented",
+        "ind": -1
+    },
+    {
         "d": 25,
         "G": "{\\rm PSL}_{2}(25)",
         "ell": "!2, 13, 5",
