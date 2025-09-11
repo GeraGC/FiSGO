@@ -2,6 +2,9 @@
 
 **Note:** This folder is not included as part of the Python package.
 
+**Warning (11/09/2025):** Due to a code bug, the complete and omissions tables lack the representations of the alternating group $A_5$,
+this will be in the next table update.
+
 ## Introduction
 
 In 2001, Hiss and Malle [1] published a table containing all absolutely irreducible representations of quasi-simple groups
