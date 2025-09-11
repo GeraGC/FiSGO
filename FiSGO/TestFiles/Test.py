@@ -1,4 +1,4 @@
-from FiSGO.SimpleGroups import simple_group, simple_group_ids, sporadic_group_ids, sporadic_lookup_property, hiss_malle_json
+from FiSGO.SimpleGroups import simple_group, simple_group_ids, sporadic_group_ids, sporadic_lookup_property
 import bz2
 import timeit
 import json
@@ -75,3 +75,19 @@ import FiSGO.PrimesHandler as ph
 # print(timeit.timeit(sporadic_group_ids, number=100)/100)
 
 # print(sporadic_lookup_property("id", "J2", "latex_name"))
+
+print(simple_group("CA-2-3").hiss_malle_pirreps())
+print(simple_group("AA-5").isomorphisms())
+print(simple_group("CA-1-4").hiss_malle_pirreps())
+print(simple_group("AA-5").hiss_malle_pirreps())
+print(simple_group("AA-5").hiss_malle_pirreps(allow_duplicates=True))
+print(simple_group("CA-2-5").hiss_malle_pirreps(char=7))
+print(simple_group("CA-2-5").hiss_malle_pirreps(char=7, allow_duplicates=True))
+print(simple_group("CA-2-5").hiss_malle_pirreps(char=7, all_pirrep_data=True))
+print(simple_group("CA-2-5").hiss_malle_pirreps(char=None))
+print(len(simple_group("CA-2-5").hiss_malle_pirreps(char=None)))
+print("")
+print(simple_group("CA-1-25").hiss_malle_pirreps(char=7))
+print(simple_group("CA-1-25").hiss_malle_pirreps(char=7, allow_duplicates=True))
+print(simple_group("CA-1-25").hiss_malle_pirreps(char=7, all_pirrep_data=True))
+print(simple_group("CA-1-25").hiss_malle_pirreps(char=None))

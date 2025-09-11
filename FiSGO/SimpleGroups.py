@@ -201,21 +201,63 @@ class SimpleGroup:
         # Non-exceptional cases are handled in the derived classes
         return 0, 0
 
-    def hiss_malle_pirreps(self, degree: int | None = None, char: int = 0):
-        # TODO: Must somehow account for isomorphisms
+    def hiss_malle_pirreps(self, char: int | None = 0, all_pirrep_data: bool=False, allow_duplicates: bool=False) -> list[int | dict]:
         """
+        This function looks for projective representations of degree up to 250.
 
+        The representations are obtained from the tables given by Gerard Hiss and Gunter Malle in [HM1]_ and [HM2]_.
+        By default, it returns a list with all degrees (less than 251) of the simple group's characteristic zero pirreps.
 
-        :param degree:
-        :param char:
-        :return:
+        Information of positive characteristic absolutely irreducible represenations can be obtained by changing the char parameter.
+        Furthermore, if char is set to None, it returns all the information available for the simple group as a list of dicts,
+        which can be parsed into a JSON file.
+
+        For a fixed characteristic, all information on the pirreps can be obtained by setting all_pirrep_data to True. Again,
+        as a list of dicts which can be parsed into a JSON file.
+
+        Finally, it is possible for different covers of a simple group to produce different projective representations of the same
+        degree. As such, it is possible that the returned list of degrees may contain duplicates. If this is desired,
+        for instance, to detect this phenomenon, set allow_duplicates to True.
+
+        :param char: Characteristic in which to look for projective (absolutely) irreps. If None, it will look for all projective
+            absolutely irreducible represenations, regardless of the characteristic, and return all available information
+            as a list of dicts. By default, char is 0.
+        :param all_pirrep_data: False by default. If True, it will return all the information available for each representation and return
+            a list of dicts. If False, it will return only the degrees of the simple group's pirreps. This parameter is
+            ignored if char is None.
+        :param allow_duplicates: False by default. If True, it will allow duplicates in the returned list of degrees.
+            This parameter is ignored if all_pirrep_data is True or if char is None.
+        :return: By default, a list of degrees less than 251 of the simple group's pirreps in characteristic 0. See the
+            parameters' description for more details on changing the function's output.
+
+        .. [HM1] Hiss, G., & Malle, G. (2001). Low-Dimensional Representations of Quasi-Simple Groups. LMS Journal of Computation
+            and Mathematics, 4, 22–63.
+        .. [HM2] Hiss, G., & Malle, G. (2002). Corrigenda: Low-dimensional Representations of Quasi-simple Groups.
+            LMS Journal of Computation and Mathematics, 5, 95–126.
         """
-
-        if degree is None:
-            if char == 0:
-                if self.smallest_pirrep_degree()[0] > 250:
-                    return []
-        return
+        match_values = [{"code": code} for code in [self.normalized_code()] + self.isomorphisms()]
+        # We first define the return fields, if char is None, we want all data
+        if all_pirrep_data or char is None:
+            return_fields = None
+        else:
+            return_fields = ["degree", "char", "not_char"]
+        data = []
+        for match_code in match_values:
+            data += hiss_malle_lookup(match_code, return_fields)
+        # If we want all pirreps for any characteristic
+        if char is None:
+            return data
+        # We now filter the pirreps to match the characteristic
+        matches = []
+        for pirrep in data:
+            if _char_check(char, pirrep["char"], pirrep["not_char"]):
+                matches.append(pirrep)
+        # We now select the data to return
+        if all_pirrep_data:
+            return matches
+        if allow_duplicates:
+            return sorted(pirrep["degree"] for pirrep in matches)
+        return sorted(set(pirrep["degree"] for pirrep in matches))
 
 
 class UniParamSimpleGroup(SimpleGroup):
@@ -1744,7 +1786,7 @@ def sporadic_lookup_property(field: str, match: Any, return_field: str) -> Any:
         return None
 
 
-def hiss_malle_json():
+def hiss_malle_data():
     """
     Interface to the compressed JSON file Hiss_Malle_data.json.bz2.
 
@@ -1754,10 +1796,10 @@ def hiss_malle_json():
 
     The data can be accessed as a list of dictionaries, each dictionary having the same fields (keys).
 
-    :return: Returns a JSON Decoder object. The format is essentially that of a list of dictionaries.
+    :return: Returns a decoded JSON object, i.e., a list of dictionaries with all the data of the file.
 
-    .. _PrecomputedData: https://github.com/GeraGC/FiSGO/tree/a02a88256beee9d3dcc59a7fcc6abafc82445923/FiSGO/PrecomputedData
-    .. _HissMalleTableFormats: https://github.com/GeraGC/FiSGO/tree/a02a88256beee9d3dcc59a7fcc6abafc82445923/HissMalleTableFormats
+    .. _PrecomputedData: https://github.com/GeraGC/FiSGO/tree/master/FiSGO/PrecomputedData
+    .. _HissMalleTableFormats: https://github.com/GeraGC/FiSGO/tree/master/HissMalleTableFormats
 
     .. [HM1] Hiss, G., & Malle, G. (2001). Low-Dimensional Representations of Quasi-Simple Groups. LMS Journal of Computation
         and Mathematics, 4, 22–63.
@@ -1770,28 +1812,31 @@ def hiss_malle_json():
             return json.load(hiss_malle_data_file)
 
 
-def json_request(loaded_json: list[dict] | dict, match_values: dict, return_fields: list) -> list[dict]:
+def hiss_malle_lookup(match_values: dict, return_fields: list | None):
     """
-    Helper function to bulk request data from a JSON file. Given a loaded JSON object in the form of a list or dictionary,
-    a dictionary of match values, and a list of return fields, it returns a list of dictionaries with the specified return
-    fields for the objects matching the given match values.
-    :param loaded_json: A loaded JSON file, a list of dictionaries or a dictionary.
-    :param match_values: A dictionary of fields to match.
-    :param return_fields: A list of fields to return for a matching object.
-    :return: A list of dictionaries with the specified return fields for the objects matching the given match values.
+    A function to browse the file containing data on representations of degree less than 250, compiled by Gerard Hiss and Gunter Malle
+    in [HM1]_ and [HM2]_.
+
+    The data can be filtered using a dictionary of field:value pairs given as the first argument.
+    The second argument can be used to specify which fields of the matching object are to be returned. If None, all fields are returned.
+
+    For more information on the accessible data, see the README's of `HissMalleTableFormats`_ or `PrecomputedData`_.
+
+    :param match_values: A dictionary of field:value pairs to filter the data.
+    :param return_fields: A list of fields to return. If None, all fields are returned.
+    :return: Returns a list of dictionaries. Each dictionary corresponds to a representation mathcing the parameters given in match_values.
+        The contents of each dictionary correspond to the fields specified in return_fields.
+
+    .. _PrecomputedData: https://github.com/GeraGC/FiSGO/tree/master/FiSGO/PrecomputedData
+    .. _HissMalleTableFormats: https://github.com/GeraGC/FiSGO/tree/master/HissMalleTableFormats
+
+    .. [HM1] Hiss, G., & Malle, G. (2001). Low-Dimensional Representations of Quasi-Simple Groups. LMS Journal of Computation
+        and Mathematics, 4, 22–63.
+    .. [HM2] Hiss, G., & Malle, G. (2002). Corrigenda: Low-dimensional Representations of Quasi-simple Groups.
+        LMS Journal of Computation and Mathematics, 5, 95–126.
     """
-    if isinstance(loaded_json, dict):
-        loaded_json = [loaded_json]
-    matches = []
-    for obj in loaded_json:
-        match = True
-        for field, match_value in match_values.items():
-            if obj[field] != match_value:
-                match = False
-                break
-        if match:
-            matches.append({field: obj[field] for field in return_fields})
-    return matches
+    return _json_request(hiss_malle_data(), match_values, return_fields)
+
 
 
 def code_normalizer(code: str) -> str:
@@ -1815,3 +1860,54 @@ def code_normalizer(code: str) -> str:
         return code
     factors, res = Ph.factor(int(code_split[-1]))
     return f"{code_split[0]}-{list(factors.items())[0][0]}_{list(factors.items())[0][1]}"
+
+
+def _json_request(loaded_json: list[dict] | dict, match_values: dict, return_fields: list | None) -> list[dict]:
+    """
+    Helper function to bulk request data from a JSON file with either a single object or a list of objects containing the
+    same fields. Given a loaded JSON object in the form of a list or dictionary,
+    a dictionary of match values, and a list of return fields, it returns a list of dictionaries with the specified return
+    fields for the objects matching the given match values.
+
+    :param loaded_json: A loaded JSON file, a list of dictionaries or a dictionary.
+    :param match_values: A dictionary of fields to match.
+    :param return_fields: A list of fields to return for a matching object or None. If None, all fields are returned.
+    :return: A list of dictionaries with the specified return fields for the objects matching the given match values.
+    """
+    if isinstance(loaded_json, dict):
+        loaded_json = [loaded_json]
+    if return_fields is None:
+        return_fields = list(loaded_json[0].keys())
+    matches = []
+    for obj in loaded_json:
+        match = True
+        for field, match_value in match_values.items():
+            if obj[field] != match_value:
+                match = False
+                break
+        if match:
+            matches.append({field: obj[field] for field in return_fields})
+    return matches
+
+
+def _char_check(char: int, char_list: list[int] | None, not_char_list: list[int] | None) -> bool:
+    """
+    Helper function to check if a representation exists in a given characteristic.
+
+    :param char: Characteristic in which to check existence.
+    :param char_list: "char" field of the representation.
+    :param not_char_list: "not_char" field of the representation.
+    :return: True if the representation exists in characteristic char, otherwise False.
+    """
+    # If both fields are null, then all characteristics admit the representation
+    if char_list is None and not_char_list is None:
+        return True
+    # If char_list is not null, then only the characteristics in char_list admit the representation
+    if char_list is not None:
+        if char in char_list:
+            return True
+    # If not_char_list is not null, then only the characteristics not in not_char_list do not admit the representation
+    if not_char_list is not None:
+        if char not in not_char_list:
+            return True
+    return False
