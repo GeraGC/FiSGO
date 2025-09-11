@@ -91,7 +91,7 @@ def main():
                      "ind": 1,
                      "char": None,
                      "not_char": None,
-                     "code": f"CA-2-{q[0]}_{q[1]}"
+                     "code": f"CA-1-{q[0]}_{q[1]}"
                      }
         base_cover_dict = base_dict.copy()
         base_cover_dict["name"] = "2." + base_dict["name"]
@@ -195,14 +195,14 @@ def main():
 
 
 if __name__ == "__main__":
-    # main()
-    with open("Hiss_Malle_missing_data.json", "r") as hiss_malle_file:
-        hiss_malle_data = json.load(hiss_malle_file)
-    gen = json_lookup_property("Hiss_Malle_missing_data.json", "code", "CA-2-3_3",
-                               ["degree","name", "char", "not_char", "ind"])
-    for i in list(gen):
-        print(i)
-    print(3**3 % 4)
-    print(len(hiss_malle_data))
+    main()
+    # with open("Hiss_Malle_missing_data.json", "r") as hiss_malle_file:
+    #     hiss_malle_data = json.load(hiss_malle_file)
+    # gen = json_lookup_property("Hiss_Malle_missing_data.json", "code", "CA-2-3_3",
+    #                            ["degree","name", "char", "not_char", "ind"])
+    # for i in list(gen):
+    #     print(i)
+    # print(3**3 % 4)
+    # print(len(hiss_malle_data))
 
     ...
