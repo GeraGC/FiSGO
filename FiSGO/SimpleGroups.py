@@ -1,3 +1,7 @@
+"""
+Module implementing simple group objects.
+"""
+
 import bz2
 import json
 import logging
@@ -6,10 +10,6 @@ import FiSGO.PrimesHandler as Ph
 import re
 from typing import Any
 import importlib.resources as ires
-
-"""
-Module implementing simple group objects.
-"""
 
 # TODO: Module documentation
 # TODO: Alternating groups smallest pirrep degree

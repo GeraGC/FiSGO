@@ -1,3 +1,7 @@
+"""
+Module implementing prime number handling functions.
+"""
+
 import math
 from typing import Generator
 import importlib.resources as ires

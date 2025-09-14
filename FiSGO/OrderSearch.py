@@ -1,10 +1,10 @@
-import math
-import FiSGO.PrimesHandler as ph
-import FiSGO.SimpleGroups as sg
-
 """
 Module implementing order search functions.
 """
+
+import math
+import FiSGO.PrimesHandler as ph
+import FiSGO.SimpleGroups as sg
 
 
 # TODO: Test all candidates functions
