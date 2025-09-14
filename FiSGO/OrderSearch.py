@@ -9,8 +9,6 @@ import FiSGO.SimpleGroups as sg
 
 # TODO: Test all candidates functions
 # TODO: Test absolute bounding works
-# TODO: Lookup Sphinx, https://wiki.python.org/moin/DocumentationTools)
-#       https://stackoverflow.com/questions/36237477/python-docstrings-to-github-readme-md?noredirect=1&lq=1
 # TODO: Module documentation
 
 
