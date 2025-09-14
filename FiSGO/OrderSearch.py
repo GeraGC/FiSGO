@@ -222,7 +222,7 @@ def smallest_factorial_from_bound(bound: int) -> int:
 
 def candidates_AA(prime_bounds: list[int], abs_bound = None, return_codes = False):
     """
-    Returns a list of all simple alternating groups |AA| whose order divides prime_bounds and is
+    Returns a list of all simple alternating groups :math:`\mathrm{A}_n` whose order divides prime_bounds and is
     less than or equal to abs_bound.
 
     :param prime_bounds: Contains a list with the maximum powers for each prime, example: [2,0,1,0,3] means the order
@@ -232,8 +232,6 @@ def candidates_AA(prime_bounds: list[int], abs_bound = None, return_codes = Fals
     :param return_codes: If False, the function returns a list of derived objects from the SimpleGroup class. If True,
         the function returns a list of strings, each string represents a simple group code. See SimpleGroups.simple_group_ids.
     :return: Returns a list, the contents depend on the return_codes parameter.
-
-    .. |AA| replace:: A\ :sub:`n`
     """
     group_candidates = []
     n_candidates = []
@@ -267,7 +265,7 @@ def candidates_AA(prime_bounds: list[int], abs_bound = None, return_codes = Fals
 
 def candidates_CA(prime_bounds: list[int], abs_bound = None, return_codes = False):
     """
-    Returns a list of all classical Chevalley |CA|, simple groups of Lie type, whose order divides prime_bounds and is
+    Returns a list of all classical Chevalley :math:`A_n(q)`, simple groups of Lie type, whose order divides prime_bounds and is
     less than or equal to abs_bound.
 
     :param prime_bounds: Contains a list with the maximum powers for each prime, example: [2,0,1,0,3] means the order
@@ -277,8 +275,6 @@ def candidates_CA(prime_bounds: list[int], abs_bound = None, return_codes = Fals
     :param return_codes: If False, the function returns a list of derived objects from the SimpleGroup class. If True,
         the function returns a list of strings, each string represents a simple group code. See SimpleGroups.simple_group_ids.
     :return: Returns a list, the contents depend on the return_codes parameter.
-
-    .. |CA| replace:: A\ :sub:`n`\ (q)
     """
     group_candidates = []
     max_prime_bound = ph.nth_prime(len(prime_bounds)) + 1
@@ -332,7 +328,7 @@ def candidates_CA(prime_bounds: list[int], abs_bound = None, return_codes = Fals
 
 def candidates_CB(prime_bounds: list[int], abs_bound = None, return_codes = False):
     """
-    Returns a list of all classical Chevalley |CB|, simple groups of Lie type, whose order divides prime_bounds and is
+    Returns a list of all classical Chevalley :math:`B_n(q)`, simple groups of Lie type, whose order divides prime_bounds and is
     less than or equal to abs_bound.
 
     :param prime_bounds: Contains a list with the maximum powers for each prime, example: [2,0,1,0,3] means the order
@@ -342,8 +338,6 @@ def candidates_CB(prime_bounds: list[int], abs_bound = None, return_codes = Fals
     :param return_codes: If False, the function returns a list of derived objects from the SimpleGroup class. If True,
         the function returns a list of strings, each string represents a simple group code. See SimpleGroups.simple_group_ids.
     :return: Returns a list, the contents depend on the return_codes parameter.
-
-    .. |CB| replace:: B\ :sub:`n`\ (q)
     """
     group_candidates = []
     max_prime_bound = ph.nth_prime(len(prime_bounds)) + 1
@@ -394,7 +388,7 @@ def candidates_CB(prime_bounds: list[int], abs_bound = None, return_codes = Fals
 
 def candidates_CC(prime_bounds: list[int], abs_bound = None, return_codes = False):
     """
-    Returns a list of all classical Chevalley |CC|, simple groups of Lie type, whose order divides prime_bounds and is
+    Returns a list of all classical Chevalley :math:`C_n(q)`, simple groups of Lie type, whose order divides prime_bounds and is
     less than or equal to abs_bound.
 
     :param prime_bounds: Contains a list with the maximum powers for each prime, example: [2,0,1,0,3] means the order
@@ -404,8 +398,6 @@ def candidates_CC(prime_bounds: list[int], abs_bound = None, return_codes = Fals
     :param return_codes: If False, the function returns a list of derived objects from the SimpleGroup class. If True,
         the function returns a list of strings, each string represents a simple group code. See SimpleGroups.simple_group_ids.
     :return: Returns a list, the contents depend on the return_codes parameter.
-
-    .. |CC| replace:: C\ :sub:`n`\ (q)
     """
     # The checks are the same as in Chevalley B groups, as their orders coincide, so we work from the candidates of CB
     candidates = candidates_CB(prime_bounds, abs_bound= abs_bound, return_codes=True)
@@ -416,7 +408,7 @@ def candidates_CC(prime_bounds: list[int], abs_bound = None, return_codes = Fals
 
 def candidates_CD(prime_bounds: list[int], abs_bound = None, return_codes = False):
     """
-    Returns a list of all classical Chevalley |CD|, simple groups of Lie type, whose order divides prime_bounds and is
+    Returns a list of all classical Chevalley :math:`D_n(q)`, simple groups of Lie type, whose order divides prime_bounds and is
     less than or equal to abs_bound.
 
     :param prime_bounds: Contains a list with the maximum powers for each prime, example: [2,0,1,0,3] means the order
@@ -426,8 +418,6 @@ def candidates_CD(prime_bounds: list[int], abs_bound = None, return_codes = Fals
     :param return_codes: If False, the function returns a list of derived objects from the SimpleGroup class. If True,
         the function returns a list of strings, each string represents a simple group code. See SimpleGroups.simple_group_ids.
     :return: Returns a list, the contents depend on the return_codes parameter.
-
-    .. |CD| replace:: D\ :sub:`n`\ (q)
     """
     group_candidates = []
     max_prime_bound = ph.nth_prime(len(prime_bounds)) + 1
@@ -544,7 +534,7 @@ def candidates_exceptional_chevalley(prime_bounds: list[int], abs_bound: int | N
 
 def candidates_E6(prime_bounds: list[int], abs_bound = None, return_codes = False):
     """
-    Returns a list of all exceptional Chevalley |E6|, simple groups of Lie type, whose order divides prime_bounds and is
+    Returns a list of all exceptional Chevalley :math:`E_6(q)`, simple groups of Lie type, whose order divides prime_bounds and is
     less than or equal to abs_bound.
 
     :param prime_bounds: Contains a list with the maximum powers for each prime, example: [2,0,1,0,3] means the order
@@ -554,8 +544,6 @@ def candidates_E6(prime_bounds: list[int], abs_bound = None, return_codes = Fals
     :param return_codes: If False, the function returns a list of derived objects from the SimpleGroup class. If True,
         the function returns a list of strings, each string represents a simple group code. See SimpleGroups.simple_group_ids.
     :return: Returns a list, the contents depend on the return_codes parameter.
-
-    .. |E6| replace:: E\ :sub:`6`\ (q)
     """
     return candidates_exceptional_chevalley(prime_bounds, abs_bound, 36, sg.CHEVALLEY_E6_POWER_INDICES,
                                             3, "E6",return_codes)
@@ -563,7 +551,7 @@ def candidates_E6(prime_bounds: list[int], abs_bound = None, return_codes = Fals
 
 def candidates_E7(prime_bounds: list[int], abs_bound = None, return_codes = False):
     """
-    Returns a list of all exceptional Chevalley |E7|, simple groups of Lie type, whose order divides prime_bounds and is
+    Returns a list of all exceptional Chevalley :math:`E_7(q)`, simple groups of Lie type, whose order divides prime_bounds and is
     less than or equal to abs_bound.
 
     :param prime_bounds: Contains a list with the maximum powers for each prime, example: [2,0,1,0,3] means the order
@@ -573,8 +561,6 @@ def candidates_E7(prime_bounds: list[int], abs_bound = None, return_codes = Fals
     :param return_codes: If False, the function returns a list of derived objects from the SimpleGroup class. If True,
         the function returns a list of strings, each string represents a simple group code. See SimpleGroups.simple_group_ids.
     :return: Returns a list, the contents depend on the return_codes parameter.
-
-    .. |E7| replace:: E\ :sub:`7`\ (q)
     """
     return candidates_exceptional_chevalley(prime_bounds, abs_bound, 63, sg.CHEVALLEY_E7_POWER_INDICES,
                                             2, "E7",return_codes)
@@ -582,7 +568,7 @@ def candidates_E7(prime_bounds: list[int], abs_bound = None, return_codes = Fals
 
 def candidates_E8(prime_bounds: list[int], abs_bound = None, return_codes = False):
     """
-    Returns a list of all exceptional Chevalley |E8|, simple groups of Lie type, whose order divides prime_bounds and is
+    Returns a list of all exceptional Chevalley :math:`E_8(q)`, simple groups of Lie type, whose order divides prime_bounds and is
     less than or equal to abs_bound.
 
     :param prime_bounds: Contains a list with the maximum powers for each prime, example: [2,0,1,0,3] means the order
@@ -592,8 +578,6 @@ def candidates_E8(prime_bounds: list[int], abs_bound = None, return_codes = Fals
     :param return_codes: If False, the function returns a list of derived objects from the SimpleGroup class. If True,
         the function returns a list of strings, each string represents a simple group code. See SimpleGroups.simple_group_ids.
     :return: Returns a list, the contents depend on the return_codes parameter.
-
-    .. |E8| replace:: E\ :sub:`8`\ (q)
     """
     return candidates_exceptional_chevalley(prime_bounds, abs_bound, 120, sg.CHEVALLEY_E8_POWER_INDICES,
                                             1, "E8",return_codes)
@@ -601,7 +585,7 @@ def candidates_E8(prime_bounds: list[int], abs_bound = None, return_codes = Fals
 
 def candidates_F4(prime_bounds: list[int], abs_bound = None, return_codes = False):
     """
-    Returns a list of all exceptional Chevalley |F4|, simple groups of Lie type, whose order divides prime_bounds and is
+    Returns a list of all exceptional Chevalley :math:`F_4(q)`, simple groups of Lie type, whose order divides prime_bounds and is
     less than or equal to abs_bound.
 
     :param prime_bounds: Contains a list with the maximum powers for each prime, example: [2,0,1,0,3] means the order
@@ -611,8 +595,6 @@ def candidates_F4(prime_bounds: list[int], abs_bound = None, return_codes = Fals
     :param return_codes: If False, the function returns a list of derived objects from the SimpleGroup class. If True,
         the function returns a list of strings, each string represents a simple group code. See SimpleGroups.simple_group_ids.
     :return: Returns a list, the contents depend on the return_codes parameter.
-
-    .. |F4| replace:: F\ :sub:`4`\ (q)
     """
     return candidates_exceptional_chevalley(prime_bounds, abs_bound, 24, sg.CHEVALLEY_F4_POWER_INDICES,
                                             1, "F4",return_codes)
@@ -620,7 +602,7 @@ def candidates_F4(prime_bounds: list[int], abs_bound = None, return_codes = Fals
 
 def candidates_G2(prime_bounds: list[int], abs_bound = None, return_codes = False):
     """
-    Returns a list of all exceptional Chevalley |G2|, simple groups of Lie type, whose order divides prime_bounds and is
+    Returns a list of all exceptional Chevalley :math:`G_2(q)`, simple groups of Lie type, whose order divides prime_bounds and is
     less than or equal to abs_bound.
 
     :param prime_bounds: Contains a list with the maximum powers for each prime, example: [2,0,1,0,3] means the order
@@ -630,8 +612,6 @@ def candidates_G2(prime_bounds: list[int], abs_bound = None, return_codes = Fals
     :param return_codes: If False, the function returns a list of derived objects from the SimpleGroup class. If True,
         the function returns a list of strings, each string represents a simple group code. See SimpleGroups.simple_group_ids.
     :return: Returns a list, the contents depend on the return_codes parameter.
-
-    .. |G2| replace:: G\ :sub:`2`\ (q)
     """
     return candidates_exceptional_chevalley(prime_bounds, abs_bound, 6, sg.CHEVALLEY_G2_POWER_INDICES,
                                             1, "G2",return_codes)
@@ -639,7 +619,7 @@ def candidates_G2(prime_bounds: list[int], abs_bound = None, return_codes = Fals
 
 def candidates_SA(prime_bounds: list[int], abs_bound = None, return_codes = False):
     """
-    Returns a list of all classical Steinberg |SA|, simple groups of Lie type, whose order divides prime_bounds and is
+    Returns a list of all classical Steinberg :math:`{}^2A_n(q^2)`, simple groups of Lie type, whose order divides prime_bounds and is
     less than or equal to abs_bound.
 
     :param prime_bounds: Contains a list with the maximum powers for each prime, example: [2,0,1,0,3] means the order
@@ -649,8 +629,6 @@ def candidates_SA(prime_bounds: list[int], abs_bound = None, return_codes = Fals
     :param return_codes: If False, the function returns a list of derived objects from the SimpleGroup class. If True,
         the function returns a list of strings, each string represents a simple group code. See SimpleGroups.simple_group_ids.
     :return: Returns a list, the contents depend on the return_codes parameter.
-
-    .. |SA| replace:: :sup:`2`\ A\ :sub:`n`\ (q\ :sup:`2`)
     """
     group_candidates = []
     max_prime_bound = ph.nth_prime(len(prime_bounds)) + 1
@@ -704,7 +682,7 @@ def candidates_SA(prime_bounds: list[int], abs_bound = None, return_codes = Fals
 
 def candidates_SD(prime_bounds: list[int], abs_bound = None, return_codes = False):
     """
-    Returns a list of all classical Steinberg |SD|, simple groups of Lie type, whose order divides prime_bounds and is
+    Returns a list of all classical Steinberg :math:`{}^2D_n(q^2)`, simple groups of Lie type, whose order divides prime_bounds and is
     less than or equal to abs_bound.
 
     :param prime_bounds: Contains a list with the maximum powers for each prime, example: [2,0,1,0,3] means the order
@@ -714,8 +692,6 @@ def candidates_SD(prime_bounds: list[int], abs_bound = None, return_codes = Fals
     :param return_codes: If False, the function returns a list of derived objects from the SimpleGroup class. If True,
         the function returns a list of strings, each string represents a simple group code. See SimpleGroups.simple_group_ids.
     :return: Returns a list, the contents depend on the return_codes parameter.
-
-    .. |SD| replace:: :sup:`2`\ D\ :sub:`n`\ (q\ :sup:`2`)
     """
     group_candidates = []
     max_prime_bound = ph.nth_prime(len(prime_bounds)) + 1
@@ -769,7 +745,7 @@ def candidates_SD(prime_bounds: list[int], abs_bound = None, return_codes = Fals
 
 def candidates_2E(prime_bounds: list[int], abs_bound = None, return_codes = False):
     """
-    Returns a list of all exceptional Steinberg |2E|, simple groups of Lie type, whose order divides prime_bounds and is
+    Returns a list of all exceptional Steinberg :math:`{}^2E_6(q^2)`, simple groups of Lie type, whose order divides prime_bounds and is
     less than or equal to abs_bound.
 
     :param prime_bounds: Contains a list with the maximum powers for each prime, example: [2,0,1,0,3] means the order
@@ -779,8 +755,6 @@ def candidates_2E(prime_bounds: list[int], abs_bound = None, return_codes = Fals
     :param return_codes: If False, the function returns a list of derived objects from the SimpleGroup class. If True,
         the function returns a list of strings, each string represents a simple group code. See SimpleGroups.simple_group_ids.
     :return: Returns a list, the contents depend on the return_codes parameter.
-
-    .. |2E| replace:: :sup:`2`\ E\ :sub:`6`\ (q\ :sup:`2`)
     """
     # First compatibility check
     if max(prime_bounds) < 36:
@@ -820,7 +794,7 @@ def candidates_2E(prime_bounds: list[int], abs_bound = None, return_codes = Fals
 
 def candidates_3D(prime_bounds: list[int], abs_bound = None, return_codes = False):
     """
-    Returns a list of all exceptional Steinberg |3D|, simple groups of Lie type, whose order divides prime_bounds and is
+    Returns a list of all exceptional Steinberg :math:`{}^3D_4(q^3)`, simple groups of Lie type, whose order divides prime_bounds and is
     less than or equal to abs_bound.
 
     :param prime_bounds: Contains a list with the maximum powers for each prime, example: [2,0,1,0,3] means the order
@@ -830,8 +804,6 @@ def candidates_3D(prime_bounds: list[int], abs_bound = None, return_codes = Fals
     :param return_codes: If False, the function returns a list of derived objects from the SimpleGroup class. If True,
         the function returns a list of strings, each string represents a simple group code. See SimpleGroups.simple_group_ids.
     :return: Returns a list, the contents depend on the return_codes parameter.
-
-    .. |3D| replace:: :sup:`3`\ D\ :sub:`4`\ (q\ :sup:`3`)
     """
     # First compatibility check
     if max(prime_bounds) < 12:
@@ -867,7 +839,7 @@ def candidates_3D(prime_bounds: list[int], abs_bound = None, return_codes = Fals
 
 def candidates_SZ(prime_bounds: list[int], abs_bound = None, return_codes = False):
     """
-    Returns a list of all Suzuki |SZ| groups, simple groups of Lie type, whose order divides prime_bounds and is
+    Returns a list of all Suzuki :math:`{}^2B_2(2^{2n+1})` groups, simple groups of Lie type, whose order divides prime_bounds and is
     less than or equal to abs_bound.
 
     :param prime_bounds: Contains a list with the maximum powers for each prime, example: [2,0,1,0,3] means the order
@@ -877,8 +849,6 @@ def candidates_SZ(prime_bounds: list[int], abs_bound = None, return_codes = Fals
     :param return_codes: If False, the function returns a list of derived objects from the SimpleGroup class. If True,
         the function returns a list of strings, each string represents a simple group code. See SimpleGroups.simple_group_ids.
     :return: Returns a list, the contents depend on the return_codes parameter.
-
-    .. |SZ| replace:: :sup:`2`\ B\ :sub:`2`\ (2\ :sup:`2n+1`)
     """
     # Suzuki groups all have a power 2**6
     if prime_bounds[0] < 6:
@@ -908,7 +878,7 @@ def candidates_SZ(prime_bounds: list[int], abs_bound = None, return_codes = Fals
 
 def candidates_RF(prime_bounds: list[int], abs_bound = None, return_codes = False):
     """
-    Returns a list of all Ree |RF| groups, simple groups of Lie type, whose order divides prime_bounds and is
+    Returns a list of all Ree :math:`{}^2F_4(2^{2n+1})` groups, simple groups of Lie type, whose order divides prime_bounds and is
     less than or equal to abs_bound.
 
     :param prime_bounds: Contains a list with the maximum powers for each prime, example: [2,0,1,0,3] means the order
@@ -918,8 +888,6 @@ def candidates_RF(prime_bounds: list[int], abs_bound = None, return_codes = Fals
     :param return_codes: If False, the function returns a list of derived objects from the SimpleGroup class. If True,
         the function returns a list of strings, each string represents a simple group code. See SimpleGroups.simple_group_ids.
     :return: Returns a list, the contents depend on the return_codes parameter.
-
-    .. |RF| replace:: :sup:`2`\ F\ :sub:`4`\ (2\ :sup:`2n+1`)
     """
     # Ree 2F4 groups all have a power 2**36
     if prime_bounds[0] < 36:
@@ -948,7 +916,7 @@ def candidates_RF(prime_bounds: list[int], abs_bound = None, return_codes = Fals
 
 def candidates_TT(prime_bounds: list[int], abs_bound = None, return_codes = False):
     """
-    Returns the Tits group |TT| if its order divides prime_bounds and is less than or equal to abs_bound.
+    Returns the Tits group :math:`{}^2F_4(2)'` if its order divides prime_bounds and is less than or equal to abs_bound.
 
     :param prime_bounds: Contains a list with the maximum powers for each prime, example: [2,0,1,0,3] means the order
         of the group must divide 2^2*5^1*11^3.
@@ -957,8 +925,6 @@ def candidates_TT(prime_bounds: list[int], abs_bound = None, return_codes = Fals
     :param return_codes: If False, the function returns a list of derived objects from the SimpleGroup class. If True,
         the function returns a list of strings, each string represents a simple group code. See SimpleGroups.simple_group_ids.
     :return: Returns a list, the contents depend on the return_codes parameter.
-
-    .. |TT| replace:: :sup:`2`\ F\ :sub:`4`\ (2\)'
     """
     # We check prime order compatibility
     try:
@@ -979,7 +945,7 @@ def candidates_TT(prime_bounds: list[int], abs_bound = None, return_codes = Fals
 
 def candidates_RG(prime_bounds: list[int], abs_bound = None, return_codes = False):
     """
-    Returns a list of all Ree |RG| groups, simple groups of Lie type, whose order divides prime_bounds and is
+    Returns a list of all Ree :math:`{}^2G_2(3^{2n+1})` groups, simple groups of Lie type, whose order divides prime_bounds and is
     less than or equal to abs_bound.
 
     :param prime_bounds: Contains a list with the maximum powers for each prime, example: [2,0,1,0,3] means the order
@@ -989,8 +955,6 @@ def candidates_RG(prime_bounds: list[int], abs_bound = None, return_codes = Fals
     :param return_codes: If False, the function returns a list of derived objects from the SimpleGroup class. If True,
         the function returns a list of strings, each string represents a simple group code. See SimpleGroups.simple_group_ids.
     :return: Returns a list, the contents depend on the return_codes parameter.
-
-    .. |RG| replace:: :sup:`2`\ G\ :sub:`2`\ (3\ :sup:`2n+1`)
     """
 
     # Ree 2G2 groups all have a power 3**9

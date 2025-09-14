@@ -458,7 +458,7 @@ class BiParamSimpleGroup(SimpleGroup):
 class Cyclic(UniParamSimpleGroup):
     def __init__(self, n: int, validate = True):
         """
-        Class representing the Cyclic group |C_n|, a simple group when n is prime. See `Wikipedia`_.
+        Class representing the Cyclic group :math:`\mathrm{C}_n`, a simple group when n is prime. See `Wikipedia`_.
 
         On object initialization, if validate is True (default), it will attempt to check if the introduced parameters
         are valid. Parameter validation can be globally disabled by changing GLOBAL_VALIDATE to False.
@@ -468,7 +468,6 @@ class Cyclic(UniParamSimpleGroup):
             if False, it will skip any checks.
 
         .. _Wikipedia: https://en.wikipedia.org/wiki/List_of_finite_simple_groups#Cyclic_groups,_Zp
-        .. |C_n| replace:: C\ :sub:`n`
         """
         super().__init__(n, validate=validate)
 
@@ -502,7 +501,7 @@ class Cyclic(UniParamSimpleGroup):
 class Alternating(UniParamSimpleGroup):
     def __init__(self, n: int, validate = True):
         """
-        Class representing the Alternating group |A_n|, a simple group when n > 4. See `Wikipedia`_.
+        Class representing the Alternating group :math:`\mathrm{A}_n`, a simple group when n > 4. See `Wikipedia`_.
 
         On object initialization, if validate is True (default), it will attempt to check if the introduced parameters
         are valid. Parameter validation can be globally disabled by changing GLOBAL_VALIDATE to False.
@@ -512,7 +511,6 @@ class Alternating(UniParamSimpleGroup):
             if False, it will skip any checks.
 
         .. _Wikipedia: https://en.wikipedia.org/wiki/List_of_finite_simple_groups#Alternating_groups,_An,_n_>_4
-        .. |A_n| replace:: A\ :sub:`n`
         """
         super().__init__(n, validate=validate)
 
@@ -555,7 +553,7 @@ class Alternating(UniParamSimpleGroup):
 class ChevalleyA(BiParamSimpleGroup):
     def __init__(self, n: int, q: int | tuple[int, int], validate = True):
         """
-        Class representing the classical Chevalley group |A_n(q)|, a simple group of Lie type. See `Wikipedia`_.
+        Class representing the classical Chevalley group :math:`A_n(q)`, a simple group of Lie type. See `Wikipedia`_.
 
         The q parameter is a prime power and can be given as an integer or a pair of integers. Example: q = 9 and
         q=(3,2) represent the same parameter as 9 = 3**2. The latter format is preferred when dealing with large powers.
@@ -571,7 +569,6 @@ class ChevalleyA(BiParamSimpleGroup):
             if False, it will skip any checks.
 
         .. _Wikipedia: https://en.wikipedia.org/wiki/List_of_finite_simple_groups#Chevalley_groups,_An(q),_Bn(q)_n_>_1,_Cn(q)_n_>_2,_Dn(q)_n_>_3
-        .. |A_n(q)| replace:: A\ :sub:`n`\ (q)
         """
         super().__init__(n, q, validate=validate)
 
@@ -653,7 +650,7 @@ class ChevalleyA(BiParamSimpleGroup):
 class ChevalleyB(BiParamSimpleGroup):
     def __init__(self, n: int, q: int | tuple[int, int], validate = True):
         """
-        Class representing the classical Chevalley group |B_n(q)|, a simple group of Lie type. See `Wikipedia`_.
+        Class representing the classical Chevalley group :math:`B_n(q)`, a simple group of Lie type. See `Wikipedia`_.
 
         The q parameter is a prime power and can be given as an integer or a pair of integers. Example: q = 9 and
         q=(3,2) represent the same parameter as 9 = 3**2. The latter format is preferred when dealing with large powers.
@@ -668,7 +665,6 @@ class ChevalleyB(BiParamSimpleGroup):
         :param bool validate: Boolean. If True, it will attempt to validate the given parameters on object initialization;
             if False, it will skip any checks.
 
-        .. |B_n(q)| replace:: B\ :sub:`n`\ (q)
         .. _Wikipedia: https://en.wikipedia.org/wiki/List_of_finite_simple_groups#Chevalley_groups,_An(q),_Bn(q)_n_>_1,_Cn(q)_n_>_2,_Dn(q)_n_>_3
         """
         super().__init__(n, q, validate=validate)
@@ -749,7 +745,7 @@ class ChevalleyB(BiParamSimpleGroup):
 class ChevalleyC(BiParamSimpleGroup):
     def __init__(self, n: int, q: int | tuple[int, int], validate = True):
         """
-        Class representing the classical Chevalley group |C_n(q)|, a simple group of Lie type. See `Wikipedia`_.
+        Class representing the classical Chevalley group :math:`C_n(q)`, a simple group of Lie type. See `Wikipedia`_.
 
         The q parameter is a prime power and can be given as an integer or a pair of integers. Example: q = 9 and
         q=(3,2) represent the same parameter as 9 = 3**2. The latter format is preferred when dealing with large powers.
@@ -765,7 +761,6 @@ class ChevalleyC(BiParamSimpleGroup):
             if False, it will skip any checks.
 
         .. _Wikipedia: https://en.wikipedia.org/wiki/List_of_finite_simple_groups#Chevalley_groups,_An(q),_Bn(q)_n_>_1,_Cn(q)_n_>_2,_Dn(q)_n_>_3
-        .. |C_n(q)| replace:: C\ :sub:`n`\ (q)
         """
         super().__init__(n, q, validate=validate)
 
@@ -827,7 +822,7 @@ class ChevalleyC(BiParamSimpleGroup):
 class ChevalleyD(BiParamSimpleGroup):
     def __init__(self, n: int, q: int | tuple[int, int], validate = True):
         """
-        Class representing the classical Chevalley group |D_n(q)|, a simple group of Lie type. See `Wikipedia`_.
+        Class representing the classical Chevalley group :math:`D_n(q)`, a simple group of Lie type. See `Wikipedia`_.
 
         The q parameter is a prime power and can be given as an integer or a pair of integers. Example: q = 9 and
         q=(3,2) represent the same parameter as 9 = 3**2. The latter format is preferred when dealing with large powers.
@@ -843,7 +838,6 @@ class ChevalleyD(BiParamSimpleGroup):
             if False, it will skip any checks.
 
         .. _Wikipedia: https://en.wikipedia.org/wiki/List_of_finite_simple_groups#Chevalley_groups,_An(q),_Bn(q)_n_>_1,_Cn(q)_n_>_2,_Dn(q)_n_>_3
-        .. |D_n(q)| replace:: D\ :sub:`n`\ (q)
         """
         super().__init__(n, q, validate = validate)
 
@@ -900,7 +894,7 @@ class ChevalleyD(BiParamSimpleGroup):
 class ExcetionalChevalleyE6(UniParamSimpleGroup):
     def __init__(self, q: int | tuple[int, int], validate = True):
         """
-        Class representing the exceptional Chevalley group |E_6(q)|, a simple group of Lie type. See `Wikipedia`_.
+        Class representing the exceptional Chevalley group :math:`E_6(q)`, a simple group of Lie type. See `Wikipedia`_.
 
         The q parameter is a prime power and can be given as an integer or a pair of integers. Example: q = 9 and
         q=(3,2) represent the same parameter as 9 = 3**2. The latter format is preferred when dealing with large powers.
@@ -913,7 +907,6 @@ class ExcetionalChevalleyE6(UniParamSimpleGroup):
             if False, it will skip any checks.
 
         .. _Wikipedia: https://en.wikipedia.org/wiki/List_of_finite_simple_groups#Chevalley_groups,_E6(q),_E7(q),_E8(q),_F4(q),_G2(q)
-        .. |E_6(q)| replace:: E\ :sub:`6`\ (q)
         """
         super().__init__(q, validate = validate)
 
@@ -954,7 +947,7 @@ class ExcetionalChevalleyE6(UniParamSimpleGroup):
 class ExcetionalChevalleyE7(UniParamSimpleGroup):
     def __init__(self, q: int | tuple[int, int], validate = True):
         """
-        Class representing the exceptional Chevalley group |E_7(q)|, a simple group of Lie type. See `Wikipedia`_.
+        Class representing the exceptional Chevalley group :math:`E_7(q)`, a simple group of Lie type. See `Wikipedia`_.
 
         The q parameter is a prime power and can be given as an integer or a pair of integers. Example: q = 9 and
         q=(3,2) represent the same parameter as 9 = 3**2. The latter format is preferred when dealing with large powers.
@@ -967,7 +960,6 @@ class ExcetionalChevalleyE7(UniParamSimpleGroup):
             if False, it will skip any checks.
 
         .. _Wikipedia: https://en.wikipedia.org/wiki/List_of_finite_simple_groups#Chevalley_groups,_E6(q),_E7(q),_E8(q),_F4(q),_G2(q)
-        .. |E_7(q)| replace:: E\ :sub:`7`\ (q)
         """
         super().__init__(q, validate = validate)
 
@@ -1008,7 +1000,7 @@ class ExcetionalChevalleyE7(UniParamSimpleGroup):
 class ExcetionalChevalleyE8(UniParamSimpleGroup):
     def __init__(self, q: int | tuple[int, int], validate = True):
         """
-        Class representing the exceptional Chevalley group |E_8(q)|, a simple group of Lie type. See `Wikipedia`_.
+        Class representing the exceptional Chevalley group :math:`E_8(q)`, a simple group of Lie type. See `Wikipedia`_.
 
         The q parameter is a prime power and can be given as an integer or a pair of integers. Example: q = 9 and
         q=(3,2) represent the same parameter as 9 = 3**2. The latter format is preferred when dealing with large powers.
@@ -1021,7 +1013,6 @@ class ExcetionalChevalleyE8(UniParamSimpleGroup):
             if False, it will skip any checks.
 
         .. _Wikipedia: https://en.wikipedia.org/wiki/List_of_finite_simple_groups#Chevalley_groups,_E6(q),_E7(q),_E8(q),_F4(q),_G2(q)
-        .. |E_8(q)| replace:: E\ :sub:`8`\ (q)
         """
         super().__init__(q, validate = validate)
 
@@ -1061,7 +1052,7 @@ class ExcetionalChevalleyE8(UniParamSimpleGroup):
 class ExcetionalChevalleyF4(UniParamSimpleGroup):
     def __init__(self, q: int | tuple[int, int], validate = True):
         """
-        Class representing the exceptional Chevalley group |F_4(q)|, a simple group of Lie type. See `Wikipedia`_.
+        Class representing the exceptional Chevalley group :math:`F_4(q)`, a simple group of Lie type. See `Wikipedia`_.
 
         The q parameter is a prime power and can be given as an integer or a pair of integers. Example: q = 9 and
         q=(3,2) represent the same parameter as 9 = 3**2. The latter format is preferred when dealing with large powers.
@@ -1074,7 +1065,6 @@ class ExcetionalChevalleyF4(UniParamSimpleGroup):
             if False, it will skip any checks.
 
         .. _Wikipedia: https://en.wikipedia.org/wiki/List_of_finite_simple_groups#Chevalley_groups,_E6(q),_E7(q),_E8(q),_F4(q),_G2(q)
-        .. |F_4(q)| replace:: F\ :sub:`4`\ (q)
         """
         super().__init__(q, validate = validate)
 
@@ -1123,12 +1113,12 @@ class ExcetionalChevalleyF4(UniParamSimpleGroup):
 class ExcetionalChevalleyG2(UniParamSimpleGroup):
     def __init__(self, q: int | tuple[int, int], validate = True):
         """
-        Class representing the exceptional Chevalley group |G_2(q)|, a simple group of Lie type. See `Wikipedia`_.
+        Class representing the exceptional Chevalley group :math:`G_2(q)`, a simple group of Lie type. See `Wikipedia`_.
 
         The q parameter is a prime power and can be given as an integer or a pair of integers. Example: q = 9 and
         q=(3,2) represent the same parameter as 9 = 3**2. The latter format is preferred when dealing with large powers.
 
-        NOTE: G_2(2) is not a simple group.
+        NOTE: :math:`G_2(2)` is not a simple group.
 
         On object initialization, if validate is True (default), it will attempt to check if the introduced parameters
         are valid. Parameter validation can be globally disabled by changing GLOBAL_VALIDATE to False.
@@ -1138,7 +1128,6 @@ class ExcetionalChevalleyG2(UniParamSimpleGroup):
             if False, it will skip any checks.
 
         .. _Wikipedia: https://en.wikipedia.org/wiki/List_of_finite_simple_groups#Chevalley_groups,_E6(q),_E7(q),_E8(q),_F4(q),_G2(q)
-        .. |G_2(q)| replace:: G\ :sub:`2`\ (q)
         """
         super().__init__(q, validate = validate)
 
@@ -1193,7 +1182,7 @@ class ExcetionalChevalleyG2(UniParamSimpleGroup):
 class Steinberg2A(BiParamSimpleGroup):
     def __init__(self, n: int, q: int | tuple[int, int], validate = True):
         """
-        Class representing the classical Steinberg group |^2A_n(q^2)|, a simple group of Lie type. See `Wikipedia`_.
+        Class representing the classical Steinberg group :math:`{}^2A_n(q^2)`, a simple group of Lie type. See `Wikipedia`_.
 
         The q parameter is a prime power and can be given as an integer or a pair of integers. Example: q = 9 and
         q=(3,2) represent the same parameter as 9 = 3**2. The latter format is preferred when dealing with large powers.
@@ -1209,7 +1198,6 @@ class Steinberg2A(BiParamSimpleGroup):
             if False, it will skip any checks.
 
         .. _Wikipedia: https://en.wikipedia.org/wiki/List_of_finite_simple_groups#Steinberg_groups,_2An(q2)_n_>_1,_2Dn(q2)_n_>_3,_2E6(q2),_3D4(q3)
-        .. |^2A_n(q^2)| replace:: :sup:`2`\ A\ :sub:`n`\ (q\ :sup:`2`)
         """
         super().__init__(n, q, validate=validate)
 
@@ -1276,7 +1264,7 @@ class Steinberg2A(BiParamSimpleGroup):
 class Steinberg2D(BiParamSimpleGroup):
     def __init__(self, n: int, q: int | tuple[int, int], validate = True):
         """
-        Class representing the classical Steinberg group |^2D_n(q^2)|, a simple group of Lie type. See `Wikipedia`_.
+        Class representing the classical Steinberg group :math:`{}^2D_n(q^2)`, a simple group of Lie type. See `Wikipedia`_.
 
         The q parameter is a prime power and can be given as an integer or a pair of integers. Example: q = 9 and
         q=(3,2) represent the same parameter as 9 = 3**2. The latter format is preferred when dealing with large powers.
@@ -1292,7 +1280,6 @@ class Steinberg2D(BiParamSimpleGroup):
             if False, it will skip any checks.
 
         .. _Wikipedia: https://en.wikipedia.org/wiki/List_of_finite_simple_groups#Steinberg_groups,_2An(q2)_n_>_1,_2Dn(q2)_n_>_3,_2E6(q2),_3D4(q3)
-        .. |^2D_n(q^2)| replace:: :sup:`2`\ D\ :sub:`n`\ (q\ :sup:`2`)
         """
         super().__init__(n, q, validate=validate)
 
@@ -1339,7 +1326,7 @@ class Steinberg2D(BiParamSimpleGroup):
 class ExcetionalSteinberg2E6(UniParamSimpleGroup):
     def __init__(self, q: int | tuple[int, int], validate = True):
         """
-        Class representing the exceptional Steinberg group |^2E_6(q^2)|, a simple group of Lie type. See `Wikipedia`_.
+        Class representing the exceptional Steinberg group :math:`{}^2E_6(q^2)`, a simple group of Lie type. See `Wikipedia`_.
 
         The q parameter is a prime power and can be given as an integer or a pair of integers. Example: q = 9 and
         q=(3,2) represent the same parameter as 9 = 3**2. The latter format is preferred when dealing with large powers.
@@ -1352,7 +1339,6 @@ class ExcetionalSteinberg2E6(UniParamSimpleGroup):
             if False, it will skip any checks.
 
         .. _Wikipedia: https://en.wikipedia.org/wiki/List_of_finite_simple_groups#Steinberg_groups,_2An(q2)_n_>_1,_2Dn(q2)_n_>_3,_2E6(q2),_3D4(q3)
-        .. |^2E_6(q^2)| replace:: :sup:`2`\ E\ :sub:`6`\ (q\ :sup:`2`)
         """
         super().__init__(q, validate=validate)
 
@@ -1395,7 +1381,7 @@ class ExcetionalSteinberg2E6(UniParamSimpleGroup):
 class ExcetionalSteinberg3D4(UniParamSimpleGroup):
     def __init__(self, q: int | tuple[int, int], validate = True):
         """
-        Class representing the exceptional Steinberg group |^3D_4(q^3)|, a simple group of Lie type. See `Wikipedia`_.
+        Class representing the exceptional Steinberg group :math:`{}^3D_4(q^3)`, a simple group of Lie type. See `Wikipedia`_.
 
         The q parameter is a prime power and can be given as an integer or a pair of integers. Example: q = 9 and
         q=(3,2) represent the same parameter as 9 = 3**2. The latter format is preferred when dealing with large powers.
@@ -1408,7 +1394,6 @@ class ExcetionalSteinberg3D4(UniParamSimpleGroup):
             if False, it will skip any checks.
 
         .. _Wikipedia: https://en.wikipedia.org/wiki/List_of_finite_simple_groups#Steinberg_groups,_2An(q2)_n_>_1,_2Dn(q2)_n_>_3,_2E6(q2),_3D4(q3)
-        .. |^3D_4(q^3)| replace:: :sup:`3`\ D\ :sub:`4`\ (q\ :sup:`3`)
         """
         super().__init__(q, validate=validate)
 
@@ -1446,7 +1431,7 @@ class ExcetionalSteinberg3D4(UniParamSimpleGroup):
 class Suzuki(UniParamSimpleGroup):
     def __init__(self, n: int, validate = True):
         """
-        Class representing the Suzuki group |Suz(n)|, a simple group of Lie type. See `Wikipedia`_.
+        Class representing the Suzuki group :math:`{}^2B_2(2^{2n+1})`, a simple group of Lie type. See `Wikipedia`_.
 
         On object initialization, if validate is True (default), it will attempt to check if the introduced parameters
         are valid. Parameter validation can be globally disabled by changing GLOBAL_VALIDATE to False.
@@ -1456,7 +1441,6 @@ class Suzuki(UniParamSimpleGroup):
             if False, it will skip any checks.
 
         .. _Wikipedia: https://en.wikipedia.org/wiki/List_of_finite_simple_groups#Suzuki_groups,_2B2(22n+1)
-        .. |Suz(n)| replace:: :sup:`2`\ B\ :sub:`2`\ (2\ :sup:`2n+1`)
         """
         super().__init__(n, validate=validate)
 
@@ -1493,7 +1477,7 @@ class Suzuki(UniParamSimpleGroup):
 class Ree2F4(UniParamSimpleGroup):
     def __init__(self, n: int, validate = True):
         """
-        Class representing the Ree group |ReeF(n)|, a simple group of Lie type. See `Wikipedia`_.
+        Class representing the Ree group :math:`{}^2F_4(2^{2n+1})`, a simple group of Lie type. See `Wikipedia`_.
 
         On object initialization, if validate is True (default), it will attempt to check if the introduced parameters
         are valid. Parameter validation can be globally disabled by changing GLOBAL_VALIDATE to False.
@@ -1503,7 +1487,6 @@ class Ree2F4(UniParamSimpleGroup):
             if False, it will skip any checks.
 
         .. _Wikipedia: https://en.wikipedia.org/wiki/List_of_finite_simple_groups#Ree_groups_and_Tits_group,_2F4(22n+1)
-        .. |ReeF(n)| replace:: :sup:`2`\ F\ :sub:`4`\ (2\ :sup:`2n+1`)
         """
         super().__init__(n, validate=validate)
     def __validate_parameters__(self):
@@ -1535,10 +1518,9 @@ class Ree2F4(UniParamSimpleGroup):
 class Tits(SimpleGroup):
     def __init__(self):
         """
-        Class representing the Tits group |Tits|, a simple group of Lie type. See `Wikipedia`_.
+        Class representing the Tits group :math:`{}^2F_4(2)'`, a simple group of Lie type. See `Wikipedia`_.
 
         .. _Wikipedia: https://en.wikipedia.org/wiki/List_of_finite_simple_groups#Ree_groups_and_Tits_group,_2F4(22n+1)
-        .. |Tits| replace:: :sup:`2`\ F\ :sub:`4`\ (2\)'
         """
         super().__init__()
 
@@ -1561,7 +1543,7 @@ class Tits(SimpleGroup):
 class Ree2G2(UniParamSimpleGroup):
     def __init__(self, n: int, validate = True):
         """
-        Class representing the Ree group |Ree(n)|, a simple group of Lie type. See `Wikipedia`_.
+        Class representing the Ree group :math:`{}^2G_2(3^{2n+1})`, a simple group of Lie type. See `Wikipedia`_.
 
         On object initialization, if validate is True (default), it will attempt to check if the introduced parameters
         are valid. Parameter validation can be globally disabled by changing GLOBAL_VALIDATE to False.
@@ -1571,7 +1553,6 @@ class Ree2G2(UniParamSimpleGroup):
             if False, it will skip any checks.
 
         .. _Wikipedia: https://en.wikipedia.org/wiki/List_of_finite_simple_groups#Ree_groups,_2G2(32n+1)
-        .. |Ree(n)| replace:: :sup:`2`\ G\ :sub:`2`\ (3\ :sup:`2n+1`)
         """
         super().__init__(n, validate=validate)
 
@@ -1692,51 +1673,34 @@ def simple_group_ids():
 
     * Zero-parametric
 
-        * "TT": Tits group |Tits|
+        * "TT": Tits group :math:`{}^2F_4(2)'`
 
     * Uniparametric
 
-        * "CY": Simple cyclic groups C\ :sub:`p`
-        * "AA": Alternating groups A\ :sub:`n`
-        * "E6": Exceptional Chevalley groups |E6|
-        * "E7": Exceptional Chevalley groups |E7|
-        * "E8": Exceptional Chevalley groups |E8|
-        * "F4": Exceptional Chevalley groups |F4|
-        * "G2": Exceptional Chevalley groups |G2|
-        * "2E": Exceptional Steinberg groups |2E|
-        * "3D": Exceptional Steinberg groups |3D|
-        * "SZ": Suzuki groups |SZ|
-        * "RF": Ree groups |RF|
-        * "RG": Ree groups |RG|
+        * "CY": Simple cyclic groups :math:`\mathrm{C}_n`
+        * "AA": Alternating groups :math:`\mathrm{A}_n`
+        * "E6": Exceptional Chevalley groups :math:`E_6(q)`
+        * "E7": Exceptional Chevalley groups :math:`E_7(q)`
+        * "E8": Exceptional Chevalley groups :math:`E_8(q)`
+        * "F4": Exceptional Chevalley groups :math:`F_4(q)`
+        * "G2": Exceptional Chevalley groups :math:`G_2(q)`
+        * "2E": Exceptional Steinberg groups :math:`{}^2E_6(q^2)`
+        * "3D": Exceptional Steinberg groups :math:`{}^3D_4(q^3)`
+        * "SZ": Suzuki groups :math:`{}^2B_2(2^{2n+1})`
+        * "RF": Ree groups :math:`{}^2F_4(2^{2n+1})`
+        * "RG": Ree groups :math:`{}^2G_2(3^{2n+1})`
 
     * Biparametric
 
-        * "CA": Classical Chevalley groups |CA|
-        * "CB": Classical Chevalley groups |CB|
-        * "CC": Classical Chevalley groups |CC|
-        * "CD": Classical Chevalley groups |CD|
-        * "SA": Classical Steinberg groups |SA|
-        * "SD": Classical Steinberg groups |SD|
+        * "CA": Classical Chevalley groups :math:`A_n(q)`
+        * "CB": Classical Chevalley groups :math:`B_n(q)`
+        * "CC": Classical Chevalley groups :math:`C_n(q)`
+        * "CD": Classical Chevalley groups :math:`D_n(q)`
+        * "SA": Classical Steinberg groups :math:`{}^2A_n(q^2)`
+        * "SD": Classical Steinberg groups :math:`{}^2D_n(q^2)`
 
     :return: A dictionary relating group IDs and their classes.
 
-    .. |Tits| replace:: :sup:`2`\ F\ :sub:`4`\ (2\)'
-    .. |RG| replace:: :sup:`2`\ G\ :sub:`2`\ (3\ :sup:`2n+1`)
-    .. |RF| replace:: :sup:`2`\ F\ :sub:`4`\ (2\ :sup:`2n+1`)
-    .. |2E| replace:: :sup:`2`\ E\ :sub:`6`\ (q\ :sup:`2`)
-    .. |3D| replace:: :sup:`3`\ D\ :sub:`4`\ (q\ :sup:`3`)
-    .. |E6| replace:: E\ :sub:`6`\ (q)
-    .. |E7| replace:: E\ :sub:`7`\ (q)
-    .. |E8| replace:: E\ :sub:`8`\ (q)
-    .. |F4| replace:: F\ :sub:`4`\ (q)
-    .. |G2| replace:: G\ :sub:`2`\ (q)
-    .. |SZ| replace:: :sup:`2`\ B\ :sub:`2`\ (2\ :sup:`2n+1`)
-    .. |CA| replace:: A\ :sub:`n`\ (q)
-    .. |CB| replace:: B\ :sub:`n`\ (q)
-    .. |CC| replace:: C\ :sub:`n`\ (q)
-    .. |CD| replace:: D\ :sub:`n`\ (q)
-    .. |SA| replace:: :sup:`2`\ A\ :sub:`n`\ (q\ :sup:`2`)
-    .. |SD| replace:: :sup:`2`\ D\ :sub:`n`\ (q\ :sup:`2`)
     .. _Wikipedia : https://en.wikipedia.org/wiki/List_of_finite_simple_groups#Summary
     """
     return {"CA": ChevalleyA, "CB":ChevalleyB, "CC": ChevalleyC, "CD": ChevalleyD, "SA":Steinberg2A, "SP": Sporadic,
