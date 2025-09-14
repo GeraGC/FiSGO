@@ -81,7 +81,7 @@ def div_scanned(factored1: tuple[list[int], int], factored2: tuple[list[int], in
     Idea: if factored1 corresponds to a number n1 and factored2 to n2, then prod_scanned returns
     Primes.prime_scanner(n1/n2, upper_bound) without having to construct n1/n2 explicitely.
 
-    CAUTION: May return negative factors if the n1/n2 is not an integer! We expect the input to already be correct.
+    .. caution:: May return negative factors if the n1/n2 is not an integer! We expect the input to already be correct.
 
     Example:
 
@@ -120,7 +120,7 @@ def prime_bound_compatiblity(order: tuple[list[int], int], bound: list[int]) -> 
 
     A partial factorization refers to a number given in the format of PrimesHandler.prime_scanner.
 
-    CAUTION: the length of order[0] is expected to be the same as bound, we are checking one factorization against the
+    .. caution:: the length of order[0] is expected to be the same as bound, we are checking one factorization against the
     other
 
     Example:
@@ -179,7 +179,7 @@ def powers_sequence(prime: int, n: int) -> int:
     Example: If prime = 3, then the sequence is [1,1,2,1,1,2,1,1,3,1,...] where each entry corresponds to the power of 3
     contained in [3,6,9,12,15,18,21,24,27,30,...].
 
-    CAUTION: We index the sequence starting at n=1.
+    .. caution:: We index the sequence starting at n=1.
 
     :param prime: A prime number.
     :param n: A positive integer.

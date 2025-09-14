@@ -42,12 +42,12 @@ def nth_prime(n: int, primes_path=PRIMES_PATH) -> int:
     """
     Given an integer n, returns the nth prime number.
 
-    CAUTION: the function starts counting at 1, so the prime 2 correspons to n = 1, 3 to n = 2 etc.
+    .. caution:: the function starts counting at 1, so the prime 2 correspons to n = 1, 3 to n = 2 etc.
 
     The function uses `PrimesHandler.primes`_, Refer to the documentation of `PrimesHandler.primes`_ for additional
     information.
 
-    .. _PrimesHandler.primes: :py:func:`.primes`
+    .. _PrimesHandler.primes: :py:func:`FiSGO.PrimesHandler.primes`
 
     :param n: Positive integer, position of the prime to search.
     :param primes_path: Path to a file with an ordered list of prime numbers.

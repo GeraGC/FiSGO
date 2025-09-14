@@ -54,7 +54,7 @@ class SimpleGroup:
         * 2-parametric group: "[ID]-[n parameter]-[q parameter]", Examples: "CA-1-2", "SA-2-9", "SA-2-3_2".
         * Sporadic group: "SP-[group name]", Examples: "SP-M11", "SP-Fi24\'".
 
-        CAUTION: The name of the Fischer group 24' is "Fi24\'", if printed, it will show "Fi24'" as the character "'" is
+        .. caution:: The name of the Fischer group 24' is "Fi24\'", if printed, it will show "Fi24'" as the character "'" is
         being formated, this may create confusion.
 
         :param code: Code corresponding to some simple group.
@@ -558,7 +558,7 @@ class ChevalleyA(BiParamSimpleGroup):
         The q parameter is a prime power and can be given as an integer or a pair of integers. Example: q = 9 and
         q=(3,2) represent the same parameter as 9 = 3**2. The latter format is preferred when dealing with large powers.
 
-        NOTE: The groups with parameters (n,q) = (1,2) and (1,3) are not simple groups.
+        .. note:: The groups with parameters (n,q) = (1,2) and (1,3) are not simple groups.
 
         On object initialization, if validate is True (default), it will attempt to check if the introduced parameters
         are valid. Parameter validation can be globally disabled by changing GLOBAL_VALIDATE to False.
@@ -655,7 +655,7 @@ class ChevalleyB(BiParamSimpleGroup):
         The q parameter is a prime power and can be given as an integer or a pair of integers. Example: q = 9 and
         q=(3,2) represent the same parameter as 9 = 3**2. The latter format is preferred when dealing with large powers.
 
-        NOTE: The groups with parameters (n,q) = (2,2) or n = 1 are not simple groups.
+        .. note:: The groups with parameters (n,q) = (2,2) or n = 1 are not simple groups.
 
         On object initialization, if validate is True (default), it will attempt to check if the introduced parameters
         are valid. Parameter validation can be globally disabled by changing GLOBAL_VALIDATE to False.
@@ -750,7 +750,7 @@ class ChevalleyC(BiParamSimpleGroup):
         The q parameter is a prime power and can be given as an integer or a pair of integers. Example: q = 9 and
         q=(3,2) represent the same parameter as 9 = 3**2. The latter format is preferred when dealing with large powers.
 
-        NOTE: The parameter n must satisfy n > 2 for the group to be a valid simple group.
+        .. note:: The parameter n must satisfy n > 2 for the group to be a valid simple group.
 
         On object initialization, if validate is True (default), it will attempt to check if the introduced parameters
         are valid. Parameter validation can be globally disabled by changing GLOBAL_VALIDATE to False.
@@ -827,7 +827,7 @@ class ChevalleyD(BiParamSimpleGroup):
         The q parameter is a prime power and can be given as an integer or a pair of integers. Example: q = 9 and
         q=(3,2) represent the same parameter as 9 = 3**2. The latter format is preferred when dealing with large powers.
 
-        NOTE: The parameter n must satisfy n > 3 for the group to be a valid simple group.
+        .. note:: The parameter n must satisfy n > 3 for the group to be a valid simple group.
 
         On object initialization, if validate is True (default), it will attempt to check if the introduced parameters
         are valid. Parameter validation can be globally disabled by changing GLOBAL_VALIDATE to False.
@@ -1118,7 +1118,7 @@ class ExcetionalChevalleyG2(UniParamSimpleGroup):
         The q parameter is a prime power and can be given as an integer or a pair of integers. Example: q = 9 and
         q=(3,2) represent the same parameter as 9 = 3**2. The latter format is preferred when dealing with large powers.
 
-        NOTE: :math:`G_2(2)` is not a simple group.
+        .. note:: :math:`G_2(2)` is not a simple group.
 
         On object initialization, if validate is True (default), it will attempt to check if the introduced parameters
         are valid. Parameter validation can be globally disabled by changing GLOBAL_VALIDATE to False.
@@ -1187,7 +1187,7 @@ class Steinberg2A(BiParamSimpleGroup):
         The q parameter is a prime power and can be given as an integer or a pair of integers. Example: q = 9 and
         q=(3,2) represent the same parameter as 9 = 3**2. The latter format is preferred when dealing with large powers.
 
-        NOTE: The groups with parameters (n,q) = (2,2) and n = 1 are not simple groups.
+        .. note:: The groups with parameters (n,q) = (2,2) and n = 1 are not simple groups.
 
         On object initialization, if validate is True (default), it will attempt to check if the introduced parameters
         are valid. Parameter validation can be globally disabled by changing GLOBAL_VALIDATE to False.
@@ -1269,7 +1269,7 @@ class Steinberg2D(BiParamSimpleGroup):
         The q parameter is a prime power and can be given as an integer or a pair of integers. Example: q = 9 and
         q=(3,2) represent the same parameter as 9 = 3**2. The latter format is preferred when dealing with large powers.
 
-        NOTE: The parameter n must satisfy n > 3 for the group to be simple.
+        .. note:: The parameter n must satisfy n > 3 for the group to be simple.
 
         On object initialization, if validate is True (default), it will attempt to check if the introduced parameters
         are valid. Parameter validation can be globally disabled by changing GLOBAL_VALIDATE to False.
@@ -1716,7 +1716,7 @@ def sporadic_group_ids():
 
     :return: A list with all sporadic simple group IDs.
 
-    NOTE: The ID for the Fischer simple group Fi24' is "Fi24\'".
+    .. note:: The ID for the Fischer simple group Fi24' is "Fi24\'".
 
     .. _Wikipedia : https://en.wikipedia.org/wiki/List_of_finite_simple_groups#Summary
     """
