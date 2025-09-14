@@ -56,7 +56,9 @@ def substract_lists(list1: list[int], list2: list[int]) -> list[int]:
 def prod_scanned(factored1: tuple[list[int], int], factored2: tuple[list[int], int]) -> tuple[list[int], int]:
     """
     Given two tuples originating from PrimesHandler.prime_scanner with the same upper_bound (or same lenght), returns
-    the product of both decompositions, i.e. if factored1 corresponds to a number n1 and factored2 to n2, then
+    the product of both decompositions.
+
+    Idea: if factored1 corresponds to a number n1 and factored2 to n2, then
     prod_scanned returns Primes.prime_scanner(n1*n2, upper_bound) without having to construct n1*n2 explicitely.
 
     Example:
@@ -74,8 +76,10 @@ def prod_scanned(factored1: tuple[list[int], int], factored2: tuple[list[int], i
 def div_scanned(factored1: tuple[list[int], int], factored2: tuple[list[int], int]) -> tuple[list[int], int]:
     """
     Given two tuples originating from PrimesHandler.prime_scanner with the same upper_bound, returns the division
-    of both decompositions, i.e. if factored1 corresponds to a number n1 and factored2 to n2, then prod_scanned returns
-    Primes.prime_scanner(n1/n2, upper_bound) without having to construct n1/n2 explicitely. \n
+    of both decompositions.
+
+    Idea: if factored1 corresponds to a number n1 and factored2 to n2, then prod_scanned returns
+    Primes.prime_scanner(n1/n2, upper_bound) without having to construct n1/n2 explicitely.
 
     CAUTION: May return negative factors if the n1/n2 is not an integer! We expect the input to already be correct.
 
@@ -111,8 +115,10 @@ def check_candidate(code: str, bound: list[int]) -> bool:
 
 def prime_bound_compatiblity(order: tuple[list[int], int], bound: list[int]) -> bool:
     """
-    Given the partial factorization of a number in the format of PrimesHandler.prime_scanner and a bound to the factorized
-    part, the function checks if the given factorization satisfies the bound.
+    Given the partial factorization of a number and a bound to the factorized part, the function checks
+    if the given factorization satisfies the bound.
+
+    A partial factorization refers to a number given in the format of PrimesHandler.prime_scanner.
 
     CAUTION: the length of order[0] is expected to be the same as bound, we are checking one factorization against the
     other
