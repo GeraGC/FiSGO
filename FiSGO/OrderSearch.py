@@ -16,7 +16,7 @@ Module implementing order search functions.
 
 def add_lists(list1: list[int], list2: list[int]) -> list[int]:
     """
-    Adds two lists of integers of the same lenght pointwise.
+    Adds two lists of integers of the same length pointwise.
 
     Example:
 
