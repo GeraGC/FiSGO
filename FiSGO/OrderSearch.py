@@ -35,7 +35,7 @@ def add_lists(list1: list[int], list2: list[int]) -> list[int]:
 
 def substract_lists(list1: list[int], list2: list[int]) -> list[int]:
     """
-    Substracts two lists of integers with the same lenght pointwise.
+    Substracts two lists of integers with the same length pointwise.
 
     Example:
 
@@ -55,7 +55,7 @@ def substract_lists(list1: list[int], list2: list[int]) -> list[int]:
 
 def prod_scanned(factored1: tuple[list[int], int], factored2: tuple[list[int], int]) -> tuple[list[int], int]:
     """
-    Given two tuples originating from PrimesHandler.prime_scanner with the same upper_bound (or same lenght), returns
+    Given two tuples originating from PrimesHandler.prime_scanner with the same upper_bound (or same length), returns
     the product of both decompositions.
 
     Idea: if factored1 corresponds to a number n1 and factored2 to n2, then
@@ -206,7 +206,7 @@ def candidate_from_power(max_power: int, prime: int) -> int:
     s = 1
     m = 1
     while not max_power < s:
-        # If max_power < s then we add the next term of the sequence to s, i.e. consider s(m+1)
+        # If max_power < s, then we add the next term of the sequence to s, i.e. consider s(m+1)
         m += 1
         s += powers_sequence(prime, m)
     return prime * m - 1
