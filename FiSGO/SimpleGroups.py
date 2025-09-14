@@ -458,7 +458,7 @@ class BiParamSimpleGroup(SimpleGroup):
 class Cyclic(UniParamSimpleGroup):
     def __init__(self, n: int, validate = True):
         """
-        Class representing the Cyclic group :math:`\mathrm{C}_n`, a simple group when n is prime. See `Wikipedia`_.
+        Class representing the Cyclic group :math:`\\mathrm{C}_n`, a simple group when n is prime. See `Wikipedia`_.
 
         On object initialization, if validate is True (default), it will attempt to check if the introduced parameters
         are valid. Parameter validation can be globally disabled by changing GLOBAL_VALIDATE to False.
@@ -501,7 +501,7 @@ class Cyclic(UniParamSimpleGroup):
 class Alternating(UniParamSimpleGroup):
     def __init__(self, n: int, validate = True):
         """
-        Class representing the Alternating group :math:`\mathrm{A}_n`, a simple group when n > 4. See `Wikipedia`_.
+        Class representing the Alternating group :math:`\\mathrm{A}_n`, a simple group when n > 4. See `Wikipedia`_.
 
         On object initialization, if validate is True (default), it will attempt to check if the introduced parameters
         are valid. Parameter validation can be globally disabled by changing GLOBAL_VALIDATE to False.
@@ -1677,8 +1677,8 @@ def simple_group_ids():
 
     * Uniparametric
 
-        * "CY": Simple cyclic groups :math:`\mathrm{C}_n`
-        * "AA": Alternating groups :math:`\mathrm{A}_n`
+        * "CY": Simple cyclic groups :math:`\\mathrm{C}_n`
+        * "AA": Alternating groups :math:`\\mathrm{A}_n`
         * "E6": Exceptional Chevalley groups :math:`E_6(q)`
         * "E7": Exceptional Chevalley groups :math:`E_7(q)`
         * "E8": Exceptional Chevalley groups :math:`E_8(q)`

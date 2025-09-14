@@ -228,7 +228,7 @@ def smallest_factorial_from_bound(bound: int) -> int:
 
 def candidates_AA(prime_bounds: list[int], abs_bound = None, return_codes = False):
     """
-    Returns a list of all simple alternating groups :math:`\mathrm{A}_n` whose order divides prime_bounds and is
+    Returns a list of all simple alternating groups :math:`\\mathrm{A}_n` whose order divides prime_bounds and is
     less than or equal to abs_bound.
 
     :param prime_bounds: Contains a list with the maximum powers for each prime, example: [2,0,1,0,3] means the order
