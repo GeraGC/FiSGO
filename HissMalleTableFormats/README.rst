@@ -5,8 +5,8 @@ Hiss and Malle tables of low-dimensional represenations of quasi-simple groups
 .. note:: This folder is not included as part of the Python package.
 
 .. warning:: (11/09/2025) Due to a code bug, the complete and omissions
-tables lack the representations of the alternating group :math:`A_5`,
-this will be in the next table update.
+    tables lack the representations of the alternating group :math:`A_5`,
+    this will be in the next table update.
 
 Introduction
 ------------

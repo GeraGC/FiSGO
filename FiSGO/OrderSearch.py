@@ -119,7 +119,7 @@ def prime_bound_compatiblity(order: tuple[list[int], int], bound: list[int]) -> 
     A partial factorization refers to a number given in the format of PrimesHandler.prime_scanner.
 
     .. caution:: the length of order[0] is expected to be the same as bound, we are checking one factorization against the
-    other
+        other
 
     Example:
 

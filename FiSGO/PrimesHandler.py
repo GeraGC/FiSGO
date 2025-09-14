@@ -7,7 +7,6 @@ from typing import Generator
 import importlib.resources as ires
 
 # TODO: Module documentation
-# TODO: See if function cross reference works and change it
 
 
 # BuiltinPrimes.txt contains the first 10^5 primes
@@ -44,10 +43,8 @@ def nth_prime(n: int, primes_path=PRIMES_PATH) -> int:
 
     .. caution:: the function starts counting at 1, so the prime 2 correspons to n = 1, 3 to n = 2 etc.
 
-    The function uses `PrimesHandler.primes`_, Refer to the documentation of `PrimesHandler.primes`_ for additional
+    The function uses :py:func:`FiSGO.PrimesHandler.primes`, Refer to the documentation of :py:func:`FiSGO.PrimesHandler.primes` for additional
     information.
-
-    .. _PrimesHandler.primes: :py:func:`FiSGO.PrimesHandler.primes`
 
     :param n: Positive integer, position of the prime to search.
     :param primes_path: Path to a file with an ordered list of prime numbers.
@@ -61,9 +58,9 @@ def nth_prime(n: int, primes_path=PRIMES_PATH) -> int:
 
 def prime_list(n: int, primes_path=PRIMES_PATH) -> list[int]:
     """
-    Given an integer n, returns a list of the first n primes in file primes_path using PrimesHandler.primes.
+    Given an integer n, returns a list of the first n primes in file primes_path using :py:func:`FiSGO.PrimesHandler.primes`.
 
-    Refer to the documentation of PrimesHandler.primes for additional information.
+    Refer to the documentation of :py:func:`FiSGO.PrimesHandler.primes` for additional information.
 
     :param n: Positive integer, number of primes to list.
     :param primes_path: String, path to a file with an ordered list of prime numbers.
@@ -100,8 +97,8 @@ def primes_lt(n: int, primes_path=PRIMES_PATH) -> Generator[int, None, None]:
 
 def primes_lt_list(n: int, primes_path=PRIMES_PATH) -> list[int]:
     """
-    Given an integer n, returns a list of all primes less than n in file primes_path using PrimesHandler.primes_lt.
-    Refer to the documentation of PrimesHandler.primes_lt for additional information.
+    Given an integer n, returns a list of all primes less than n in file primes_path using :py:func:`FiSGO.PrimesHandler.primes_lt`.
+    Refer to the documentation of :py:func:`FiSGO.PrimesHandler.primes_lt` for additional information.
 
     :param n: Positive integer, strict upper bound for the primes to list.
     :param primes_path: String, path to a file with an ordered list of prime numbers.
@@ -113,7 +110,7 @@ def primes_lt_list(n: int, primes_path=PRIMES_PATH) -> list[int]:
 def is_prime(n: int, primes_path=PRIMES_PATH) -> bool:
     """
     Given an integer n, returns True if it is prime and False if it is not.
-    Refer to the documentation of PrimesHandler.primes_lt for additional information on primes_path.
+    Refer to the documentation of :py:func:`FiSGO.PrimesHandler.primes_lt` for additional information on primes_path.
 
     .. note::
         This function is NOT a primality test algorithm, it simply checks if n is a prime number found in primes_path.
@@ -165,7 +162,7 @@ def prime_scanner(n:int , upper_bound: int, primes_path = PRIMES_PATH) -> tuple[
         * [0] A list with contained_power(n, p) for each p prime smaller than upper_bound.
         * [1] Leftover factor, containing factors of primes higher than upper_bound.
 
-    This function uses PrimesHandler.primes_lt to get the primes less than upper_bound.
+    This function uses :py:func:`FiSGO.PrimesHandler.primes_lt` to get the primes less than upper_bound.
 
     :param n: Integer.
     :param upper_bound: Integer.
@@ -187,7 +184,7 @@ def prime_reconstructor(powers: list[int], leftover=1, primes_path=PRIMES_PATH) 
     Given a list of integers 'powers', computes the product N of the first len(powers) primes raised to the integers
     of 'powers', returns N*leftover. By default, leftover is set to 1.
 
-    This function is intended to be used alongside PrimesHandles.prime_scanner, to reconstruct a partially factorized
+    This function is intended to be used alongside :py:func:`FiSGO.PrimesHandler.prime_scanner`, to reconstruct a partially factorized
     number. However, it is not necessary that leftover be coprime to N.
 
     This function uses PrimesHandler.primes to get the first len(powers) primes.

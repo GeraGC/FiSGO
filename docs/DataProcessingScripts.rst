@@ -1,7 +1,7 @@
 Data Processing Scripts
 =======================
 
-**Note:** This folder is not included as part of the Python package.
+.. note:: This folder is not included as part of the Python package.
 
 This folder contains Python and `GAP <https://www.gap-system.org>`__
 scripts to process various data into a suitable format for the FiSGO
@@ -34,7 +34,7 @@ this folder.
   ``Hiss_Malle_table_data.json``.
 - ``Hiss_Malle_missing_data.py``: Python script to generate the missing
   data for the Hiss-Malle table. This data corresponds to the generic
-  representations given in Table 2 of [1]. The data is encoded as a JSON
+  representations given in Table 2 of [[1]_]. The data is encoded as a JSON
   file and stored in ``Hiss_Malle_missing_data.json``.
 - ``Hiss_Malle_omissions_table.py``: Python script to generate a table
   from the data contained in ``Hiss_Malle_missing_data.json``. The table
@@ -52,9 +52,9 @@ this folder.
 References
 ----------
 
-**[1]** Hiss, G., & Malle, G. (2001). Low-Dimensional Representations of
-Quasi-Simple Groups. LMS Journal of Computation and Mathematics, 4,
-22–63. |DOI:10.1112/s1461157000000796|
+.. [1] Hiss, G., & Malle, G. (2001). Low-Dimensional Representations of
+    Quasi-Simple Groups. LMS Journal of Computation and Mathematics, 4,
+    22–63. |DOI:10.1112/s1461157000000796|
 
 .. |DOI:10.1112/s1461157000000796| image:: https://zenodo.org/badge/DOI/10.1112/s1461157000000796.svg
    :target: https://doi.org/10.1112/s1461157000000796

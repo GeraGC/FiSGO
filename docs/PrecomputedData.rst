@@ -11,7 +11,7 @@ in the different modules of FiSGO. The data currently stored includes:
 - The first 10^5 prime numbers.
 - Data on almost all absolutely irreducible representations of the
   quasi-simple groups, compiled and partially computed by Hiss and Malle
-  in [1], [2].
+  in [[1]_], [[2]_].
 - Data on all properties of the sporadic simple groups (and their
   covers) relevant to FiSGO.
 - Lower bounds to the degree of zero characteristic projective
@@ -35,7 +35,7 @@ In the sequel, we describe the content of each file.
   - ``"degree"``: Degree of the representation.
   - ``"name"``: Name of the quasi-simple group in LaTeX.
   - ``"field"``: Irrationalities of the Brauer characters.
-  - ``"ind"``: Frobenius-Schur indicators. See [1, :math:`\S` 5].
+  - ``"ind"``: Frobenius-Schur indicators. See [[1]_, :math:`\S` 5].
   - ``"char"``: Field characteristics where the representation is
     defined. If ``null``, then all characteristics are admited unless
     stated otherwise in ``"not_char"``.
@@ -89,63 +89,63 @@ Source of the data
 We now provide a detailed description of how and where the data was
 obtained. We give a description for each file:
 
-- ``BuiltinPrimes.txt``: Taken form the OEIS [5] sequence |Static Badge|
+- ``BuiltinPrimes.txt``: Taken form the OEIS [[5]_] sequence |Static Badge|
   . The table was contributed by N. J. A. Sloane and can be found
   `here <https://oeis.org/A000040/a000040.txt>`__.
 - ``Hiss_Malle_data.json``: All fields except ``"code"`` were obtained
-  from Hiss and Malle [2, Table 2]. All data has been treated in
-  accordance to the description of the table in [1, :math:`\S` 6].
+  from Hiss and Malle [[2]_, Table 2]. All data has been treated in
+  accordance to the description of the table in [[1]_, :math:`\S` 6].
   For further details, see the repository’s ``HissMalleTableFormats``
   directory README. The ``"code"`` field is particular to FiSGO.
 
   - ``smallest_pirrep_degree_exceptions.json``: The ``"code"`` field is
     particular to FiSGO. All other fields were obtained manually from
-    the tables [6, Table 1, Table 2] in a survey of Tiep and Zalesskii
-    [6]. The original results can be found in [7], [8] and [9].
+    the tables [[6]_, Table 1, Table 2] in a survey of Tiep and Zalesskii
+    [[6]_]. The original results can be found in [[7]_], [[8]_] and [[9]_].
 
 - ``sporadic_groups_data.json``: The ``"order"``, ``"latex_name"`` and
-  ``"multiplier"`` fields were obtained from Wikipedia [3]. Fields
+  ``"multiplier"`` fields were obtained from Wikipedia [[3]_]. Fields
   ``"id"`` and ``"code"`` are particular to FiSGO. The data in the
-  ``"pirreps"`` field was obtained from the GAP [4] database of
+  ``"pirreps"`` field was obtained from the GAP [[4]_] database of
   character tables CTblLib. The script used can be found in
   ``DataProcessingScripts/GAP_sporadic_extraction.g``.
 
 References
 ----------
 
-**[1]** Hiss, G., & Malle, G. (2001). Low-Dimensional Representations of
-Quasi-Simple Groups. LMS Journal of Computation and Mathematics, 4,
-22–63. |DOI:10.1112/s1461157000000796|
+.. [1] Hiss, G., & Malle, G. (2001). Low-Dimensional Representations of
+    Quasi-Simple Groups. LMS Journal of Computation and Mathematics, 4,
+    22–63. |DOI:10.1112/s1461157000000796|
 
-**[2]** Hiss, G., & Malle, G. (2002). Corrigenda: Low-dimensional
-Representations of Quasi-simple Groups. LMS Journal of Computation and
-Mathematics, 5, 95–126. |DOI:10.1112/s1461157000000711|
+.. [2] Hiss, G., & Malle, G. (2002). Corrigenda: Low-dimensional
+    Representations of Quasi-simple Groups. LMS Journal of Computation and
+    Mathematics, 5, 95–126. |DOI:10.1112/s1461157000000711|
 
-**[3]** Wikipedia contributors. (2025, August 22). List of finite simple
-groups. In Wikipedia, The Free Encyclopedia. Retrieved 21:49, August 30,
-2025, from |image1|
+.. [3] Wikipedia contributors. (2025, August 22). List of finite simple
+    groups. In Wikipedia, The Free Encyclopedia. Retrieved 21:49, August 30,
+    2025, from |image1|
 
-**[4]** The GAP Group, GAP – Groups, Algorithms, and Programming,
-Version 4.14.0; 2024. (https://www.gap-system.org)
+.. [4] The GAP Group, GAP – Groups, Algorithms, and Programming,
+    Version 4.14.0; 2024. (https://www.gap-system.org)
 
-**[5]** OEIS Foundation Inc.(2025), The On-Line Encyclopedia of Integer
-Sequences, Published electronically at https://oeis.org.
+.. [5] OEIS Foundation Inc.(2025), The On-Line Encyclopedia of Integer
+    Sequences, Published electronically at https://oeis.org.
 
-**[6]** Tiep, P. H., & Zalesskii, A. E. (2000). Some aspects of finite
-linear groups: A survey. Journal of Mathematical Sciences, 100(1),
-1893–1914. |DOI:10.1007/bf02677502|
+.. [6] Tiep, P. H., & Zalesskii, A. E. (2000). Some aspects of finite
+    linear groups: A survey. Journal of Mathematical Sciences, 100(1),
+    1893–1914. |DOI:10.1007/bf02677502|
 
-**[7]** Landazuri, V., & Seitz, G. M. (1974). On the minimal degrees of
-projective representations of the finite Chevalley groups. Journal of
-Algebra, 32(2), 418–443. |DOI:10.1016/0021-8693(74)90150-1|
+.. [7] Landazuri, V., & Seitz, G. M. (1974). On the minimal degrees of
+    projective representations of the finite Chevalley groups. Journal of
+    Algebra, 32(2), 418–443. |DOI:10.1016/0021-8693(74)90150-1|
 
-**[8]** Lübeck, F. (2001). Smallest degrees of representations of
-exceptional groups of lie type. Communications in Algebra, 29(5),
-2147–2169. |DOI:10.1081/agb-100002175|
+.. [8] Lübeck, F. (2001). Smallest degrees of representations of
+    exceptional groups of lie type. Communications in Algebra, 29(5),
+    2147–2169. |DOI:10.1081/agb-100002175|
 
-**[9]** Tiep, P. H., & Zalesskii, A. E. (1996). Minimal characters of
-the finite classical groups. Communications in Algebra, 24(6),
-2093–2167. |DOI:10.1080/00927879608825690|
+.. [9] Tiep, P. H., & Zalesskii, A. E. (1996). Minimal characters of
+    the finite classical groups. Communications in Algebra, 24(6),
+    2093–2167. |DOI:10.1080/00927879608825690|
 
 .. |Static Badge| image:: https://img.shields.io/badge/OEIS-A000040-blue
    :target: https://oeis.org/A000040

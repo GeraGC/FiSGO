@@ -55,7 +55,7 @@ class SimpleGroup:
         * Sporadic group: "SP-[group name]", Examples: "SP-M11", "SP-Fi24\'".
 
         .. caution:: The name of the Fischer group 24' is "Fi24\'", if printed, it will show "Fi24'" as the character "'" is
-        being formated, this may create confusion.
+            being formated, this may create confusion.
 
         :param code: Code corresponding to some simple group.
         :return: The simple group object corresponding to the given code.

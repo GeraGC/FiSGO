@@ -1,7 +1,7 @@
-Test documentation
+FiSGO: Finite simple groups by order
 =====================
 
-This is a test of FiSGO's documentation in readthedocs.
+This website contains the complete documentation of the Python project FiSGO.
 
 .. toctree::
     :maxdepth: 2
