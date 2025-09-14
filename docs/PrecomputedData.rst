@@ -16,7 +16,10 @@ in the different modules of FiSGO. The data currently stored includes:
   covers) relevant to FiSGO.
 - Lower bounds to the degree of zero characteristic projective
   representations of the simple groups. Mainly due to Landazuri, Seitz,
-  Tiep and Zalesskii. ## Description of the files
+  Tiep and Zalesskii.
+
+Description of the files
+------------------------
 
 In the sequel, we describe the content of each file.
 

@@ -8,7 +8,7 @@ This website contains the complete documentation of the Python project FiSGO.
     :caption: Contents
 
     Home page <self>
-    FiSGO <_autosummary/FiSGO>
+    FiSGO's documentation <_autosummary/FiSGO>
     Precomputed data <PrecomputedData>
     Hiss and Malle tables <HissMalleTableFormats>
     Scripts used to process data <DataProcessingScripts>
