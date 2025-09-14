@@ -1,5 +1,5 @@
 FiSGO: Finite simple groups by order
-=====================
+====================================
 
 This website contains the complete documentation of the Python project FiSGO.
 
