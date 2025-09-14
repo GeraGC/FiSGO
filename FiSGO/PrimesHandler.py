@@ -115,8 +115,9 @@ def is_prime(n: int, primes_path=PRIMES_PATH) -> bool:
     Given an integer n, returns True if it is prime and False if it is not.
     Refer to the documentation of PrimesHandler.primes_lt for additional information on primes_path.
 
-    NOTE: This function is NOT a primality test algorithm, it simply checks if n is a prime number found in primes_path.
-    This is enough for the FiSGO modules using this function.
+    .. note::
+        This function is NOT a primality test algorithm, it simply checks if n is a prime number found in primes_path.
+        This is enough for the FiSGO modules using this function.
 
     :param n: Positive integer.
     :param primes_path: String, path to a file with an ordered list of prime numbers.

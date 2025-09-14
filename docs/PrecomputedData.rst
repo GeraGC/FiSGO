@@ -1,6 +1,3 @@
-.. role:: raw-latex(raw)
-   :format: latex
-..
 
 Precomputed Data
 ================
@@ -38,7 +35,7 @@ In the sequel, we describe the content of each file.
   - ``"degree"``: Degree of the representation.
   - ``"name"``: Name of the quasi-simple group in LaTeX.
   - ``"field"``: Irrationalities of the Brauer characters.
-  - ``"ind"``: Frobenius-Schur indicators. See [1, $:raw-latex:`\S`$5].
+  - ``"ind"``: Frobenius-Schur indicators. See [1, :math:`\S` 5].
   - ``"char"``: Field characteristics where the representation is
     defined. If ``null``, then all characteristics are admited unless
     stated otherwise in ``"not_char"``.
@@ -97,7 +94,7 @@ obtained. We give a description for each file:
   `here <https://oeis.org/A000040/a000040.txt>`__.
 - ``Hiss_Malle_data.json``: All fields except ``"code"`` were obtained
   from Hiss and Malle [2, Table 2]. All data has been treated in
-  accordance to the description of the table in [1, $:raw-latex:`\S`$6].
+  accordance to the description of the table in [1, :math:`\S` 6].
   For further details, see the repository’s ``HissMalleTableFormats``
   directory README. The ``"code"`` field is particular to FiSGO.
 
