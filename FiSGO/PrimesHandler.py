@@ -134,7 +134,7 @@ def contained_power(n: int, d: int) -> int:
     :param d: Integer.
     :return: Integer, the maximum power of d that divides n.
     """
-    for i in range(math.floor(math.log(abs(n), abs(d)))+1):
+    for i in range(math.floor(math.log(abs(n), abs(d)))+2):
         if n % d == 0:
             n //= d
             continue
@@ -174,6 +174,26 @@ def prime_scanner(n:int , upper_bound: int, primes_path = PRIMES_PATH) -> tuple[
     powers_list = []
     leftover = n
     for p in primes_lt(upper_bound, primes_path=primes_path):
+        powers_list += [contained_power(n, p)]
+        leftover //= p**powers_list[-1]
+    return powers_list, leftover
+
+
+def prime_scanner_local(n:int , primes: list[int]) -> tuple[list[int], int]:
+    """
+    Given integers n, primes, returns a tuple containing:
+        * [0] A list with contained_power(n, p) for each p prime in primes.
+        * [1] Leftover factor, containing factors of primes not in primes.
+
+    :param n: Integer.
+    :param primes: List of primes.
+    :return: Tuple containing a list of integers and an integer. The list contains the exponents of prime powers dividing n,
+        with a prime number less than upper_bound. The integer contains the leftover factor, not comprising any prime
+        number less than upper_bound.
+    """
+    powers_list = []
+    leftover = n
+    for p in primes:
         powers_list += [contained_power(n, p)]
         leftover //= p**powers_list[-1]
     return powers_list, leftover
