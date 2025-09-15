@@ -250,7 +250,7 @@ class SimpleGroup:
         # We now filter the pirreps to match the characteristic
         matches = []
         for pirrep in data:
-            if _char_check(char, pirrep["char"], pirrep["not_char"]):
+            if char_check(char, pirrep["char"], pirrep["not_char"]):
                 matches.append(pirrep)
         # We now select the data to return
         if all_pirrep_data:
@@ -1635,6 +1635,7 @@ class Sporadic(SimpleGroup):
         if self.id in self.id_list():
             return
         else:
+            print(self.id)
             raise ValueError(f"There is no sporadic group with identifier: {self.id}, see Sporadic.id_list()")
 
     def compute_order(self):
@@ -1644,8 +1645,8 @@ class Sporadic(SimpleGroup):
         return sporadic_lookup_property("id", self.id, "multiplier")
 
     def code(self):
-        if self.id == "Fi24\'":
-            return "SP-Fi24\\\'"
+        if self.id == r"Fi24'":
+            return r"SP-Fi24'"
         return "SP-{0}".format(self.id)
 
     def latex_name(self) -> list[str]:
@@ -1655,10 +1656,47 @@ class Sporadic(SimpleGroup):
         return self.id
 
     def smallest_pirrep_degree(self) -> tuple[int, int]:
-        return sporadic_lookup_property("id", self.id, "smallest_pirrep_degree")
+        pirreps = sporadic_lookup_property("id", self.id, "pirreps")
+        min_irrep_covers = []
+        for pirrep in pirreps:
+            if pirrep["name"] == self.id:
+                # This one contains the trivial irrep, so we ignore it
+                min_irrep_covers.append(sorted(pirrep["degrees"], key=lambda l: l[0])[1])
+            else:
+                min_irrep_covers.append(sorted(pirrep["degrees"], key=lambda l: l[0])[0])
+        min_rep = [min(min_irrep_covers)[0], 0]
+        for pair in min_irrep_covers:
+            if pair[0] == min_rep[0]:
+                min_rep[1] += pair[1]
+        return min_rep[0], min_rep[1]
 
     def normalized_code(self) -> str:
         return self.code()
+
+    def pirrep_degrees(self, include_cover: bool=False) \
+            -> list[int] | list[tuple[int, str]]:
+        """
+        Returns a list with the degrees the sporadic group's projective irreducible representations in characteristic 0.
+
+        If include_cover is True, the list will include the name of the covering group producing the pirrep. This
+        is given in the form of a tuple with the first element being the degree, and the second the name of the
+        covering group.
+
+        :param include_cover: If True, the list will include the name of the covering group producing the pirrep.
+        :return: A list with the degrees of the projective irreducible representations in characteristic 0. If include_cover
+            is True, the list will include the name of the covering group.
+        """
+        pirreps = sporadic_lookup_property("id", self.id, "pirreps")
+        if include_cover:
+            degrees = []
+            for pirrep in pirreps:
+                degrees += [(pair[0], pirrep["name"]) for pair in pirrep["degrees"]]
+            return list(sorted(degrees))
+        else:
+            degrees = []
+            for pirrep in pirreps:
+                degrees += [pair[0] for pair in pirrep["degrees"]]
+            return list(sorted(set(degrees)))
 
 
 def simple_group(code):
@@ -1709,6 +1747,8 @@ def simple_group_ids():
         * "SA": Classical Steinberg groups :math:`{}^2A_n(q^2)`
         * "SD": Classical Steinberg groups :math:`{}^2D_n(q^2)`
 
+    .. caution:: The Fischer 24\' group should be written as :code:`r"SP-Fi24'"` for proper handling of the \' character.
+
     :return: A dictionary relating group IDs and their classes.
 
     .. _Wikipedia : https://en.wikipedia.org/wiki/List_of_finite_simple_groups#Summary
@@ -1720,20 +1760,37 @@ def simple_group_ids():
             "CY": Cyclic}
 
 
+def sporadic_groups_data():
+    """
+    Interface to the compressed JSON file sporadic_grous_data.json.bz2.
+
+    The file contains data on the sporadic groups, including their codes, IDs, order, multiplier, pirreps and
+    latex names.
+
+    For more information on the data, see the README's of `PrecomputedData`_.
+
+    The data can be accessed as a list of dictionaries, each dictionary having the same fields (keys).
+
+    :return: Returns a decoded JSON object, i.e., a list of dictionaries with all the data of the file.
+
+    .. _PrecomputedData: https://github.com/GeraGC/FiSGO/tree/master/FiSGO/PrecomputedData
+    """
+    with ires.as_file(PRECOMPUTED_DATA_DIR.joinpath('sporadic_groups_data.json.bz2')) as sporadic_data_path:
+        with bz2.open(sporadic_data_path, 'rt') as sporadic_data_file:
+            sporadic_data = json.load(sporadic_data_file)
+    return sporadic_data
+
 def sporadic_group_ids():
     """
     Returns a list with all sporadic simple group IDs. The notations have been taken from `Wikipedia`_.
 
     :return: A list with all sporadic simple group IDs.
 
-    .. note:: The ID for the Fischer simple group Fi24' is "Fi24\'".
+    .. note:: The ID for the Fischer simple group Fi24' is :code:`r"Fi24'"`.
 
     .. _Wikipedia : https://en.wikipedia.org/wiki/List_of_finite_simple_groups#Summary
     """
-    with ires.as_file(PRECOMPUTED_DATA_DIR.joinpath('sporadic_groups_data.json.bz2')) as sporadic_data_path:
-        with bz2.open(sporadic_data_path, 'rt') as sporadic_data_file:
-            sporadic_data = json.load(sporadic_data_file)
-    return [group["id"] for group in sporadic_data]
+    return [group["id"] for group in sporadic_groups_data()]
 
 
 def sporadic_lookup_property(field: str, match: Any, return_field: str) -> Any:
@@ -1746,12 +1803,8 @@ def sporadic_lookup_property(field: str, match: Any, return_field: str) -> Any:
     :param return_field: Field to return if a match is found.
     :return: The value of the given return field if a match is found, otherwise None.
     """
-
-    with ires.as_file(PRECOMPUTED_DATA_DIR.joinpath('sporadic_groups_data.json.bz2')) as sporadic_data_path:
-        with bz2.open(sporadic_data_path, 'rt') as sporadic_data_file:
-            sporadic_data = json.load(sporadic_data_file)
     try:
-        return next(group for group in sporadic_data if group[field] == match)[return_field]
+        return next(group for group in sporadic_groups_data() if group[field] == match)[return_field]
     except StopIteration:
         logging.warning(f"No match found for {field}={match}")
         return None
@@ -1809,7 +1862,6 @@ def hiss_malle_lookup(match_values: dict, return_fields: list | None):
     return _json_request(hiss_malle_data(), match_values, return_fields)
 
 
-
 def code_normalizer(code: str) -> str:
     """
     Given a simple group code, returns a normalized version of the code. Normalization is done by replacing the
@@ -1861,9 +1913,9 @@ def _json_request(loaded_json: list[dict] | dict, match_values: dict, return_fie
     return matches
 
 
-def _char_check(char: int, char_list: list[int] | None, not_char_list: list[int] | None) -> bool:
+def char_check(char: int, char_list: list[int] | None, not_char_list: list[int] | None) -> bool:
     """
-    Helper function to check if a representation exists in a given characteristic.
+    Helper function to check if a hiss-malle representation exists in a given characteristic.
 
     :param char: Characteristic in which to check existence.
     :param char_list: "char" field of the representation.
