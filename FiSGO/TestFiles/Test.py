@@ -1,9 +1,16 @@
 from FiSGO.SimpleGroups import simple_group, simple_group_ids, sporadic_group_ids, sporadic_lookup_property
+import FiSGO.SimpleGroups as sg
 import bz2
 import timeit
 import json
 import importlib.resources as ires
 import FiSGO.PrimesHandler as ph
+import FiSGO.PIrrepsSearch as pis
+import math
+import FiSGO.OrderSearch as Os
+import logging
+
+logging.basicConfig(level=logging.INFO)
 
 # powers_list, remainder = ph.prime_scanner(60, 4)
 # print(ph.prime_reconstructor(powers_list, remainder))
@@ -91,3 +98,27 @@ import FiSGO.PrimesHandler as ph
 # print(simple_group("CA-1-25").hiss_malle_pirreps(char=7, allow_duplicates=True))
 # print(simple_group("CA-1-25").hiss_malle_pirreps(char=7, all_pirrep_data=True))
 # print(simple_group("CA-1-25").hiss_malle_pirreps(char=None))
+
+# print(timeit.timeit(lambda:pis.build_single_bound(100000), number=100)/100)
+
+# print(simple_group("SP-J2").pirrep_degrees())
+# print(simple_group("SP-J2").pirrep_degrees(include_cover=True))
+# print(simple_group("SP-J2").multiplier())
+# print(list(simple_group_ids().keys()))
+
+ignore_all = ['CA', 'CB', 'CC', 'CD', 'SA', 'SP', 'SD', 'AA', 'E6', 'E7', 'E8', 'F4', 'G2', 'TT', '2E', '3D', 'SZ', 'RF', 'RG', 'CY']
+ignore_all.remove('CA')
+
+# print(sporadic_lookup_property("id", r"Fi24'", "id"))
+
+# print(sg.simple_group("SP-M12").smallest_pirrep_degree())
+# print(sg.simple_group("SP-M11").smallest_pirrep_degree())
+# print(sg.simple_group("SP-M").smallest_pirrep_degree())
+# print(sg.simple_group("SP-J4").smallest_pirrep_degree())
+
+
+# print(timeit.timeit(lambda: Os.candidates_CA(pis.build_single_bound(448)), number=1))
+
+print(pis.pirreps_search(1000))
+
+# print(pis.pirreps_search(1000, ignore=ignore_all))

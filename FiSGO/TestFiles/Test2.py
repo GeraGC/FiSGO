@@ -1,4 +1,11 @@
 from FiSGO import SimpleGroups as sg
+import FiSGO.PrimesHandler as ph
+import FiSGO.PIrrepsSearch as pis
+import FiSGO.OrderSearch as Os
+import math
+import timeit
+
+from FiSGO.OrderSearch import candidates_AA
 
 """
 A5 = sg.simple_group("CA-2-2_3")
@@ -63,15 +70,48 @@ print(len(LD), LD)
 # print(ph.factor(sg.simple_group("E8-3_1").order()))
 # print(ph.factor(sg.simple_group("E6-3_2").order(), list_output=True))
 
-print(sg.sporadic_group_ids())
-print(len(sg.sporadic_group_ids()))
-print(sg.simple_group_ids().keys())
+# print(sg.sporadic_group_ids())
+# print(len(sg.sporadic_group_ids()))
+# print(sg.simple_group_ids().keys())
+#
+# print(sg.sporadic_lookup_property("id", "J2", "latex_name"))
+#
+# print(sg.simple_group("CA-1-5").latex_name())
+# print(sg.simple_group("SA-4-2").latex_name())
+# print(sg.simple_group("CC-3-2").latex_name())
+# print(sg.simple_group("CB-3-3").latex_name())
 
-print(sg.sporadic_lookup_property("id", "J2", "latex_name"))
+# bound = pis.build_single_bound(1000)
+# print(bound)
+#
+# bounds = pis.build_bounds([250,1001])
+# print(bounds)
 
-print(sg.simple_group("CA-1-5").latex_name())
-print(sg.simple_group("SA-4-2").latex_name())
-print(sg.simple_group("CC-3-2").latex_name())
-print(sg.simple_group("CB-3-3").latex_name())
+# print(pis.hiss_malle_range([100,120]))
+# print(pis.pirreps_search([100,121]))
 
+# def prime_bound_compatiblity_alt(order: tuple[list[int], int], bound: list[int]) -> bool:
+#     if order[1] != 1:
+#         # There have appeared primes which are not in prime_bounds, so this group is not a candidate
+#         return False
+#     # We now check prime order compatibility against the relative order
+#     res = True
+#     for j, b in enumerate(bound):
+#         res &= order[0][j] > b
+#     return True if res else False
+#
+#
+# order = ([120, 120] + [13 for i in range(65)] + [1 for j in range(999)] + [2], 1)
+# bound = [120, 120] + [15 for i in range(65)] + [1 for j in range(1000)]
+# iters = 10000
+#
+# t1 = timeit.timeit(lambda: prime_bound_compatiblity_alt(order, bound), number=iters)/iters
+# t2 = timeit.timeit(lambda: Os.prime_bound_compatiblity(order, bound), number=iters)/iters
+#
+# print(prime_bound_compatiblity_alt(order, bound))
+# print(Os.prime_bound_compatiblity(order, bound))
+#
+# print(t1, t2, t2/t1)
 
+print(pis.build_single_bound(1000))
+print(pis.build_bounds([250,1001]))
