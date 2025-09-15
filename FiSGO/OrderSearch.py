@@ -224,7 +224,7 @@ def smallest_factorial_from_bound(bound: int) -> int:
     return n-1
 
 
-def candidates_AA(prime_bounds: list[int], abs_bound = None, return_codes = False):
+def candidates_AA(prime_bounds: list[int], abs_bound = None, return_codes = True):
     """
     Returns a list of all simple alternating groups :math:`\\mathrm{A}_n` whose order divides prime_bounds and is
     less than or equal to abs_bound.
@@ -267,7 +267,7 @@ def candidates_AA(prime_bounds: list[int], abs_bound = None, return_codes = Fals
     return group_candidates
 
 
-def candidates_CA(prime_bounds: list[int], abs_bound = None, return_codes = False):
+def candidates_CA(prime_bounds: list[int], abs_bound = None, return_codes = True):
     """
     Returns a list of all classical Chevalley :math:`A_n(q)`, simple groups of Lie type, whose order divides prime_bounds and is
     less than or equal to abs_bound.
@@ -330,7 +330,7 @@ def candidates_CA(prime_bounds: list[int], abs_bound = None, return_codes = Fals
     return group_candidates
 
 
-def candidates_CB(prime_bounds: list[int], abs_bound = None, return_codes = False):
+def candidates_CB(prime_bounds: list[int], abs_bound = None, return_codes = True):
     """
     Returns a list of all classical Chevalley :math:`B_n(q)`, simple groups of Lie type, whose order divides prime_bounds and is
     less than or equal to abs_bound.
@@ -390,7 +390,7 @@ def candidates_CB(prime_bounds: list[int], abs_bound = None, return_codes = Fals
     return group_candidates
 
 
-def candidates_CC(prime_bounds: list[int], abs_bound = None, return_codes = False):
+def candidates_CC(prime_bounds: list[int], abs_bound = None, return_codes = True):
     """
     Returns a list of all classical Chevalley :math:`C_n(q)`, simple groups of Lie type, whose order divides prime_bounds and is
     less than or equal to abs_bound.
@@ -410,7 +410,7 @@ def candidates_CC(prime_bounds: list[int], abs_bound = None, return_codes = Fals
     return [sg.simple_group(code.replace("B","C")) for code in candidates if code.split("-")[1] != "2"]
 
 
-def candidates_CD(prime_bounds: list[int], abs_bound = None, return_codes = False):
+def candidates_CD(prime_bounds: list[int], abs_bound = None, return_codes = True):
     """
     Returns a list of all classical Chevalley :math:`D_n(q)`, simple groups of Lie type, whose order divides prime_bounds and is
     less than or equal to abs_bound.
@@ -536,7 +536,7 @@ def candidates_exceptional_chevalley(prime_bounds: list[int], abs_bound: int | N
     return group_candidates
 
 
-def candidates_E6(prime_bounds: list[int], abs_bound = None, return_codes = False):
+def candidates_E6(prime_bounds: list[int], abs_bound = None, return_codes = True):
     """
     Returns a list of all exceptional Chevalley :math:`E_6(q)`, simple groups of Lie type, whose order divides prime_bounds and is
     less than or equal to abs_bound.
@@ -553,7 +553,7 @@ def candidates_E6(prime_bounds: list[int], abs_bound = None, return_codes = Fals
                                             3, "E6",return_codes)
 
 
-def candidates_E7(prime_bounds: list[int], abs_bound = None, return_codes = False):
+def candidates_E7(prime_bounds: list[int], abs_bound = None, return_codes = True):
     """
     Returns a list of all exceptional Chevalley :math:`E_7(q)`, simple groups of Lie type, whose order divides prime_bounds and is
     less than or equal to abs_bound.
@@ -570,7 +570,7 @@ def candidates_E7(prime_bounds: list[int], abs_bound = None, return_codes = Fals
                                             2, "E7",return_codes)
 
 
-def candidates_E8(prime_bounds: list[int], abs_bound = None, return_codes = False):
+def candidates_E8(prime_bounds: list[int], abs_bound = None, return_codes = True):
     """
     Returns a list of all exceptional Chevalley :math:`E_8(q)`, simple groups of Lie type, whose order divides prime_bounds and is
     less than or equal to abs_bound.
@@ -587,7 +587,7 @@ def candidates_E8(prime_bounds: list[int], abs_bound = None, return_codes = Fals
                                             1, "E8",return_codes)
 
 
-def candidates_F4(prime_bounds: list[int], abs_bound = None, return_codes = False):
+def candidates_F4(prime_bounds: list[int], abs_bound = None, return_codes = True):
     """
     Returns a list of all exceptional Chevalley :math:`F_4(q)`, simple groups of Lie type, whose order divides prime_bounds and is
     less than or equal to abs_bound.
@@ -604,7 +604,7 @@ def candidates_F4(prime_bounds: list[int], abs_bound = None, return_codes = Fals
                                             1, "F4",return_codes)
 
 
-def candidates_G2(prime_bounds: list[int], abs_bound = None, return_codes = False):
+def candidates_G2(prime_bounds: list[int], abs_bound = None, return_codes = True):
     """
     Returns a list of all exceptional Chevalley :math:`G_2(q)`, simple groups of Lie type, whose order divides prime_bounds and is
     less than or equal to abs_bound.
@@ -621,7 +621,7 @@ def candidates_G2(prime_bounds: list[int], abs_bound = None, return_codes = Fals
                                             1, "G2",return_codes)
 
 
-def candidates_SA(prime_bounds: list[int], abs_bound = None, return_codes = False):
+def candidates_SA(prime_bounds: list[int], abs_bound = None, return_codes = True):
     """
     Returns a list of all classical Steinberg :math:`{}^2A_n(q^2)`, simple groups of Lie type, whose order divides prime_bounds and is
     less than or equal to abs_bound.
@@ -684,7 +684,7 @@ def candidates_SA(prime_bounds: list[int], abs_bound = None, return_codes = Fals
     return group_candidates
 
 
-def candidates_SD(prime_bounds: list[int], abs_bound = None, return_codes = False):
+def candidates_SD(prime_bounds: list[int], abs_bound = None, return_codes = True):
     """
     Returns a list of all classical Steinberg :math:`{}^2D_n(q^2)`, simple groups of Lie type, whose order divides prime_bounds and is
     less than or equal to abs_bound.
@@ -747,7 +747,7 @@ def candidates_SD(prime_bounds: list[int], abs_bound = None, return_codes = Fals
     return group_candidates
 
 
-def candidates_2E(prime_bounds: list[int], abs_bound = None, return_codes = False):
+def candidates_2E(prime_bounds: list[int], abs_bound = None, return_codes = True):
     """
     Returns a list of all exceptional Steinberg :math:`{}^2E_6(q^2)`, simple groups of Lie type, whose order divides prime_bounds and is
     less than or equal to abs_bound.
@@ -796,7 +796,7 @@ def candidates_2E(prime_bounds: list[int], abs_bound = None, return_codes = Fals
     return group_candidates
 
 
-def candidates_3D(prime_bounds: list[int], abs_bound = None, return_codes = False):
+def candidates_3D(prime_bounds: list[int], abs_bound = None, return_codes = True):
     """
     Returns a list of all exceptional Steinberg :math:`{}^3D_4(q^3)`, simple groups of Lie type, whose order divides prime_bounds and is
     less than or equal to abs_bound.
@@ -841,7 +841,7 @@ def candidates_3D(prime_bounds: list[int], abs_bound = None, return_codes = Fals
     return group_candidates
 
 
-def candidates_SZ(prime_bounds: list[int], abs_bound = None, return_codes = False):
+def candidates_SZ(prime_bounds: list[int], abs_bound = None, return_codes = True):
     """
     Returns a list of all Suzuki :math:`{}^2B_2(2^{2n+1})` groups, simple groups of Lie type, whose order divides prime_bounds and is
     less than or equal to abs_bound.
@@ -880,7 +880,7 @@ def candidates_SZ(prime_bounds: list[int], abs_bound = None, return_codes = Fals
     return group_candidates
 
 
-def candidates_RF(prime_bounds: list[int], abs_bound = None, return_codes = False):
+def candidates_RF(prime_bounds: list[int], abs_bound = None, return_codes = True):
     """
     Returns a list of all Ree :math:`{}^2F_4(2^{2n+1})` groups, simple groups of Lie type, whose order divides prime_bounds and is
     less than or equal to abs_bound.
@@ -918,7 +918,7 @@ def candidates_RF(prime_bounds: list[int], abs_bound = None, return_codes = Fals
         return absolute_bound_filter(group_candidates, abs_bound, return_codes)
     return group_candidates
 
-def candidates_TT(prime_bounds: list[int], abs_bound = None, return_codes = False):
+def candidates_TT(prime_bounds: list[int], abs_bound = None, return_codes = True):
     """
     Returns the Tits group :math:`{}^2F_4(2)'` if its order divides prime_bounds and is less than or equal to abs_bound.
 
@@ -947,7 +947,7 @@ def candidates_TT(prime_bounds: list[int], abs_bound = None, return_codes = Fals
     return [sg.Tits()]
 
 
-def candidates_RG(prime_bounds: list[int], abs_bound = None, return_codes = False):
+def candidates_RG(prime_bounds: list[int], abs_bound = None, return_codes = True):
     """
     Returns a list of all Ree :math:`{}^2G_2(3^{2n+1})` groups, simple groups of Lie type, whose order divides prime_bounds and is
     less than or equal to abs_bound.
@@ -986,7 +986,7 @@ def candidates_RG(prime_bounds: list[int], abs_bound = None, return_codes = Fals
         return absolute_bound_filter(group_candidates, abs_bound, return_codes)
     return group_candidates
 
-def candidates_SP(prime_bounds: list[int], abs_bound = None, return_codes = False):
+def candidates_SP(prime_bounds: list[int], abs_bound = None, return_codes = True):
     """
     Returns a list of all sporadic simple groups whose order divides prime_bounds and is
     less than or equal to abs_bound.
@@ -1058,3 +1058,53 @@ def clear_duplicates(groups: list, codes: bool) -> list:
     if not codes:
         return [sg.simple_group(code) for code in duplicate_free]
     return duplicate_free
+
+
+CANDIDATE_FUNCTIONS = {"AA": candidates_AA,
+                       "CA": candidates_CA,
+                       "CB": candidates_CB,
+                       "CC": candidates_CC,
+                       "CD": candidates_CD,
+                       "E6": candidates_E6,
+                       "E7": candidates_E7,
+                       "E8": candidates_E8,
+                       "F4": candidates_F4,
+                       "G2": candidates_G2,
+                       "SA": candidates_SA,
+                       "SD": candidates_SD,
+                       "2E": candidates_2E,
+                       "3D": candidates_3D,
+                       "SZ": candidates_SZ,
+                       "RF": candidates_RF,
+                       "TT": candidates_TT,
+                       "RG": candidates_RG,
+                       "SP": candidates_SP}
+
+
+def simple_group_by_order(prime_bounds: list[int], abs_bound: int|None=None, return_codes: bool=True, ignore: list[str]|None=None):
+    """
+    Returns a list of all simple groups whose order divides prime_bounds and is less than or equal to abs_bound.
+
+    Certain groups can be ignored by providing a list of ids to ignore. See :py:func:`FiSGO.SimpleGroups.simple_group_ids`
+    for a list of valid ids. By default, no groups are ignored.
+
+    :param prime_bounds: Contains a list with the maximum powers for each prime, example: [2,0,1,0,3] means the order
+        of the group must divide 2^2*5^1*11^3.
+    :param abs_bound: An integer providing an upper bound to the order of the group, if None, then it is constructed
+        from prime_bounds.
+    :param return_codes: If False, the function returns a list of derived objects from the SimpleGroup class. If True,
+        the function returns a list of strings, each string represents a simple group code.
+        See :py:func:`FiSGO.SimpleGroups.simple_group_ids`.
+    :param ignore: List of groups to ignore given as a list of code ids, example: ['AA', 'SP']. For all ids see
+        :py:func:`FiSGO.SimpleGroups.simple_group_ids`. By default, no groups are ignored.
+    :return: A list of simple groups (objects or codes depending on 'return_codes') free of duplicates.
+    """
+
+    if ignore is None:
+        ignore = []
+    group_candidates = []
+    for group_type in CANDIDATE_FUNCTIONS:
+        if group_type in ignore:
+            continue
+        group_candidates += CANDIDATE_FUNCTIONS[group_type](prime_bounds, abs_bound=abs_bound, return_codes=return_codes)
+    return clear_duplicates(group_candidates, return_codes)
