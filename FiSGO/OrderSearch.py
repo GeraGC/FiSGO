@@ -1,8 +1,10 @@
 """
 Module implementing order search functions.
 """
-
+import logging
 import math
+from typing import Any
+
 import FiSGO.PrimesHandler as ph
 import FiSGO.SimpleGroups as sg
 
@@ -10,6 +12,16 @@ import FiSGO.SimpleGroups as sg
 # TODO: Test all candidates functions
 # TODO: Test absolute bounding works
 # TODO: Module documentation
+
+
+def order_search_logger(func):
+    def wrapper(*args, **kwargs):
+        logging.info(f"Starting candidate search for {func.__name__.replace("candidates_", "")} groups.")
+        result = func(*args, **kwargs)
+        logging.info("Found {0} compatible groups.".format(len(result)))
+        logging.info(f"Finished candidate search for {func.__name__.replace('candidates_', '')} groups.")
+        return result
+    return wrapper
 
 
 def add_lists(list1: list[int], list2: list[int]) -> list[int]:
@@ -140,8 +152,8 @@ def prime_bound_compatiblity(order: tuple[list[int], int], bound: list[int]) -> 
         # There have appeared primes which are not in prime_bounds, so this group is not a candidate
         return False
     # We now check prime order compatibility against the relative order
-    for j in range(len(bound)):
-        if order[0][j] > bound[j]:
+    for j, b in enumerate(bound):
+        if order[0][j] > b:
             # A factor is greater than allowed, so this group is not a candidate
             return False
     return True
@@ -224,6 +236,7 @@ def smallest_factorial_from_bound(bound: int) -> int:
     return n-1
 
 
+@order_search_logger
 def candidates_AA(prime_bounds: list[int], abs_bound = None, return_codes = True):
     """
     Returns a list of all simple alternating groups :math:`\\mathrm{A}_n` whose order divides prime_bounds and is
@@ -267,6 +280,7 @@ def candidates_AA(prime_bounds: list[int], abs_bound = None, return_codes = True
     return group_candidates
 
 
+@order_search_logger
 def candidates_CA(prime_bounds: list[int], abs_bound = None, return_codes = True):
     """
     Returns a list of all classical Chevalley :math:`A_n(q)`, simple groups of Lie type, whose order divides prime_bounds and is
@@ -281,12 +295,9 @@ def candidates_CA(prime_bounds: list[int], abs_bound = None, return_codes = True
     :return: Returns a list, the contents depend on the return_codes parameter.
     """
     group_candidates = []
-    max_prime_bound = ph.nth_prime(len(prime_bounds)) + 1
-    prime_gen = ph.primes(len(prime_bounds))
-    for i in range(len(prime_bounds)):
+    primes = list(ph.primes(len(prime_bounds)))
+    for i, prime in enumerate(primes):
         # Chevalley type A groups depend on n and q=prime**k, n>0
-        # Prime number to be used to construct the group parameter q
-        prime = next(prime_gen)
         # If the allowed power of the prime is 0, it cannot appear, so we proceed to the next one
         if prime_bounds[i] == 0:
             continue
@@ -298,9 +309,9 @@ def candidates_CA(prime_bounds: list[int], abs_bound = None, return_codes = True
             product_order = ([0 for _ in range(len(prime_bounds))], 1)
             # Since the order contains q**(n*(n+1)/2) we have a stopping condition to test each n, furthermore,
             # no other part of the product is divisible by q
-            while prime_bounds[i] >= k * n * (n + 1) / 2:
+            while prime_bounds[i] >= k * n * (n + 1) // 2:
                 # We build the term of the product for the current n and scan its primes
-                term_order = ph.prime_scanner(q ** (n + 1) - 1, max_prime_bound)
+                term_order = ph.prime_scanner_local(q ** (n + 1) - 1, primes)
                 # We build product order now, notice it may have primes not found in it already
                 product_order = prod_scanned(term_order, product_order)
                 # We cannot modify product_order since we may need it in the next iteration,
@@ -308,10 +319,15 @@ def candidates_CA(prime_bounds: list[int], abs_bound = None, return_codes = True
                 relative_product_order = product_order
                 # We multiply the relative order by 1/(gcd(n+1,q-1)), notice it divides q**2-1
                 if math.gcd(n + 1, q - 1) != 1:
-                    gcd_scan = ph.prime_scanner(math.gcd(n + 1, q - 1), max_prime_bound)
+                    gcd_scan = ph.prime_scanner_local(math.gcd(n + 1, q - 1), primes)
                     relative_product_order = div_scanned(relative_product_order, gcd_scan)
                 # We check prime factors compatibility
                 if not prime_bound_compatiblity(relative_product_order, prime_bounds):
+                    # Relative order at most divides by q-1, if taking this out does not satisfy the bounds,
+                    # then no other does for greater n's
+                    max_relative_product_order = div_scanned(product_order,ph.prime_scanner_local(q-1, primes))
+                    if not prime_bound_compatiblity(max_relative_product_order,prime_bounds):
+                        break
                     n+=1
                     continue
                 # Notice: (q,n)=(2,1) and (q,n)=(3,1) are not simple groups
@@ -330,6 +346,7 @@ def candidates_CA(prime_bounds: list[int], abs_bound = None, return_codes = True
     return group_candidates
 
 
+@order_search_logger
 def candidates_CB(prime_bounds: list[int], abs_bound = None, return_codes = True):
     """
     Returns a list of all classical Chevalley :math:`B_n(q)`, simple groups of Lie type, whose order divides prime_bounds and is
@@ -344,7 +361,7 @@ def candidates_CB(prime_bounds: list[int], abs_bound = None, return_codes = True
     :return: Returns a list, the contents depend on the return_codes parameter.
     """
     group_candidates = []
-    max_prime_bound = ph.nth_prime(len(prime_bounds)) + 1
+    primes = list(ph.primes(len(prime_bounds)))
     prime_gen = ph.primes(len(prime_bounds))
     for i in range(len(prime_bounds)):
         # Chevalley type B groups depend on n and q=prime**k, n>1
@@ -358,7 +375,7 @@ def candidates_CB(prime_bounds: list[int], abs_bound = None, return_codes = True
             q = prime ** k
             n = 2
             # We will build the order of the product term iteratibly for each q (initializing at n=1)
-            product_order = ph.prime_scanner(q**2-1, max_prime_bound)
+            product_order = ph.prime_scanner_local(q**2-1, primes)
             # We multiply the order by 1/(gcd(2,q-1)), notice it divides q**2-1, which always appears as a factor
             # If q is odd, gcd(2,q-1)=2, otherwise, gcd(2,q-1) = 1, so we can adjust the power of 2 in product_order
             if prime != 2:
@@ -367,13 +384,13 @@ def candidates_CB(prime_bounds: list[int], abs_bound = None, return_codes = True
             # no other part of the product is divisible by q
             while prime_bounds[i] >= k * (n ** 2):
                 # We build the term of the product for the current n and scan its primes
-                term_order = ph.prime_scanner(q ** (2 * n) - 1, max_prime_bound)
+                term_order = ph.prime_scanner_local(q ** (2 * n) - 1, primes)
                 # We build product order now, notice it may have primes not found in it already
                 product_order = prod_scanned(term_order, product_order)
                 # We check prime factors compatibility
                 if not prime_bound_compatiblity(product_order, prime_bounds):
                     n+=1
-                    continue
+                    break
                 # Notice: (q,n)=(2,2) is not a simple group
                 if q == 2 and n == 2:
                     n += 1
@@ -390,6 +407,7 @@ def candidates_CB(prime_bounds: list[int], abs_bound = None, return_codes = True
     return group_candidates
 
 
+@order_search_logger
 def candidates_CC(prime_bounds: list[int], abs_bound = None, return_codes = True):
     """
     Returns a list of all classical Chevalley :math:`C_n(q)`, simple groups of Lie type, whose order divides prime_bounds and is
@@ -410,6 +428,7 @@ def candidates_CC(prime_bounds: list[int], abs_bound = None, return_codes = True
     return [sg.simple_group(code.replace("B","C")) for code in candidates if code.split("-")[1] != "2"]
 
 
+@order_search_logger
 def candidates_CD(prime_bounds: list[int], abs_bound = None, return_codes = True):
     """
     Returns a list of all classical Chevalley :math:`D_n(q)`, simple groups of Lie type, whose order divides prime_bounds and is
@@ -424,7 +443,7 @@ def candidates_CD(prime_bounds: list[int], abs_bound = None, return_codes = True
     :return: Returns a list, the contents depend on the return_codes parameter.
     """
     group_candidates = []
-    max_prime_bound = ph.nth_prime(len(prime_bounds)) + 1
+    primes = list(ph.primes(len(prime_bounds)))
     prime_gen = ph.primes(len(prime_bounds))
     for i in range(len(prime_bounds)):
         # Chevalley type D groups depend on n and q=prime**k, n>0
@@ -438,18 +457,18 @@ def candidates_CD(prime_bounds: list[int], abs_bound = None, return_codes = True
             q = prime ** k
             n = 4
             # We will build the order of the product term iteratibly for each q (initializing at n=3)
-            product_order = ph.prime_scanner((q**2-1)*(q**4-1), max_prime_bound)
+            product_order = ph.prime_scanner_local((q**2-1)*(q**4-1), primes)
             # Since the order contains q**(n*(n-1)) we have a stopping condition to test each n, furthermore,
             # no other part of the product is divisible by q
             while prime_bounds[i] >= k * n * (n - 1):
                 # We build the term of the product for the current n and scan its primes
-                term_order = ph.prime_scanner(q ** (2*n - 2) - 1, max_prime_bound)
+                term_order = ph.prime_scanner_local(q ** (2*n - 2) - 1, primes)
                 # We build product order now, notice it may have primes not found in it already
                 product_order = prod_scanned(term_order, product_order)
                 # We cannot modify product_order since we may need it in the next iteration,
                 # so we create a relative product order to take care of the gcd term
                 # We have to consider the extra term q**n-1:
-                relative_product_order = prod_scanned(product_order, ph.prime_scanner(q**n-1, max_prime_bound))
+                relative_product_order = prod_scanned(product_order, ph.prime_scanner_local(q**n-1, primes))
                 # We multiply the relative order by 1/(gcd(4,q**n-1))
                 # Notice that if q == 2**k then gcd(4,q**n-1)=1, as such
                 if prime != 2:
@@ -459,6 +478,12 @@ def candidates_CD(prime_bounds: list[int], abs_bound = None, return_codes = True
                         relative_product_order[0][0] -= 2
                 # We check prime factors compatibility
                 if not prime_bound_compatiblity(relative_product_order, prime_bounds):
+                    # Relative order at most divides by 4, if taking this out does not satisfy the bounds,
+                    # then no other does for greater n's
+                    max_relative_product_order = product_order
+                    max_relative_product_order[0][0] -= 2
+                    if not prime_bound_compatiblity(max_relative_product_order, prime_bounds):
+                        break
                     n+=1
                     continue
                 if return_codes:
@@ -499,7 +524,7 @@ def candidates_exceptional_chevalley(prime_bounds: list[int], abs_bound: int | N
     if max(prime_bounds) < q_power:
         return []
     group_candidates = []
-    max_prime_bound = ph.nth_prime(len(prime_bounds)) + 1
+    primes = list(ph.primes(len(prime_bounds)))
     prime_gen = ph.primes(len(prime_bounds))
     for i in range(len(prime_bounds)):
         # Exceptional Chevalley groups depend on n and q=prime**k, n>0
@@ -513,8 +538,8 @@ def candidates_exceptional_chevalley(prime_bounds: list[int], abs_bound: int | N
         for k in range(1, prime_bounds[i] // q_power + 1):
             q = prime ** k
             # We will build the order of the product term
-            product_order = ph.prime_scanner(math.prod(q ** i - 1 for i in product_indices),
-                                             max_prime_bound)
+            product_order = ph.prime_scanner_local(math.prod(q ** i - 1 for i in product_indices),
+                                             primes)
             # We add 1/gcd(gcd_value,q-1) (gcd_value can be 1,2 or 3)
             if gcd_value == 3:
                 if math.gcd(gcd_value, prime ** k - 1) != 1:
@@ -523,19 +548,23 @@ def candidates_exceptional_chevalley(prime_bounds: list[int], abs_bound: int | N
                 if math.gcd(gcd_value, prime ** k - 1) != 1:
                     product_order[0][0] -= 1
             # We check prime factors compatibility
-            # Group G_2(2) is not simple
-            if not prime_bound_compatiblity(product_order, prime_bounds) or (group_id == "G2" and prime == 2 and k == 1):
+            if not prime_bound_compatiblity(product_order, prime_bounds):
                 continue
+            # Group G_2(2) is not simple
+            if group_id == "G2" and q == 2:
+                continue
+
             if return_codes:
                 group_candidates.append("{0}-{1}_{2}".format(group_id, prime, k))
             else:
-                group_candidates.append(sg.simple_group_ids()[group_id](prime, k))
+                group_candidates.append(sg.simple_group_ids()[group_id]((prime, k)))
     # If given an absolute bound, we discard groups that surpas it
     if not (abs_bound is None):
         return absolute_bound_filter(group_candidates, abs_bound, return_codes)
     return group_candidates
 
 
+@order_search_logger
 def candidates_E6(prime_bounds: list[int], abs_bound = None, return_codes = True):
     """
     Returns a list of all exceptional Chevalley :math:`E_6(q)`, simple groups of Lie type, whose order divides prime_bounds and is
@@ -553,6 +582,7 @@ def candidates_E6(prime_bounds: list[int], abs_bound = None, return_codes = True
                                             3, "E6",return_codes)
 
 
+@order_search_logger
 def candidates_E7(prime_bounds: list[int], abs_bound = None, return_codes = True):
     """
     Returns a list of all exceptional Chevalley :math:`E_7(q)`, simple groups of Lie type, whose order divides prime_bounds and is
@@ -570,6 +600,7 @@ def candidates_E7(prime_bounds: list[int], abs_bound = None, return_codes = True
                                             2, "E7",return_codes)
 
 
+@order_search_logger
 def candidates_E8(prime_bounds: list[int], abs_bound = None, return_codes = True):
     """
     Returns a list of all exceptional Chevalley :math:`E_8(q)`, simple groups of Lie type, whose order divides prime_bounds and is
@@ -587,6 +618,7 @@ def candidates_E8(prime_bounds: list[int], abs_bound = None, return_codes = True
                                             1, "E8",return_codes)
 
 
+@order_search_logger
 def candidates_F4(prime_bounds: list[int], abs_bound = None, return_codes = True):
     """
     Returns a list of all exceptional Chevalley :math:`F_4(q)`, simple groups of Lie type, whose order divides prime_bounds and is
@@ -604,6 +636,7 @@ def candidates_F4(prime_bounds: list[int], abs_bound = None, return_codes = True
                                             1, "F4",return_codes)
 
 
+@order_search_logger
 def candidates_G2(prime_bounds: list[int], abs_bound = None, return_codes = True):
     """
     Returns a list of all exceptional Chevalley :math:`G_2(q)`, simple groups of Lie type, whose order divides prime_bounds and is
@@ -621,6 +654,7 @@ def candidates_G2(prime_bounds: list[int], abs_bound = None, return_codes = True
                                             1, "G2",return_codes)
 
 
+@order_search_logger
 def candidates_SA(prime_bounds: list[int], abs_bound = None, return_codes = True):
     """
     Returns a list of all classical Steinberg :math:`{}^2A_n(q^2)`, simple groups of Lie type, whose order divides prime_bounds and is
@@ -635,7 +669,7 @@ def candidates_SA(prime_bounds: list[int], abs_bound = None, return_codes = True
     :return: Returns a list, the contents depend on the return_codes parameter.
     """
     group_candidates = []
-    max_prime_bound = ph.nth_prime(len(prime_bounds)) + 1
+    primes = list(ph.primes(len(prime_bounds)))
     prime_gen = ph.primes(len(prime_bounds))
     for i in range(len(prime_bounds)):
         # Steinberg type A groups depend on n and q=prime**k, n>1
@@ -649,12 +683,12 @@ def candidates_SA(prime_bounds: list[int], abs_bound = None, return_codes = True
             q = prime ** k
             n = 2
             # We will build the order of the product term iteratibly for each q, initialize at n=1
-            product_order = ph.prime_scanner(q ** 2 - 1, max_prime_bound)
+            product_order = ph.prime_scanner_local(q ** 2 - 1, primes)
             # Since the order contains q**(n*(n+1)/2) we have a stopping condition to test each n, furthermore,
             # no other part of the product is divisible by q
             while prime_bounds[i] >= k * n * (n + 1) / 2:
                 # We build the term of the product for the current n and scan its primes
-                term_order = ph.prime_scanner(q ** (n + 1) - (-1) ** (n + 1), max_prime_bound)
+                term_order = ph.prime_scanner_local(q ** (n + 1) - (-1) ** (n + 1), primes)
                 # We build product order now, notice it may have primes not found in it already
                 product_order = prod_scanned(term_order, product_order)
                 # We cannot modify product_order since we may need it in the next iteration,
@@ -662,10 +696,15 @@ def candidates_SA(prime_bounds: list[int], abs_bound = None, return_codes = True
                 relative_product_order = product_order
                 # We multiply the relative order by 1/(gcd(n+1,q+1)), notice it divides q**2-1
                 if math.gcd(n + 1, q + 1) != 1:
-                    gcd_scan = ph.prime_scanner(math.gcd(n + 1, q + 1), max_prime_bound)
+                    gcd_scan = ph.prime_scanner_local(math.gcd(n + 1, q + 1), primes)
                     relative_product_order = div_scanned(relative_product_order, gcd_scan)
                 # We check prime factors compatibility
                 if not prime_bound_compatiblity(relative_product_order, prime_bounds):
+                    # Relative order at most divides by q+1, if taking this out does not satisfy the bounds,
+                    # then no other does for greater n's
+                    max_relative_product_order = div_scanned(product_order, ph.prime_scanner_local(q + 1, primes))
+                    if not prime_bound_compatiblity(max_relative_product_order, prime_bounds):
+                        break
                     n+=1
                     continue
                 # Notice: (q,n)=(2,2) is not a simple group
@@ -684,6 +723,7 @@ def candidates_SA(prime_bounds: list[int], abs_bound = None, return_codes = True
     return group_candidates
 
 
+@order_search_logger
 def candidates_SD(prime_bounds: list[int], abs_bound = None, return_codes = True):
     """
     Returns a list of all classical Steinberg :math:`{}^2D_n(q^2)`, simple groups of Lie type, whose order divides prime_bounds and is
@@ -698,7 +738,7 @@ def candidates_SD(prime_bounds: list[int], abs_bound = None, return_codes = True
     :return: Returns a list, the contents depend on the return_codes parameter.
     """
     group_candidates = []
-    max_prime_bound = ph.nth_prime(len(prime_bounds)) + 1
+    primes = list(ph.primes(len(prime_bounds)))
     prime_gen = ph.primes(len(prime_bounds))
     for i in range(len(prime_bounds)):
         # Steinberg type D groups depend on n and q=prime**k, n>3
@@ -712,18 +752,18 @@ def candidates_SD(prime_bounds: list[int], abs_bound = None, return_codes = True
             q = prime ** k
             n = 4
             # We will build the order of the product term iteratibly for each q (initializing at n=3)
-            product_order = ph.prime_scanner((q**2-1)*(q**4-1), max_prime_bound)
+            product_order = ph.prime_scanner_local((q**2-1)*(q**4-1), primes)
             # Since the order contains q**(n*(n-1)) we have a stopping condition to test each n, furthermore,
             # no other part of the product is divisible by q
             while prime_bounds[i] >= k * n * (n - 1):
                 # We build the term of the product for the current n and scan its primes
-                term_order = ph.prime_scanner(q ** (2*n - 2) - 1, max_prime_bound)
+                term_order = ph.prime_scanner_local(q ** (2*n - 2) - 1, primes)
                 # We build product order now, notice it may have primes not found in it already
                 product_order = prod_scanned(term_order, product_order)
                 # We cannot modify product_order since we may need it in the next iteration,
                 # so we create a relative product order to take care of the gcd term
                 # We have to consider the extra term q**n+1:
-                relative_product_order = prod_scanned(product_order, ph.prime_scanner(q**n+1, max_prime_bound))
+                relative_product_order = prod_scanned(product_order, ph.prime_scanner_local(q**n+1, primes))
                 # We multiply the relative order by 1/(gcd(4,q**n+1))
                 # Notice that if q == 2**k then gcd(4,q**n+1)=1, as such
                 if prime != 2:
@@ -733,6 +773,12 @@ def candidates_SD(prime_bounds: list[int], abs_bound = None, return_codes = True
                         relative_product_order[0][0] -= 2
                 # We check prime factors compatibility
                 if not prime_bound_compatiblity(relative_product_order, prime_bounds):
+                    # Relative order at most divides by 4, if taking this out does not satisfy the bounds,
+                    # then no other does for greater n's
+                    max_relative_product_order = product_order
+                    max_relative_product_order[0][0] -= 2
+                    if not prime_bound_compatiblity(max_relative_product_order, prime_bounds):
+                        break
                     n+=1
                     continue
                 if return_codes:
@@ -747,6 +793,7 @@ def candidates_SD(prime_bounds: list[int], abs_bound = None, return_codes = True
     return group_candidates
 
 
+@order_search_logger
 def candidates_2E(prime_bounds: list[int], abs_bound = None, return_codes = True):
     """
     Returns a list of all exceptional Steinberg :math:`{}^2E_6(q^2)`, simple groups of Lie type, whose order divides prime_bounds and is
@@ -764,7 +811,7 @@ def candidates_2E(prime_bounds: list[int], abs_bound = None, return_codes = True
     if max(prime_bounds) < 36:
         return []
     group_candidates = []
-    max_prime_bound = ph.nth_prime(len(prime_bounds)) + 1
+    primes = list(ph.primes(len(prime_bounds)))
     prime_gen = ph.primes(len(prime_bounds))
     for i in range(len(prime_bounds)):
         # Exceptional Steinberg 2E6 groups depend on q=prime**k
@@ -778,8 +825,8 @@ def candidates_2E(prime_bounds: list[int], abs_bound = None, return_codes = True
         for k in range(1, prime_bounds[i] // 36 + 1):
             q = prime ** k
             # We will build the order of the product term
-            product_order = ph.prime_scanner(math.prod(q ** i - (-1) ** i for i in sg.STEINBERG_2E6_POWER_INDICES),
-                                             max_prime_bound)
+            product_order = ph.prime_scanner_local(math.prod(q ** i - (-1) ** i for i in sg.STEINBERG_2E6_POWER_INDICES),
+                                             primes)
             # We add 1/gcd(gcd_value,q-1) (gcd_value can be 1,2 or 3)
             if math.gcd(3, prime ** k + 1) != 1:
                 product_order[0][1] -= 1
@@ -796,6 +843,7 @@ def candidates_2E(prime_bounds: list[int], abs_bound = None, return_codes = True
     return group_candidates
 
 
+@order_search_logger
 def candidates_3D(prime_bounds: list[int], abs_bound = None, return_codes = True):
     """
     Returns a list of all exceptional Steinberg :math:`{}^3D_4(q^3)`, simple groups of Lie type, whose order divides prime_bounds and is
@@ -813,7 +861,7 @@ def candidates_3D(prime_bounds: list[int], abs_bound = None, return_codes = True
     if max(prime_bounds) < 12:
         return []
     group_candidates = []
-    max_prime_bound = ph.nth_prime(len(prime_bounds)) + 1
+    primes = list(ph.primes(len(prime_bounds)))
     prime_gen = ph.primes(len(prime_bounds))
     for i in range(len(prime_bounds)):
         # Exceptional Steinberg 3D4 groups depend on q=prime**k
@@ -827,7 +875,7 @@ def candidates_3D(prime_bounds: list[int], abs_bound = None, return_codes = True
         for k in range(1, prime_bounds[i] // 12 + 1):
             q = prime ** k
             # We build the order of the group except for q**12
-            product_order = ph.prime_scanner(math.prod([q ** 8 + q ** 4 + 1, q ** 6 - 1, q ** 2 - 1]), max_prime_bound)
+            product_order = ph.prime_scanner_local(math.prod([q ** 8 + q ** 4 + 1, q ** 6 - 1, q ** 2 - 1]), primes)
             # We check prime factors compatibility
             if not prime_bound_compatiblity(product_order, prime_bounds):
                 continue
@@ -841,6 +889,7 @@ def candidates_3D(prime_bounds: list[int], abs_bound = None, return_codes = True
     return group_candidates
 
 
+@order_search_logger
 def candidates_SZ(prime_bounds: list[int], abs_bound = None, return_codes = True):
     """
     Returns a list of all Suzuki :math:`{}^2B_2(2^{2n+1})` groups, simple groups of Lie type, whose order divides prime_bounds and is
@@ -858,13 +907,13 @@ def candidates_SZ(prime_bounds: list[int], abs_bound = None, return_codes = True
     if prime_bounds[0] < 6:
         return []
     group_candidates = []
-    max_prime_bound = ph.nth_prime(len(prime_bounds)) + 1
+    primes = list(ph.primes(len(prime_bounds)))
     # Since q=2**(2n+1) for Suzuki grups, we have q**2 = q**(4n+2), we start at n=1
     n = 1
     while 4 * n + 2 <= prime_bounds[0]:
         q = 2 ** (2 * n + 1)
         # We build the order of the group except for q**2
-        product_order = ph.prime_scanner((q ** 2 + 1) * (q - 1), max_prime_bound)
+        product_order = ph.prime_scanner_local((q ** 2 + 1) * (q - 1), primes)
         # We check prime factors compatibility
         if not prime_bound_compatiblity(product_order, prime_bounds):
             n += 1
@@ -880,6 +929,7 @@ def candidates_SZ(prime_bounds: list[int], abs_bound = None, return_codes = True
     return group_candidates
 
 
+@order_search_logger
 def candidates_RF(prime_bounds: list[int], abs_bound = None, return_codes = True):
     """
     Returns a list of all Ree :math:`{}^2F_4(2^{2n+1})` groups, simple groups of Lie type, whose order divides prime_bounds and is
@@ -897,13 +947,13 @@ def candidates_RF(prime_bounds: list[int], abs_bound = None, return_codes = True
     if prime_bounds[0] < 36:
         return []
     group_candidates = []
-    max_prime_bound = ph.nth_prime(len(prime_bounds)) + 1
+    primes = list(ph.primes(len(prime_bounds)))
     # Since q=2**(2n+1) for Suzuki grups, we have q**12 = q**(24n+12), we start at n=1
     n = 1
     while 24 * n + 12 <= prime_bounds[0]:
         q = 2 ** (2 * n + 1)
         # We build the order of the group except for q**12
-        product_order = ph.prime_scanner(math.prod([q ** 6 + 1, q ** 4 - 1, q ** 3 + 1, q - 1]), max_prime_bound)
+        product_order = ph.prime_scanner_local(math.prod([q ** 6 + 1, q ** 4 - 1, q ** 3 + 1, q - 1]), primes)
         # We check prime factors compatibility
         if not prime_bound_compatiblity(product_order, prime_bounds):
             n += 1
@@ -918,6 +968,8 @@ def candidates_RF(prime_bounds: list[int], abs_bound = None, return_codes = True
         return absolute_bound_filter(group_candidates, abs_bound, return_codes)
     return group_candidates
 
+
+@order_search_logger
 def candidates_TT(prime_bounds: list[int], abs_bound = None, return_codes = True):
     """
     Returns the Tits group :math:`{}^2F_4(2)'` if its order divides prime_bounds and is less than or equal to abs_bound.
@@ -933,20 +985,22 @@ def candidates_TT(prime_bounds: list[int], abs_bound = None, return_codes = True
     # We check prime order compatibility
     try:
         for i in range(len(sg.TITS_ORDER)):
-            if sg.TITS_ORDER > prime_bounds[i]:
+            if sg.TITS_ORDER[i] > prime_bounds[i]:
                 return []
     except IndexError:
         # If we have more elements in sg.TITS_ORDER than in prime_bounds, the code raises IndexError, meaning we are
         # considering too few primes, so it is not a candidate.
         return []
     # Check the absolute bound:
-    if ph.prime_reconstructor(sg.TITS_ORDER, 1) > abs_bound:
-        return []
+    if not(abs_bound is None):
+        if ph.prime_reconstructor(sg.TITS_ORDER, 1) > abs_bound:
+            return []
     if return_codes:
         return ["TT"]
     return [sg.Tits()]
 
 
+@order_search_logger
 def candidates_RG(prime_bounds: list[int], abs_bound = None, return_codes = True):
     """
     Returns a list of all Ree :math:`{}^2G_2(3^{2n+1})` groups, simple groups of Lie type, whose order divides prime_bounds and is
@@ -965,13 +1019,13 @@ def candidates_RG(prime_bounds: list[int], abs_bound = None, return_codes = True
     if prime_bounds[1] < 9:
         return []
     group_candidates = []
-    max_prime_bound = ph.nth_prime(len(prime_bounds)) + 1
+    primes = list(ph.primes(len(prime_bounds)))
     # Since q=2**(2n+1) for Suzuki grups, we have q**3 = q**(6n+3), we start at n=1
     n = 1
     while 6 * n + 3 <= prime_bounds[1]:
         q = 3 ** (2 * n + 1)
         # We build the order of the group except for q**12
-        product_order = ph.prime_scanner((q ** 3 + 1) * (q - 1), max_prime_bound)
+        product_order = ph.prime_scanner_local((q ** 3 + 1) * (q - 1), primes)
         # We check prime factors compatibility
         if not prime_bound_compatiblity(product_order, prime_bounds):
             n += 1
@@ -986,6 +1040,7 @@ def candidates_RG(prime_bounds: list[int], abs_bound = None, return_codes = True
         return absolute_bound_filter(group_candidates, abs_bound, return_codes)
     return group_candidates
 
+@order_search_logger
 def candidates_SP(prime_bounds: list[int], abs_bound = None, return_codes = True):
     """
     Returns a list of all sporadic simple groups whose order divides prime_bounds and is
@@ -999,19 +1054,20 @@ def candidates_SP(prime_bounds: list[int], abs_bound = None, return_codes = True
         the function returns a list of strings, each string represents a simple group code. See SimpleGroups.simple_group_ids.
     :return: Returns a list, the contents depend on the return_codes parameter.
     """
+    sporadic_orders = {group["id"]: group["order"] for group in sg.sporadic_groups_data()}
     group_candidates = []
-    for group in sg.SPORADIC_ORDERS:
+    for group in sporadic_orders:
         # We check prime order compatibility
         try:
-            for i in range(len(sg.SPORADIC_ORDERS[group])):
-                if sg.SPORADIC_ORDERS[group] > prime_bounds[i]:
+            for i, prime_power in enumerate(sporadic_orders[group]):
+                if prime_power > prime_bounds[i]:
                     continue
         except IndexError:
-            # If we have more elements in sg.SPORADIC_ORDERS[group] than in prime_bounds, the code raises IndexError,
+            # If we have more elements in sporadic_orders[group] than in prime_bounds, the code raises IndexError,
             # meaning we are considering too few primes, so it is not a candidate.
             continue
         # Check the absolute bound:
-        if abs_bound is not None and (ph.prime_reconstructor(sg.TITS_ORDER, 1) > abs_bound):
+        if abs_bound is not None and (ph.prime_reconstructor(sporadic_orders[group], 1) > abs_bound):
             continue
         if return_codes:
             group_candidates += [group]
@@ -1081,7 +1137,8 @@ CANDIDATE_FUNCTIONS = {"AA": candidates_AA,
                        "SP": candidates_SP}
 
 
-def simple_group_by_order(prime_bounds: list[int], abs_bound: int|None=None, return_codes: bool=True, ignore: list[str]|None=None):
+def simple_group_by_order(prime_bounds: list[int], abs_bound: int|None=None, return_codes: bool=True, ignore: list[str]|None=None)\
+        -> list[str|sg.SimpleGroup]:
     """
     Returns a list of all simple groups whose order divides prime_bounds and is less than or equal to abs_bound.
 
