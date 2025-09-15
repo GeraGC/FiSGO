@@ -12,6 +12,12 @@
   },
 
   {
+    "code": ["AA-7"],
+    "degree": 4,
+    "irreps": 2
+  },
+
+  {
     "code": ["CA-2-2", "CA-2-2_1", "CA-1-7", "CA-1-7_1"],
     "degree": 3,
     "irreps": 2

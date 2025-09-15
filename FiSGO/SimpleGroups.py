@@ -181,11 +181,14 @@ class SimpleGroup:
         """
         return code_normalizer(self.code())
 
-    def smallest_pirrep_degree(self) -> tuple[int, int]:
+    def smallest_pirrep_degree(self) -> tuple[int, int | None]:
         """
         Using the bounds of Seitz, Landazuri, Tiep and Zalesskii, returns the degree of the smallest non-trivial
         projective irreducible complex representation of the simple group. Furthermore, it also returns the number of
         different representations of that degree.
+
+        .. caution:: In the case of the alternating groups, only the smallest degree is currently implemented,
+            the number of different representations is given as None.
 
         :return: The degree of the smallest non-trivial complex projective representation and the number of different
             representations of that degree.
@@ -548,6 +551,13 @@ class Alternating(UniParamSimpleGroup):
 
     def normalized_code(self):
         return self.code()
+
+    def smallest_pirrep_degree(self) -> tuple[int, int | None]:
+        # We check if the current group is an exceptional case:
+        exceptional_case = super().smallest_pirrep_degree()
+        if not exceptional_case == (0, 0):
+            return exceptional_case
+        return self.par-1, None
 
 
 class ChevalleyA(BiParamSimpleGroup):
