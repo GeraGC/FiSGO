@@ -2,12 +2,30 @@
     :format: latex html
 
 ==========================================
-[WIP] FiSGO: Finite simple groups by order
+🛠️[WIP]🛠️FiSGO: Finite simple groups by order
 ==========================================
 
-.. image:: https://app.readthedocs.org/projects/fisgo/badge/?version=latest
-    :target: https://fisgo.readthedocs.io/en/latest
-    :alt: Documentation Status
+.. image:: https://readthedocs.org/projects/fisgo/badge/?version=latest
+   :target: https://fisgo.readthedocs.io
+   :alt: ReadTheDocs
+
+.. image:: https://img.shields.io/badge/License-GPLv3-blue.svg
+   :target: https://www.gnu.org/licenses/gpl-3.0.en.html
+   :alt: License GPL-3.0
+
+.. image:: https://img.shields.io/badge/python-3.12%2B-blue
+   :target: https://www.python.org/
+   :alt: Python Version
+
+.. image:: https://img.shields.io/badge/status-WIP-orange
+   :target: #
+   :alt: Status WIP
+
+..
+    .. image:: https://img.shields.io/pypi/dm/<package-name>.svg
+       :target: https://pypi.org/project/<package-name>/
+       :alt: PyPI Downloads
+
 
 FiSGO is a Python package that aims to provide a solution to the following problems:
 
@@ -15,7 +33,7 @@ I. Given a number :raw-math:`$N$`, identify all finite simple groups with order 
 #. Given a range :raw-math:`$[n,m]\subset \mathbb{N}$`, identify all simple groups with complex irreducible projective
    representations of degree :raw-math:`$d\in [n,m]$`.
 
-Introduction
+📖Introduction
 ------------
 FiSGO was born as part of the author's bachelor's thesis on the classification of finite irreducible subgroups
 of :raw-math:`$PGL_{n}(\mathbb{C})$`. Originally, only point (I) of the previous list was contemplated, and so the current
@@ -33,14 +51,14 @@ evaluating formulas), than a tool to actually carry on heavy computational work 
 character computation. This philosophy is exemplified at the start of [Section 4.2 Survey article].
 
 Finally, we have decided to use Python and present FiSGO as a Python package so it can be easily integrated with
-SageMath. There are a few reasons for this. Firstly, SageMath can interface with other software such as GAP and
+SageMath. There are a few reasons for this. Firstly, SageMath can interface with other software such as [GAP4]_ and
 Magma, both of which are relevant software in the character theory field. Furthermore, since FiSGO's point (II) is
 more focused on data treatment and analysis than actual computation, Python seemed ideal.
 
-What can FiSGO do?
+🧩What can FiSGO do?
 ------------------
-We provide a checklist of FiSGO's main features. Those which are checked |check| are fully implemented, those
-with an empty box |empty| are partially implemented. Finally, those marked |cross| are currently unimplemented and
+We provide a checklist of FiSGO's main features. Those which are green |check| are fully implemented, yellow ones
+|empty| are partially implemented. Finally, those marked red |cross| are currently unimplemented and
 in developement.
 
 1. |check| Given a list of prime powers :raw-math:`$N = 2^a3^b5^c\cdots$`, identify all finite simple groups with
@@ -76,7 +94,7 @@ Additionally, this GitHub repository contains a directory (``FiSGO/HissMalleTabl
 formats containing all the data in the Hiss-Malle tables (feature #5), such that anyone can access it and process it themselves.
 For more information, refer to the documentation or ``FiSGO/HissMalleTableFormats/README.rst``.
 
-Feature status (17/09/2025)
+🚦Feature status (17/09/2025)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 We breafly describe the status of the partially implemented features.
 
@@ -87,7 +105,7 @@ We breafly describe the status of the partially implemented features.
    to integrate them into this function.
 
 
-Documentation and tutorial
+📝Documentation and tutorial
 --------------------------
 .. image:: https://app.readthedocs.org/projects/fisgo/badge/?version=latest
     :target: https://fisgo.readthedocs.io/en/latest
@@ -99,14 +117,14 @@ by clicking the badge.
 A basic tutorial of all the main features and the general working of the program will be provided in the
 documentation website when the main features are all implemented.
 
-Installation
+💻Installation
 ------------
 FiSGO will be provided as a Python package available through PyPI when all its main features are implemented.
 As of today (17/09/2025), this is still a work in progress. For now, all modules can be imported manually by
 cloning the repository directory FiSGO/FiSGO/, where all modules are contained.
 
 
-Acknowledgements
+🤝Acknowledgements
 ----------------
 
 This project is licensed under the GNU GENERAL PUBLIC LICENSE (Version 3), see LICENSE for more details.
@@ -133,14 +151,14 @@ people.
 | 08193 Bellaterra, Catalonia, Spain
 | ggonzalo.math@gmail.com // gerard.gonzalo@uab.cat
 
-Project wide references
+📚Project wide references
 -----------------------
 
 .. _readthedocs website: https://fisgo.readthedocs.io/en/latest
 .. _his website: https://www.math.rwth-aachen.de/~Frank.Luebeck/chev/DegMult/index.html?LANG=en
-.. |check| :: 🟩
-.. |empty| :: 🟨
-.. |cross| :: 🟥
+.. |check| replace:: 🟩
+.. |empty| replace:: 🟨
+.. |cross| replace:: 🟥
 
 
 .. [HM01] Hiss, G., & Malle, G. (2001). Low-Dimensional Representations of
