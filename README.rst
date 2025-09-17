@@ -1,3 +1,6 @@
+.. role:: raw-math(raw)
+    :format: latex html
+
 ==========================================
 [WIP] FiSGO: Finite simple groups by order
 ==========================================
@@ -8,7 +11,7 @@
 
 FiSGO is a Python package that aims to provide a solution to the following problems:
 
-I. Given a number :math:`N`, identify all finite simple groups with order dividing :math:`N`.
+I. Given a number :raw-math:`$N$`, identify all finite simple groups with order dividing :math:`N`.
 #. Given a range :math:`[n,m]\subset \mathbb{N}`, identify all simple groups with complex irreducible projective
    representations of degree :math:`d\in [n,m]`.
 
