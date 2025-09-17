@@ -29,7 +29,7 @@
 
 FiSGO is a Python package that aims to provide a solution to the following problems:
 
-I. Given a number :raw-math:`$N$`, identify all finite simple groups with order dividing :raw-math:`$N$`.
+I. Given a number :raw-math:`$k$`, identify all finite simple groups with order dividing :raw-math:`$k$`.
 #. Given a range :raw-math:`$[n,m]\subset \mathbb{N}$`, identify all simple groups with complex irreducible projective
    representations of degree :raw-math:`$d\in [n,m]$`.
 
