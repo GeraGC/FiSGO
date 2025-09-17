@@ -138,9 +138,9 @@ Project wide references
 
 .. _readthedocs website: https://fisgo.readthedocs.io/en/latest
 .. _his website: https://www.math.rwth-aachen.de/~Frank.Luebeck/chev/DegMult/index.html?LANG=en
-.. |check| unicode:: U+2611
-.. |empty| unicode:: U+2610
-.. |cross| unicode:: U+2612
+.. |check| :: 🟩
+.. |empty| :: 🟨
+.. |cross| :: 🟥
 
 
 .. [HM01] Hiss, G., & Malle, G. (2001). Low-Dimensional Representations of
