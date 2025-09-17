@@ -11,14 +11,14 @@
 
 FiSGO is a Python package that aims to provide a solution to the following problems:
 
-I. Given a number :raw-math:`$N$`, identify all finite simple groups with order dividing :math:`N`.
-#. Given a range :math:`$[n,m]\subset \mathbb{N}$`, identify all simple groups with complex irreducible projective
-   representations of degree :math:`d\in [n,m]`.
+I. Given a number :raw-math:`$N$`, identify all finite simple groups with order dividing :raw-math:`$N$`.
+#. Given a range :raw-math:`$[n,m]\subset \mathbb{N}$`, identify all simple groups with complex irreducible projective
+   representations of degree :raw-math:`$d\in [n,m]$`.
 
 Introduction
 ------------
 FiSGO was born as part of the author's bachelor's thesis on the classification of finite irreducible subgroups
-of :math:`PGL_{n}(\mathbb{C})`. Originally, only point (I) of the previous list was contemplated, and so the current
+of :raw-math:`$PGL_{n}(\mathbb{C})$`. Originally, only point (I) of the previous list was contemplated, and so the current
 given name of the project.
 
 After the defence of the bachelor's thesis, a survey article (soon to be available in ArXiv) was elaborated by greatly
@@ -43,8 +43,8 @@ We provide a checklist of FiSGO's main features. Those which are checked |check|
 with an empty box |empty| are partially implemented. Finally, those marked |cross| are currently unimplemented and
 in developement.
 
-1. |check| Given a list of prime powers :math:`N = 2^a3^b5^c\cdots`, identify all finite simple groups with
-   order dividing :math:`N`.
+1. |check| Given a list of prime powers :raw-math:`$N = 2^a3^b5^c\cdots$`, identify all finite simple groups with
+   order dividing :raw-math:`$N$`.
 #. |check| Compute/access basic information of any simple group, such as its order, Schur multiplier, recommended notations
    in LaTeX, etc.
 #. |check| Access to all information on ordinary character degrees and multiplicities of the sporadic groups and their coverings.
