@@ -121,7 +121,7 @@ documentation website when the main features are all implemented.
 ------------
 FiSGO will be provided as a Python package available through PyPI when all its main features are implemented.
 As of today (17/09/2025), this is still a work in progress. For now, all modules can be imported manually by
-cloning the repository directory FiSGO/FiSGO/, where all modules are contained.
+cloning the repository directory ``FiSGO/FiSGO/``, where all modules are contained.
 
 
 🤝Acknowledgements
