@@ -21,6 +21,10 @@
    :target: #
    :alt: Status WIP
 
+.. image:: https://zenodo.org/badge/DOI/10.48550/arXiv.2510.00718.svg
+   :target: https://doi.org/10.48550/arXiv.2510.00718
+   :alt: Status WIP
+
 ..
     .. image:: https://img.shields.io/pypi/dm/<package-name>.svg
        :target: https://pypi.org/project/<package-name>/
@@ -39,7 +43,7 @@ FiSGO was born as part of the author's bachelor's thesis on the classification o
 of :raw-math:`$PGL_{n}(\mathbb{C})$`. Originally, only point (I) of the previous list was contemplated, and so the current
 given name of the project.
 
-After the defence of the bachelor's thesis, a survey article (soon to be available in ArXiv) was elaborated by greatly
+After the defence of the bachelor's thesis, a `survey article`_ was elaborated by greatly
 expanding on the literature based research, and so FiSGO was reworked and expanded to contemplate point (II).
 
 In tackling point (II), unlike other software such as GAP, SageMath or CHEVIE, FiSGO's methods are less focused on
@@ -155,6 +159,7 @@ people.
 -----------------------
 
 .. _readthedocs website: https://fisgo.readthedocs.io/en/latest
+.. _survey article: https://doi.org/10.48550/arXiv.2510.00718
 .. _his website: https://www.math.rwth-aachen.de/~Frank.Luebeck/chev/DegMult/index.html?LANG=en
 .. |check| replace:: 🟩
 .. |empty| replace:: 🟨
