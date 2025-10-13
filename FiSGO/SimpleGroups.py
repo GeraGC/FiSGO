@@ -386,7 +386,7 @@ class UniParamSimpleGroup(SimpleGroup):
         if mod_value == 0:
             mod_group = "0"
         else:
-            par_mod = self.par % mod_value
+            par_mod = self.par_value() % mod_value
             for key, group in data["mod_groups"].items():
                 if par_mod in group:
                     mod_group = key
