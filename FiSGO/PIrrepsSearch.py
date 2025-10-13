@@ -9,6 +9,14 @@ import FiSGO.OrderSearch as Os
 import FiSGO.PrimesHandler as Ph
 import math
 
+# TODO: Handle Lübeck exceptions and test everything
+
+LUBECK_SQRT_CODES = ["RF", "RG", "SZ"]
+LUBECK_MAX_RANK = ["CA", "CB", "CC", "CD", "SA", "SD"]
+LUBECK_NO_MAX_RANK = ["E6", "E7", "E8", "2E", "3D", "G2", "F4"]
+LIE_TYPE_GROUP_IDS = LUBECK_SQRT_CODES + LUBECK_MAX_RANK + LUBECK_NO_MAX_RANK
+
+
 def factorial_factor(n: int, p:int) -> int:
     """
     An implementation of Legendre's formula to compute the largest power of p dividing n!.
@@ -193,7 +201,23 @@ def pirreps_search(n_range: list[int]|int, ignore: list[str] | None=None, use_ab
             complete_data.append(sporadic_group.normalized_code())
     logging.info("Sporadic pirreps successfully checked.")
     # Here we check using Lubeck -> gives complete_data
-    ...
+    logging.info("Checking Lübeck data...")
+    for lie_group_id in LIE_TYPE_GROUP_IDS:
+        logging.info(f"Checking data for group type {lie_group_id}.")
+        candidates = [group for group in group_candidates if group.code()[:2] == lie_group_id]
+        lubeck_data = lubeck_bulk_get(lie_group_id, candidates)
+        for group, degrees in lubeck_data[0].items():
+            complete_data.append(group.normalized_code())
+            group_candidates.remove(group)
+            degrees_in_range = [degree for degree in degrees if min_n <= degree <= max_n]
+            if include_origin:
+                for degree in degrees_in_range:
+                    pirreps.append((degree, group.normalized_code(), "Lübeck"))
+            else:
+                for degree in degrees_in_range:
+                    pirreps.append((degree, group.normalized_code()))
+        logging.info(f"Successfully obtained data for group type {lie_group_id}.")
+    logging.info("Lübeck data successfully checked.")
     # Here we check using Dixon and Zalesskii relatively small pirreps -> can give either data type
     ...
 
@@ -232,3 +256,92 @@ def hiss_malle_range(degree_range: list[int], char: int=0, allow_duplicates: boo
     if allow_duplicates:
         return list(sorted(pirreps_in_range))
     return list(sorted(set(pirreps_in_range)))
+
+
+def lubeck_bulk_get(group_id: str, groups:list[Sg.UniParamSimpleGroup] | list[Sg.BiParamSimpleGroup]) -> tuple[dict, list]:
+    """
+    Given a list of groups or group codes of the same type, returns their computed Lübeck data.
+
+    :param group_id: Group ID of the codes in 'codes'
+    :param groups: List of group objects of the same type.
+    :return: A tuple containing a dictionary pairing each group with its representations, and a list of all groups
+    whose data is unavailable.
+    """
+    pirreps_computed = dict()
+    all_data = Sg.lubeck_data(group_id)
+    # We start by filterning out exceptions
+    unavailable = [group for group in groups if group.normalized_code() in Sg.EXCEPTIONAL_MULTIPLIER_CODES]
+    avaliable: list[Sg.UniParamSimpleGroup] = [group for group in groups if group.normalized_code() not in Sg.EXCEPTIONAL_MULTIPLIER_CODES]
+
+    if group_id in LUBECK_SQRT_CODES:
+        # We select the sqrt value depending on the group
+        match group_id:
+            case "RF" | "SZ":
+                sqrt_value = 2
+            case _:
+                sqrt_value = 3
+        # We compute the pirreps for each group
+        for group in avaliable:
+            pirreps = []
+            pirreps_data = all_data[group_id]["irreps"]["0"]
+            for pirrep in pirreps_data:
+                mult = Sg._sqrt_horner(pirrep["mult"], group.par, val=sqrt_value)
+                if mult != 0:
+                    degree = Sg._sqrt_horner(pirrep["degree"], group.par, val=sqrt_value)
+                    pirreps.append(degree)
+            pirreps_computed[group] = pirreps
+        return pirreps_computed, unavailable
+
+    elif group_id in LUBECK_NO_MAX_RANK:
+        # We compute the pirreps for each group
+        for group in avaliable:
+            data = all_data[group_id]
+            mod_value = data["mod"]
+            # We look for the modularity group of our parameter
+            if mod_value == 0:
+                mod_group = "0"
+            else:
+                par_mod = group.par_value() % mod_value
+                for key, mods in data["mod_groups"].items():
+                    if par_mod in mods:
+                        mod_group = key
+                    break
+            pirreps_data = data["irreps"][mod_group]
+            # We compute the degrees
+            pirreps = []
+            for pirrep in pirreps_data:
+                mult = Sg._horner(pirrep["mult"], group.par_value())
+                if mult != 0:
+                    degree = Sg._horner(pirrep["degree"], group.par_value())
+                    pirreps.append([degree, mult])
+            pirreps_computed[group] = pirreps
+        return pirreps_computed, unavailable
+
+    elif group_id in LUBECK_MAX_RANK:
+        # We filter out those of rank greater than 8
+        unavailable += [group.normalized_code() for group in groups if group.n > 8]
+        avaliable: list[Sg.BiParamSimpleGroup] = [group for group in groups if group.n < 9]
+        for group in avaliable:
+            data = all_data[f"{group_id}-{group.n}"]
+            mod_value = data["mod"]
+            # We look for the modularity group of our parameter
+            if mod_value == 0:
+                mod_group = "0"
+            else:
+                q_mod = group.q_value() % mod_value
+                for key, group in data["mod_groups"].items():
+                    if q_mod in group:
+                        mod_group = key
+                    break
+            pirreps_data = data["irreps"][mod_group]
+            # We compute the degrees
+            pirreps = []
+            for pirrep in pirreps_data:
+                mult = Sg._horner(pirrep["mult"], group.q_value())
+                if mult != 0:
+                    degree = Sg._horner(pirrep["degree"], group.q_value())
+                    pirreps.append([degree, mult])
+            pirreps_computed[group] = pirreps
+        return pirreps_computed, unavailable
+    else:
+        return pirreps_computed, [group for group in groups]
