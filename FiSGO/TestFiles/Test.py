@@ -107,7 +107,7 @@ logging.basicConfig(level=logging.INFO)
 # print(list(simple_group_ids().keys()))
 
 ignore_all = ['CA', 'CB', 'CC', 'CD', 'SA', 'SP', 'SD', 'AA', 'E6', 'E7', 'E8', 'F4', 'G2', 'TT', '2E', '3D', 'SZ', 'RF', 'RG', 'CY']
-ignore_all.remove('CA')
+ignore_all.remove('CC')
 
 # print(sporadic_lookup_property("id", r"Fi24'", "id"))
 
@@ -119,6 +119,6 @@ ignore_all.remove('CA')
 
 # print(timeit.timeit(lambda: Os.candidates_CA(pis.build_single_bound(448)), number=1))
 
-print(pis.pirreps_search(1000))
+# print(pis.pirreps_search(500))
 
-# print(pis.pirreps_search(1000, ignore=ignore_all))
+print(pis.pirreps_search([251,1001],ignore=["AA"], include_origin=True))

@@ -9,6 +9,16 @@ import FiSGO.OrderSearch as Os
 import FiSGO.PrimesHandler as Ph
 import math
 
+from DataProcessingScripts.Hiss_Malle_missing_data import q_value
+
+# TODO: Handle Lübeck exceptions and test everything
+
+LUBECK_SQRT_CODES = ["RF", "RG", "SZ"]
+LUBECK_MAX_RANK = ["CA", "CB", "CC", "CD", "SA", "SD"]
+LUBECK_NO_MAX_RANK = ["E6", "E7", "E8", "2E", "3D", "G2", "F4"]
+LIE_TYPE_GROUP_IDS = LUBECK_SQRT_CODES + LUBECK_MAX_RANK + LUBECK_NO_MAX_RANK
+
+
 def factorial_factor(n: int, p:int) -> int:
     """
     An implementation of Legendre's formula to compute the largest power of p dividing n!.
@@ -115,15 +125,25 @@ def pirreps_search(n_range: list[int]|int, ignore: list[str] | None=None, use_ab
                    include_origin: bool=False) \
         -> tuple[list[tuple[int, str]] | list[tuple[int, str, str]], list[str| Any], list[str | Any]] | None:
     """
+    Given a dimension or a dimension range, this function tries to search for simple groups containing projective representations
+    within the given range.
 
+    This is a high level function, combining most of the functionalities offered by FiSGO into a single function.
+    This function may be quite slow, and produces log information. It is recommended to dump the output of the function
+    into a file for later use and analysis, rather than using it inside a script.
 
-    .. caution:: The end of the range is NOT included.
+    .. caution:: The end of the range "n_range" is NOT included.
 
-    :param n_range:
-    :param ignore:
-    :param use_absolute_bound:
-    :param include_origin:
-    :return:
+    :param n_range: Either a positive integer or a pair of positive integers indicating the dimension range of the representation
+    search. Example: 1000 or [222,301]
+
+    :param ignore: A list of group ID's to be ignored in the search. Example: ["AA", "SZ"]
+    :param use_absolute_bound: If true, uses an additional absolute bound, see :py:func:`build_absolute_bound`
+    :param include_origin: If true, returns the database where each representation was sourced from alongside the degree.
+    :return: A 3-tuple of lists. The first list contains the projective representation degrees found within the given range.
+    The second list contains all those groups whose data representation data is complete, meaning it is known that no other
+    representations may appear within the range. The third list contains a list of groups whose data may not be complete,
+    meaning there could be representations of such groups within the range that have not been found.
     """
     logging.info("Starting pirreps search -----")
     if isinstance(n_range, int):
@@ -145,10 +165,7 @@ def pirreps_search(n_range: list[int]|int, ignore: list[str] | None=None, use_ab
     elif min_n <= 250:
         # We can partially use Hiss-Malle
         logging.info("Using Hiss-Malle data for degrees up to 250...")
-        if include_origin:
-            pirreps = [(a, b, "Hiss-Malle") for a,b in hiss_malle_range([min_n, 250])]
-        else:
-            pirreps = hiss_malle_range([min_n, 250])
+        pirreps = [(a, b, "Hiss-Malle") for a,b in hiss_malle_range([min_n, 250])]
     # All bellow 250 is known with Hiss-Malle, so we search for the rest
     logging.info("Building bounds...")
     bound = build_bounds([max(min_n, 251), max_n+1])
@@ -171,10 +188,7 @@ def pirreps_search(n_range: list[int]|int, ignore: list[str] | None=None, use_ab
         else:
             # We check if the smallest pirrep degree is in the range
             if min_n <= group.smallest_pirrep_degree()[0] <= max_n:
-                if include_origin:
-                    pirreps.append((group.smallest_pirrep_degree()[0], group.normalized_code(), "Smallest pirrep"))
-                else:
-                    pirreps.append((group.smallest_pirrep_degree()[0], group.normalized_code()))
+                pirreps.append((group.smallest_pirrep_degree()[0], group.normalized_code(), "Smallest pirrep"))
     logging.info(f"Smallest pirrep degrees successfully checked with {len(group_candidates)} groups remaining.")
     # Here we check the sporadics -> gives complete_data
     logging.info("Checking sporadic pirreps...")
@@ -183,25 +197,43 @@ def pirreps_search(n_range: list[int]|int, ignore: list[str] | None=None, use_ab
         for degree in sporadic_group.pirrep_degrees():
             if min_n <= degree <= max_n:
                 exists_pirrep = True
-                if include_origin:
-                    pirreps.append((degree, sporadic_group.normalized_code(), "Sporadic"))
-                else:
-                    pirreps.append((degree, sporadic_group.normalized_code()))
+                pirreps.append((degree, sporadic_group.normalized_code(), "Sporadic"))
         group_candidates.remove(sporadic_group)
         # If there is no pirrep in the range, we do not need it to appear anywhere
         if exists_pirrep:
             complete_data.append(sporadic_group.normalized_code())
     logging.info("Sporadic pirreps successfully checked.")
     # Here we check using Lubeck -> gives complete_data
-    ...
+    logging.info("Checking Lübeck data...")
+    for lie_group_id in LIE_TYPE_GROUP_IDS:
+        logging.info(f"Checking data for group type {lie_group_id}.")
+        candidates = [group for group in group_candidates if group.code()[:2] == lie_group_id]
+        if not candidates: # if candidates == []
+            logging.info(f"### No groups of type {lie_group_id}.")
+            continue
+        lubeck_data = lubeck_bulk_get(lie_group_id, candidates)
+        if not lubeck_data[1]:
+            logging.info(f"### Lubeck data for all groups of type {lie_group_id} available!")
+        else:
+            logging.info(f"### Some groups of type {lie_group_id} have no Lübeck data available.")
+        for group, degree_mult_pair in lubeck_data[0].items():
+            complete_data.append(group.normalized_code())
+            group_candidates.remove(group)
+            degrees_in_range = [degree for degree, mult in degree_mult_pair if min_n <= degree <= max_n]
+            for degree in degrees_in_range:
+                pirreps.append((degree, group.normalized_code(), "Lübeck"))
+        logging.info(f"Successfully checked Lübeck data for group type {lie_group_id}.")
+    logging.info("Lübeck data successfully checked.")
     # Here we check using Dixon and Zalesskii relatively small pirreps -> can give either data type
     ...
 
-    # We clean the data of duplicates
+    # We clean the data presentation
     if include_origin:
         ...
     else:
-        pirreps = list(sorted(set(pirreps)))
+        pirreps_no_origin = [(pirrep[0], pirrep[1]) for pirrep in pirreps]
+        # Clean duplicates
+        pirreps = list(sorted(set(pirreps_no_origin)))
     # All groups remaining as candidates indicate that we only have partial data
     partial_data = [group.normalized_code() for group in group_candidates]
     # We return info on the groups
@@ -232,3 +264,69 @@ def hiss_malle_range(degree_range: list[int], char: int=0, allow_duplicates: boo
     if allow_duplicates:
         return list(sorted(pirreps_in_range))
     return list(sorted(set(pirreps_in_range)))
+
+
+def lubeck_bulk_get(group_id: str, groups:list[Sg.UniParamSimpleGroup] | list[Sg.BiParamSimpleGroup]) -> tuple[dict, list]:
+    """
+    Given a list of groups or group codes of the same type, returns their computed Lübeck data.
+
+    :param group_id: Group ID of the codes in 'codes'
+    :param groups: List of group objects of the same type.
+    :return: A tuple containing a dictionary pairing each group with a list of degree and multiplicity pairs
+    of the projective representations, and a list of all groups whose data is unavailable.
+    """
+    pirreps_computed = dict()
+    all_data = Sg.lubeck_data(group_id)
+    # We start by filterning out exceptions
+    unavailable = [group for group in groups if group.normalized_code() in Sg.EXCEPTIONAL_MULTIPLIER_CODES]
+    avaliable: list[Sg.UniParamSimpleGroup] = [group for group in groups if group.normalized_code() not in Sg.EXCEPTIONAL_MULTIPLIER_CODES]
+
+    if group_id in LUBECK_SQRT_CODES:
+        # We select the sqrt value depending on the group
+        match group_id:
+            case "RF" | "SZ":
+                sqrt_value = 2
+            case _:
+                sqrt_value = 3
+        # We compute the pirreps for each group
+        for group in avaliable:
+            pirreps = []
+            pirreps_data = all_data[group_id]["irreps"]["0"]
+            for pirrep in pirreps_data:
+                mult = Sg._sqrt_horner(pirrep["mult"], group.par, val=sqrt_value)
+                if mult != 0:
+                    degree = Sg._sqrt_horner(pirrep["degree"], group.par, val=sqrt_value)
+                    pirreps.append([degree, mult])
+            pirreps_computed[group] = pirreps
+        return pirreps_computed, unavailable
+
+    elif group_id in LUBECK_NO_MAX_RANK or group_id in LUBECK_MAX_RANK:
+        if group_id in LUBECK_NO_MAX_RANK:
+            group_type = "uni"
+            data = all_data[group_id]
+        else: # group_id in LUBECK_MAX_RANK
+            group_type = "bi"
+            # We filter out those of rank greater than 8
+            unavailable += [group for group in groups if group.n > 8]
+            avaliable: list[Sg.BiParamSimpleGroup] = [group for group in groups if group.n < 9 and group in avaliable]
+
+        # We compute the pirreps for each group
+        for group in avaliable:
+            if group_type == "bi":
+                data = all_data[f"{group_id}-{group.n}"]
+                q_value = group.q_value()
+            else: # group_type == "uni"
+                q_value = group.par_value()
+            mod_group = Sg.modularity_group(group, data, group_type)
+            pirreps_data = data["irreps"][mod_group]
+            # We compute the degrees
+            pirreps = []
+            for pirrep in pirreps_data:
+                mult = Sg._horner(pirrep["mult"], q_value)
+                if mult != 0:
+                    degree = Sg._horner(pirrep["degree"], q_value)
+                    pirreps.append([degree, mult])
+            pirreps_computed[group] = pirreps
+        return pirreps_computed, unavailable
+    else:
+        return pirreps_computed, groups

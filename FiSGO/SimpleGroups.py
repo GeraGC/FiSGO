@@ -13,6 +13,8 @@ import importlib.resources as ires
 
 # TODO: Module documentation
 # TODO: Alternating groups smallest pirrep degree
+# TODO: Lubeck docstrings
+# TODO: Handle groups with exceptional multipliers
 
 GLOBAL_VALIDATE = True
 
@@ -26,6 +28,11 @@ CHEVALLEY_E8_POWER_INDICES = [2,8,12,14,18,20,24,30]
 CHEVALLEY_F4_POWER_INDICES = [2,6,8,12]
 CHEVALLEY_G2_POWER_INDICES = [2,6]
 STEINBERG_2E6_POWER_INDICES = [2,5,6,8,9,12]
+
+EXCEPTIONAL_MULTIPLIER_CODES = ["CA-1-2_2", "CA-1-3_2", "CA-2-2_1", "CA-2-2_2", "CA-3-2_1",
+                                "CB-3-2_1", "CB-3-3_1", "CC-3-2_1", "CD-4-2_1", "F4-2_1",
+                                "G2-3_1", "G2-2_2", "SA-3-2_1", "SA-3-3_1", "SA-5-2_1",
+                                "2E-2_1", "SZ-1"]
 
 
 class SimpleGroup:
@@ -259,6 +266,15 @@ class SimpleGroup:
             return sorted(pirrep["degree"] for pirrep in matches)
         return sorted(set(pirrep["degree"] for pirrep in matches))
 
+    def lubeck_pirreps(self):
+        """
+        This function computes projective representations of Lie type groups of rank at most 8.
+
+        :return: If available, returns a list of pairs containing the projective representations of the
+        group alongside their multiplicities in the Schur covering.
+        """
+        return []
+
 
 class UniParamSimpleGroup(SimpleGroup):
     def __init__(self, par: int | tuple[int, int], validate=True):
@@ -355,6 +371,37 @@ class UniParamSimpleGroup(SimpleGroup):
             return self.par
         else:
             return self.par[0]**self.par[1]
+
+    def lubeck_pirreps(self):
+        # Lübeck's data only concerns Lie type groups
+        code = self.code()[:2]
+        if code in ["AA", "CY"]:
+            return []
+        # We take exceptions into account
+        if self.normalized_code() in EXCEPTIONAL_MULTIPLIER_CODES:
+            return []
+        data = lubeck_data(code)[code]
+        mod_group = modularity_group(self, data, "uni")
+        pirreps_data = data["irreps"][mod_group]
+        pirreps = []
+        # The process is different if the group is of RF,RG or SZ type
+        if code in ["RF", "SZ", "RG"]:
+            if code == "RG":
+                sqrt_value = 3
+            else:
+                sqrt_value = 2
+            for pirrep in pirreps_data:
+                mult = _sqrt_horner(pirrep["mult"], self.par, val=sqrt_value)
+                if mult != 0:
+                    degree = _sqrt_horner(pirrep["degree"], self.par, val=sqrt_value)
+                    pirreps.append([degree, mult])
+        else:
+            for pirrep in pirreps_data:
+                mult = _horner(pirrep["mult"], self.par_value())
+                if mult != 0:
+                    degree = _horner(pirrep["degree"], self.par_value())
+                    pirreps.append([degree, mult])
+        return pirreps
 
 
 class BiParamSimpleGroup(SimpleGroup):
@@ -456,6 +503,26 @@ class BiParamSimpleGroup(SimpleGroup):
             return self.q
         else:
             return self.q[0]**self.q[1]
+
+    def lubeck_pirreps(self):
+        # We take exceptions into account
+        if self.normalized_code() in EXCEPTIONAL_MULTIPLIER_CODES:
+            return []
+        # The available data is only up to rank 8
+        if self.n > 8:
+            return []
+        code = self.code()[:2]
+        data = lubeck_data(code)[f"{code}-{self.n}"]
+        mod_group = modularity_group(self, data, "bi")
+        pirreps_data = data["irreps"][mod_group]
+        pirreps = []
+        # The process is different if the group is of RF,RG or SZ type
+        for pirrep in pirreps_data:
+            mult = _horner(pirrep["mult"], self.q_value())
+            if mult != 0:
+                degree = _horner(pirrep["degree"], self.q_value())
+                pirreps.append([degree, mult])
+        return pirreps
 
 
 class Cyclic(UniParamSimpleGroup):
@@ -1862,6 +1929,28 @@ def hiss_malle_lookup(match_values: dict, return_fields: list | None):
     return _json_request(hiss_malle_data(), match_values, return_fields)
 
 
+def lubeck_data(code:str):
+    """
+        Interface to the compressed JSON files Lubeck_[code].json.bz2.
+
+        The parameter 'code' refers to one of the group codes of the Lie type groups. For example,
+        file 'Lubeck_CA.json.bz2' refers to the Chevalley type A group data.
+
+        The files contain data on projective representations degrees and multiplicities for the Lie type
+        groups with non-exceptional Schur multipliers.
+        For more information on the data, see the README's of `PrecomputedData`_.
+
+        The data can be accessed as a list of dictionaries, each dictionary having the same fields (keys).
+
+        :return: Returns a decoded JSON object, i.e., a list of dictionaries with all the data of the file.
+
+        .. _PrecomputedData: https://github.com/GeraGC/FiSGO/tree/master/FiSGO/PrecomputedData
+    """
+    with ires.as_file(PRECOMPUTED_DATA_DIR.joinpath(f'Lubeck/Lubeck_{code}.json.bz2')) as lubeck_data_path:
+        with bz2.open(lubeck_data_path, 'rt') as lubeck_data_file:
+            return json.load(lubeck_data_file)
+
+
 def code_normalizer(code: str) -> str:
     """
     Given a simple group code, returns a normalized version of the code. Normalization is done by replacing the
@@ -1934,3 +2023,44 @@ def char_check(char: int, char_list: list[int] | None, not_char_list: list[int] 
         if char not in not_char_list:
             return True
     return False
+
+
+def _horner(poly: list, x: int):
+    """Horner's method to compute Lübeck's pirreps"""
+    result = poly[0][0]
+    for coef in poly[0][1:]:
+        result = result*x + coef
+    return result // poly[1]
+
+def _sqrt_horner(poly_list: list, m: int, val: int=2):
+    """Horner's method to compute Lübeck's pirreps for RF, RG and SZ groups."""
+    # First poly is the even one, second poly is the odd one
+    # We have q^2 = val^(val*m+1), val=2 when RF and SZ, val=3 for RG
+    x = val**(2*m+1)
+    even_value = _horner(poly_list[0], x)
+    odd_value = _horner(poly_list[1], x)
+    return odd_value*(val**(m+1))+even_value
+
+def modularity_group(group, data, group_type):
+    """
+    Auxiliary function to find the modularity class of some group in Lübeck's data.
+
+    :param group: The simple group object whose modularity class we ought to find.
+    :param data: Dictionary with the Lübeck data of the group
+    :param group_type: "uni" if uniparametric, "bi" if biparametric
+    :return: The modularity class "mod_group"
+    """
+    mod_value = data["mod"]
+    # We look for the modularity group of our parameter
+    if mod_value == 0:
+        return "0"
+
+    if group_type == "uni":
+        q_mod = group.par_value() % mod_value
+    elif group_type == "bi":
+        q_mod = group.q_value() % mod_value
+
+    for key, mods in data["mod_groups"].items():
+        if q_mod in mods:
+            return key
+    return None
