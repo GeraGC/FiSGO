@@ -381,16 +381,7 @@ class UniParamSimpleGroup(SimpleGroup):
         if self.normalized_code() in EXCEPTIONAL_MULTIPLIER_CODES:
             return []
         data = lubeck_data(code)[code]
-        mod_value = data["mod"]
-        # We look for the modularity group of our parameter
-        if mod_value == 0:
-            mod_group = "0"
-        else:
-            par_mod = self.par_value() % mod_value
-            for key, group in data["mod_groups"].items():
-                if par_mod in group:
-                    mod_group = key
-                break
+        mod_group = modularity_group(self, data, "uni")
         pirreps_data = data["irreps"][mod_group]
         pirreps = []
         # The process is different if the group is of RF,RG or SZ type
@@ -411,8 +402,6 @@ class UniParamSimpleGroup(SimpleGroup):
                     degree = _horner(pirrep["degree"], self.par_value())
                     pirreps.append([degree, mult])
         return pirreps
-
-
 
 
 class BiParamSimpleGroup(SimpleGroup):
@@ -524,16 +513,7 @@ class BiParamSimpleGroup(SimpleGroup):
             return []
         code = self.code()[:2]
         data = lubeck_data(code)[f"{code}-{self.n}"]
-        mod_value = data["mod"]
-        # We look for the modularity group of our parameter
-        if mod_value == 0:
-            mod_group = "0"
-        else:
-            q_mod = self.q_value() % mod_value
-            for key, group in data["mod_groups"].items():
-                if q_mod in group:
-                    mod_group = key
-                break
+        mod_group = modularity_group(self, data, "bi")
         pirreps_data = data["irreps"][mod_group]
         pirreps = []
         # The process is different if the group is of RF,RG or SZ type
@@ -2060,3 +2040,27 @@ def _sqrt_horner(poly_list: list, m: int, val: int=2):
     even_value = _horner(poly_list[0], x)
     odd_value = _horner(poly_list[1], x)
     return odd_value*(val**(m+1))+even_value
+
+def modularity_group(group, data, group_type):
+    """
+    Auxiliary function to find the modularity class of some group in Lübeck's data.
+
+    :param group: The simple group object whose modularity class we ought to find.
+    :param data: Dictionary with the Lübeck data of the group
+    :param group_type: "uni" if uniparametric, "bi" if biparametric
+    :return: The modularity class "mod_group"
+    """
+    mod_value = data["mod"]
+    # We look for the modularity group of our parameter
+    if mod_value == 0:
+        return "0"
+
+    if group_type == "uni":
+        q_mod = group.par_value() % mod_value
+    elif group_type == "bi":
+        q_mod = group.q_value() % mod_value
+
+    for key, mods in data["mod_groups"].items():
+        if q_mod in mods:
+            return key
+    return None

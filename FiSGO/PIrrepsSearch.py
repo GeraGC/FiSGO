@@ -9,6 +9,8 @@ import FiSGO.OrderSearch as Os
 import FiSGO.PrimesHandler as Ph
 import math
 
+from DataProcessingScripts.Hiss_Malle_missing_data import q_value
+
 # TODO: Handle Lübeck exceptions and test everything
 
 LUBECK_SQRT_CODES = ["RF", "RG", "SZ"]
@@ -292,54 +294,31 @@ def lubeck_bulk_get(group_id: str, groups:list[Sg.UniParamSimpleGroup] | list[Sg
             pirreps_computed[group] = pirreps
         return pirreps_computed, unavailable
 
-    elif group_id in LUBECK_NO_MAX_RANK:
+    elif group_id in LUBECK_NO_MAX_RANK or group_id in LUBECK_MAX_RANK:
+        if group_id in LUBECK_NO_MAX_RANK:
+            group_type = "uni"
+            data = all_data[group_id]
+        else: # group_id in LUBECK_MAX_RANK
+            group_type = "bi"
+            # We filter out those of rank greater than 8
+            unavailable += [group.normalized_code() for group in groups if group.n > 8]
+            avaliable: list[Sg.BiParamSimpleGroup] = [group for group in groups if group.n < 9]
+
         # We compute the pirreps for each group
         for group in avaliable:
-            data = all_data[group_id]
-            mod_value = data["mod"]
-            # We look for the modularity group of our parameter
-            if mod_value == 0:
-                mod_group = "0"
-            else:
-                par_mod = group.par_value() % mod_value
-                for key, mods in data["mod_groups"].items():
-                    if par_mod in mods:
-                        mod_group = key
-                    break
+            if group_type == "bi":
+                data = all_data[f"{group_id}-{group.n}"]
+                q_value = group.q_value()
+            else: # group_type == "uni"
+                q_value = group.par_value()
+            mod_group = Sg.modularity_group(group, data, group_type)
             pirreps_data = data["irreps"][mod_group]
             # We compute the degrees
             pirreps = []
             for pirrep in pirreps_data:
-                mult = Sg._horner(pirrep["mult"], group.par_value())
+                mult = Sg._horner(pirrep["mult"], q_value)
                 if mult != 0:
-                    degree = Sg._horner(pirrep["degree"], group.par_value())
-                    pirreps.append([degree, mult])
-            pirreps_computed[group] = pirreps
-        return pirreps_computed, unavailable
-
-    elif group_id in LUBECK_MAX_RANK:
-        # We filter out those of rank greater than 8
-        unavailable += [group.normalized_code() for group in groups if group.n > 8]
-        avaliable: list[Sg.BiParamSimpleGroup] = [group for group in groups if group.n < 9]
-        for group in avaliable:
-            data = all_data[f"{group_id}-{group.n}"]
-            mod_value = data["mod"]
-            # We look for the modularity group of our parameter
-            if mod_value == 0:
-                mod_group = "0"
-            else:
-                q_mod = group.q_value() % mod_value
-                for key, group in data["mod_groups"].items():
-                    if q_mod in group:
-                        mod_group = key
-                    break
-            pirreps_data = data["irreps"][mod_group]
-            # We compute the degrees
-            pirreps = []
-            for pirrep in pirreps_data:
-                mult = Sg._horner(pirrep["mult"], group.q_value())
-                if mult != 0:
-                    degree = Sg._horner(pirrep["degree"], group.q_value())
+                    degree = Sg._horner(pirrep["degree"], q_value)
                     pirreps.append([degree, mult])
             pirreps_computed[group] = pirreps
         return pirreps_computed, unavailable
