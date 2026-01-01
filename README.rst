@@ -74,7 +74,7 @@ in developement.
    the results of [TZ96]_, [Lu01a]_, [LS74]_ collected in [TZ00]_.
 #. |empty| An interface to the extended Hiss-Malle table, containing all information stored in
    [[HM02]_ Table 2] alongside the omissions specified in [[HM01]_, Table 2].
-#. |cross| An interface to all data on provided by Frank Lübeck in `his website`_ concerning all degrees of irreducible
+#. |check| An interface to all data provided by Frank Lübeck in `his website`_ concerning all degrees of irreducible
    complex representations, together with their multiplicities, of the (non-exceptional) covering groups of Lie type of rank at most 8
 #. |cross| An implementation of Tiep and Zalesskii's main theorem in [TZ96]_ (also found in [TZ00]_ as Theorem 6.1) concerning
    the relatively small complex irreducible representations of the quasisimple groups.
@@ -98,15 +98,15 @@ Additionally, this GitHub repository contains a directory (``FiSGO/HissMalleTabl
 formats containing all the data in the Hiss-Malle tables (feature #5), such that anyone can access it and process it themselves.
 For more information, refer to the documentation or ``FiSGO/HissMalleTableFormats/README.rst``.
 
-🚦Feature status (17/09/2025)
+🚦Feature status (01/01/2026)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 We breafly describe the status of the partially implemented features.
 
 5. The only missing data is the ``field`` field in the JSON file for the groups ommited from the original Hiss-Malle
    table, i.e. those listed in the omissions table [[HM01]_, Table 2].
 8. All searching logic is complete, and the function already works as intended. However, the results of this function
-   can be greatly refined once features #6 and #7 are implemented, so we are simply waiting for those to be implemented
-   to integrate them into this function.
+   can be refined once feature #7 is implemented. Furthermore, auxiliary functions to deal with the function's output
+   may be needed.
 
 
 📝Documentation and tutorial
