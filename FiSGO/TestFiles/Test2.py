@@ -6,6 +6,7 @@ import math
 import timeit
 
 from FiSGO.OrderSearch import candidates_AA
+from FiSGO.SimpleGroups import simple_group
 
 """
 A5 = sg.simple_group("CA-2-2_3")
@@ -112,6 +113,24 @@ print(len(LD), LD)
 # print(Os.prime_bound_compatiblity(order, bound))
 #
 # print(t1, t2, t2/t1)
+#
+# print(pis.build_single_bound(1000))
+# print(pis.build_bounds([250,1001]))
 
-print(pis.build_single_bound(1000))
-print(pis.build_bounds([250,1001]))
+code_list_bi = ["CA-4-3", "CA-3-4", "CA-2-13", "CA-1-2_2", "CA-8-3", "CA-10-25"]
+code_list_uni = ["E6-3", "E6-4", "E6-7"]
+code_list_RF = ["RF-2", "RF-3", "RF-6", "RF-5"]
+code_list_SZ = ["SZ-1", "SZ-2", "SZ-3", "SZ-6", "SZ-5"]
+code_list_RG = ["RG-2", "RG-3", "RG-6", "RG-5"]
+
+code_list = code_list_bi
+group_list = [sg.simple_group(code) for code in code_list]
+group_id = "CA"
+
+reps, unavailable = pis.lubeck_bulk_get(group_id, group_list)
+print("Representation degrees:")
+for group in reps.keys():
+    print(f"Degrees of {group.normalized_code()}")
+    print(reps[group])
+print("Unavailable groups:")
+print([group.normalized_code() for group in unavailable])
