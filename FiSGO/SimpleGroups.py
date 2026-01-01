@@ -2030,7 +2030,7 @@ def _horner(poly: list, x: int):
     result = poly[0][0]
     for coef in poly[0][1:]:
         result = result*x + coef
-    return result / poly[1]
+    return result // poly[1]
 
 def _sqrt_horner(poly_list: list, m: int, val: int=2):
     """Horner's method to compute Lübeck's pirreps for RF, RG and SZ groups."""
