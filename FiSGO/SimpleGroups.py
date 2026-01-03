@@ -6,6 +6,7 @@ import bz2
 import json
 import logging
 import math
+import sys
 import FiSGO.PrimesHandler as Ph
 import re
 from typing import Any
