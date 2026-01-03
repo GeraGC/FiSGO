@@ -3,7 +3,7 @@ Module implementing order search functions.
 """
 import logging
 import math
-from typing import Any
+from functools import wraps
 
 import FiSGO.PrimesHandler as ph
 import FiSGO.SimpleGroups as sg
@@ -15,6 +15,8 @@ import FiSGO.SimpleGroups as sg
 
 
 def order_search_logger(func):
+    """ Decorator for logging candidate search functions. """
+    @wraps(func)
     def wrapper(*args, **kwargs):
         logging.info(f"Starting candidate search for {func.__name__.replace("candidates_", "")} groups.")
         result = func(*args, **kwargs)
@@ -1070,7 +1072,7 @@ def candidates_SP(prime_bounds: list[int], abs_bound = None, return_codes = True
         if abs_bound is not None and (ph.prime_reconstructor(sporadic_orders[group], 1) > abs_bound):
             continue
         if return_codes:
-            group_candidates += [group]
+            group_candidates += [f"SP-{group}"]
         else:
             group_candidates += [sg.Sporadic(group)]
     return group_candidates
