@@ -9,7 +9,6 @@ import FiSGO.OrderSearch as Os
 import FiSGO.PrimesHandler as Ph
 import math
 
-from DataProcessingScripts.Hiss_Malle_missing_data import q_value
 
 # TODO: Handle Lübeck exceptions and test everything
 
@@ -51,7 +50,7 @@ def build_single_bound(n: int) -> list[int]:
 
     * (Brauer) if :math:`p \,|\, |G|` then :math:`p < 2n+1`.
     * (Brauer) if :math:`p > n+1` then :math:`p^2` does not divide :math:`|G|`.
-    * (Blichfeld, Brauer) if :math:`p` is coprime to :math:`|G|`, then :math:`k < (n!)_p + n-1`.
+    * (Blichfeld, Brauer) if :math:`p` is coprime to :math:`|G|`, then :math:`k < \log_p (n!)_p + n-1`.
     * (Blichfeld) if :math:`p \,|\, |G|`, then :math:`p^k <= (n!)_p 6^{n-1}`.
 
     :param n: Dimension

@@ -11,7 +11,6 @@ import FiSGO.SimpleGroups as sg
 
 # TODO: Test all candidates functions
 # TODO: Test absolute bounding works
-# TODO: Module documentation
 
 
 def order_search_logger(func):

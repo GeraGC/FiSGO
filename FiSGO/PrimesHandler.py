@@ -6,8 +6,6 @@ import math
 from typing import Generator
 import importlib.resources as ires
 
-# TODO: Module documentation
-
 
 # BuiltinPrimes.txt contains the first 10^5 primes
 PRIMES_PATH = str(ires.files("FiSGO.PrecomputedData").joinpath("BuiltinPrimes.txt"))

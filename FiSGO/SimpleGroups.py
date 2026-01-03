@@ -11,9 +11,7 @@ import re
 from typing import Any
 import importlib.resources as ires
 
-# TODO: Module documentation
 # TODO: Alternating groups smallest pirrep degree
-# TODO: Lubeck docstrings
 # TODO: Handle groups with exceptional multipliers
 
 GLOBAL_VALIDATE = True
