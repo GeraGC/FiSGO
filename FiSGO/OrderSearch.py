@@ -3,6 +3,8 @@ Module implementing order search functions.
 """
 import logging
 import math
+import sys
+
 from functools import wraps
 
 import FiSGO.PrimesHandler as ph
@@ -11,6 +13,10 @@ import FiSGO.SimpleGroups as sg
 
 # TODO: Test all candidates functions
 # TODO: Test absolute bounding works
+
+
+# Setup logger to stdout
+logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
 
 
 def order_search_logger(func):

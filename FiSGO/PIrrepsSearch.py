@@ -2,15 +2,21 @@
 Module implementing the search of projective irreducible representations.
 """
 import logging
+import sys
+import math
 from typing import Any
 
 import FiSGO.SimpleGroups as Sg
 import FiSGO.OrderSearch as Os
 import FiSGO.PrimesHandler as Ph
-import math
 
 
 # TODO: Handle Lübeck exceptions and test everything
+
+
+# Setup logger to stdout
+logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
+
 
 LUBECK_SQRT_CODES = ["RF", "RG", "SZ"]
 LUBECK_MAX_RANK = ["CA", "CB", "CC", "CD", "SA", "SD"]

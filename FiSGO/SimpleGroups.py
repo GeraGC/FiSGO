@@ -14,6 +14,11 @@ import importlib.resources as ires
 # TODO: Alternating groups smallest pirrep degree
 # TODO: Handle groups with exceptional multipliers
 
+
+# Setup logger to stdout
+logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
+
+
 GLOBAL_VALIDATE = True
 
 PRECOMPUTED_DATA_DIR = ires.files("FiSGO.PrecomputedData")
