@@ -1,9 +1,9 @@
 .. role:: raw-math(raw)
     :format: latex html
 
-==========================================
+===============================================
 🛠️[WIP]🛠️FiSGO: Finite simple groups by order
-==========================================
+===============================================
 
 .. image:: https://readthedocs.org/projects/fisgo/badge/?version=latest
    :target: https://fisgo.readthedocs.io
@@ -34,6 +34,7 @@ This website contains the complete documentation of the Python project FiSGO.
     :caption: Contents
 
     Home page <self>
+    Tutorial <Tutorial>
     FiSGO's documentation <_autosummary/FiSGO>
     Precomputed data <PrecomputedData>
     Hiss and Malle tables <HissMalleTableFormats>
@@ -42,14 +43,16 @@ This website contains the complete documentation of the Python project FiSGO.
 
 FiSGO is a Python package that aims to provide a solution to the following problems:
 
-I. Given a number :raw-math:`$k$`, identify all finite simple groups with order dividing :raw-math:`$k$`.
-#. Given a range :raw-math:`$[n,m]\subset \mathbb{N}$`, identify all simple groups with complex irreducible projective
-   representations of degree :raw-math:`$d\in [n,m]$`.
+I. Given a number :math:`k`, identify all finite simple groups with order dividing :math:`k`.
+#. Given a range :math:`[n,m]\subset \mathbb{N}`, identify all simple groups with complex irreducible projective
+   representations of degree :math:`d\in [n,m]`.
+
+.. _Homepage_intro:
 
 📖Introduction
-------------
+---------------
 FiSGO was born as part of the author's bachelor's thesis on the classification of finite irreducible subgroups
-of :raw-math:`$PGL_{n}(\mathbb{C})$`. Originally, only point (I) of the previous list was contemplated, and so the current
+of :math:`PGL_{n}(\mathbb{C})`. Originally, only point (I) of the previous list was contemplated, and so the current
 given name of the project.
 
 After the defence of the bachelor's thesis, a survey article (soon to be available in ArXiv) was elaborated by greatly
@@ -68,14 +71,16 @@ SageMath. There are a few reasons for this. Firstly, SageMath can interface with
 Magma, both of which are relevant software in the character theory field. Furthermore, since FiSGO's point (II) is
 more focused on data treatment and analysis than actual computation, Python seemed ideal.
 
+.. _Homepage_wcfd:
+
 🧩What can FiSGO do?
-------------------
+----------------------
 We provide a checklist of FiSGO's main features. Those which are green |check| are fully implemented, yellow ones
 |empty| are partially implemented. Finally, those marked red |cross| are currently unimplemented and
 in developement.
 
-1. |check| Given a list of prime powers :raw-math:`$N = 2^a3^b5^c\cdots$`, identify all finite simple groups with
-   order dividing :raw-math:`$N$`.
+1. |check| Given a list of prime powers :math:`N = 2^a3^b5^c\cdots`, identify all finite simple groups with
+   order dividing :math:`N`.
 #. |check| Compute/access basic information of any simple group, such as its order, Schur multiplier, recommended notations
    in LaTeX, etc.
 #. |check| Access to all information on ordinary character degrees and multiplicities of the sporadic groups and their coverings.
@@ -83,7 +88,7 @@ in developement.
    the results of [TZ96]_, [Lu01a]_, [LS74]_ collected in [TZ00]_.
 #. |empty| An interface to the extended Hiss-Malle table, containing all information stored in
    [[HM02]_ Table 2] alongside the omissions specified in [[HM01]_, Table 2].
-#. |cross| An interface to all data on provided by Frank Lübeck in `his website`_ concerning all degrees of irreducible
+#. |check| An interface to all data on provided by Frank Lübeck in `his website`_ concerning all degrees of irreducible
    complex representations, together with their multiplicities, of the (non-exceptional) covering groups of Lie type of rank at most 8
 #. |cross| An implementation of Tiep and Zalesskii's main theorem in [TZ96]_ (also found in [TZ00]_ as Theorem 6.1) concerning
    the relatively small complex irreducible representations of the quasisimple groups.
@@ -107,19 +112,21 @@ Additionally, this GitHub repository contains a directory (``FiSGO/HissMalleTabl
 formats containing all the data in the Hiss-Malle tables (feature #5), such that anyone can access it and process it themselves.
 For more information, refer to the documentation or ``FiSGO/HissMalleTableFormats/README.rst``.
 
-🚦Feature status (17/09/2025)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+🚦Feature status (01/01/2026)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 We breafly describe the status of the partially implemented features.
 
 5. The only missing data is the ``field`` field in the JSON file for the groups ommited from the original Hiss-Malle
    table, i.e. those listed in the omissions table [[HM01]_, Table 2].
-8. All searching logic is complete, and the function already works as intended. However, the results of this function
-   can be greatly refined once features #6 and #7 are implemented, so we are simply waiting for those to be implemented
-   to integrate them into this function.
 
+8. All searching logic is complete, and the function already works as intended. However, the results of this function
+   can be refined once feature #7 is implemented. Furthermore, auxiliary functions to deal with the function's output
+   may be needed.
+
+.. _Homepage_doc:
 
 📝Documentation and tutorial
---------------------------
+-----------------------------
 .. image:: https://app.readthedocs.org/projects/fisgo/badge/?version=latest
     :target: https://fisgo.readthedocs.io/en/latest
     :alt: Documentation Status
@@ -131,14 +138,14 @@ A basic tutorial of all the main features and the general working of the program
 documentation website when the main features are all implemented.
 
 💻Installation
-------------
+----------------
 FiSGO will be provided as a Python package available through PyPI when all its main features are implemented.
 As of today (17/09/2025), this is still a work in progress. For now, all modules can be imported manually by
 cloning the repository directory ``FiSGO/FiSGO/``, where all modules are contained.
 
 
 🤝Acknowledgements
-----------------
+-------------------
 
 This project is licensed under the GNU GENERAL PUBLIC LICENSE (Version 3), see LICENSE for more details.
 
@@ -165,7 +172,7 @@ people.
 | ggonzalo.math@gmail.com // gerard.gonzalo@uab.cat
 
 📚Project wide references
------------------------
+---------------------------
 
 .. _readthedocs website: https://fisgo.readthedocs.io/en/latest
 .. _his website: https://www.math.rwth-aachen.de/~Frank.Luebeck/chev/DegMult/index.html?LANG=en
