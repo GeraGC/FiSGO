@@ -83,7 +83,7 @@ class SimpleGroup:
         elif code == "TT":
             return Tits()
         else:
-            raise ValueError("Invalid simple group identifier")
+            raise ValueError(f"{code} is an invalid simple group identifier")
 
     def compute_order(self) -> int:
         """
@@ -271,7 +271,7 @@ class SimpleGroup:
         This function computes projective representations of Lie type groups of rank at most 8.
 
         :return: If available, returns a list of pairs containing the projective representations of the
-        group alongside their multiplicities in the Schur covering.
+            group alongside their multiplicities in the Schur covering.
         """
         return []
 

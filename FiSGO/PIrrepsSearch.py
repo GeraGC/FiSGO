@@ -41,18 +41,18 @@ def factorial_factor(n: int, p:int) -> int:
 
 
 def build_single_bound(n: int) -> list[int]:
-    """
+    r"""
     Bounds on the prime powers of an n-dimensional (quasi)primitive group in characteristic zero.
 
     The bounds are computed using the following results:
 
-    Let G be an n-dimensional (quasi)primitive group in characteristic zero. Let p be a prime and k denote the largest
-    power of p dividing |G|. Let (n!)_p denote the largest power of p dividing n!.
+    Let :math:`G` be an n-dimensional (quasi)primitive group in characteristic zero. Let :math:`p` be a prime and :math:`k` denote the largest
+    power of :math:`p` dividing :math:`|G|`. Let :math:`(n!)_p` denote the largest power of :math:`p` dividing :math:`n!`.
 
-    * (Brauer) if p | |G| then p < 2n+1.
-    * (Brauer) if p > n+1 then p**2 does not divide |G|.
-    * (Blichfeld, Brauer) if p is coprime to |G|, then k < (n!)_p + n-1.
-    * (Blichfeld) if p | |G|, then p**k <= (n!)_p*6**(n-1).
+    * (Brauer) if :math:`p \,|\, |G|` then :math:`p < 2n+1`.
+    * (Brauer) if :math:`p > n+1` then :math:`p^2` does not divide :math:`|G|`.
+    * (Blichfeld, Brauer) if :math:`p` is coprime to :math:`|G|`, then :math:`k < (n!)_p + n-1`.
+    * (Blichfeld) if :math:`p \,|\, |G|`, then :math:`p^k <= (n!)_p 6^{n-1}`.
 
     :param n: Dimension
     :return: List of bounds to the prime powers dividing the order of the group. Each entry of the list corresponds
@@ -135,15 +135,14 @@ def pirreps_search(n_range: list[int]|int, ignore: list[str] | None=None, use_ab
     .. caution:: The end of the range "n_range" is NOT included.
 
     :param n_range: Either a positive integer or a pair of positive integers indicating the dimension range of the representation
-    search. Example: 1000 or [222,301]
-
+        search. Example: 1000 or [222,301]
     :param ignore: A list of group ID's to be ignored in the search. Example: ["AA", "SZ"]
     :param use_absolute_bound: If true, uses an additional absolute bound, see :py:func:`build_absolute_bound`
     :param include_origin: If true, returns the database where each representation was sourced from alongside the degree.
     :return: A 3-tuple of lists. The first list contains the projective representation degrees found within the given range.
-    The second list contains all those groups whose data representation data is complete, meaning it is known that no other
-    representations may appear within the range. The third list contains a list of groups whose data may not be complete,
-    meaning there could be representations of such groups within the range that have not been found.
+        The second list contains all those groups whose data representation data is complete, meaning it is known that no other
+        representations may appear within the range. The third list contains a list of groups whose data may not be complete,
+        meaning there could be representations of such groups within the range that have not been found.
     """
     logging.info("Starting pirreps search -----")
     if isinstance(n_range, int):
@@ -273,7 +272,7 @@ def lubeck_bulk_get(group_id: str, groups:list[Sg.UniParamSimpleGroup] | list[Sg
     :param group_id: Group ID of the codes in 'codes'
     :param groups: List of group objects of the same type.
     :return: A tuple containing a dictionary pairing each group with a list of degree and multiplicity pairs
-    of the projective representations, and a list of all groups whose data is unavailable.
+        of the projective representations, and a list of all groups whose data is unavailable.
     """
     pirreps_computed = dict()
     all_data = Sg.lubeck_data(group_id)
