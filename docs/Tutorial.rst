@@ -17,14 +17,14 @@ and give usage examples of its various capabilities.
 
 FiSGO's functionalities are split across four modules:
 
-    - ``FiSGO.SimpleGroups``: Main functions and classes implementing access to all data available
+    - :py:mod:`FiSGO.SimpleGroups`: Main functions and classes implementing access to all data available
       for all classes of simple groups. We explore this module in :ref:`Section 2 <2. Simple group classes>` and
       :ref:`Section 5 <5. Group Databases>`.
-    - ``FiSGO.PrimesHandler``: Functions to deal with prime factorizations efficiently tailored to FiSGO's
+    - :py:mod:`FiSGO.PrimesHandler`: Functions to deal with prime factorizations efficiently tailored to FiSGO's
       needs. We explore this module in the :ref:`Interlude <3. Interlude>`.
-    - ``FiSGO.OrderSearch``: Functions to search for simple groups given some
+    - :py:mod:`FiSGO.OrderSearch`: Functions to search for simple groups given some
       order bounds. We explore this module in :ref:`Section 4 <4. Origin>`.
-    - ``FiSGO.PIrrepsSearch``: Functions to search for projective representation data
+    - :py:mod:`FiSGO.PIrrepsSearch`: Functions to search for projective representation data
       for simple groups. We explore this module in the :ref:`Section 6 <6. Searching>`.
 
 Throughout this tutorial, all code will be written according to the following import statements:
@@ -44,7 +44,7 @@ This way, it is clear the origin of each function and class at all stages of thi
 
 In this section, we will explore the basics of representing simple groups in our Python code, how to access some of
 their properties and how we can quickly refer to any simple group using a 'standard' method. This section focuses on
-the |FiSGO.SimpleGroups| module.
+the :py:mod:`FiSGO.SimpleGroups` module.
 
 In FiSGO, we represent simple groups as instances of the class :code:`sg.SimpleGroup` and their respective subclasses.
 Each family of simple groups has a class associated to it. These classes are named after the groups as in `Wikipedia's
@@ -53,14 +53,15 @@ a Chevalley type D group object with :math:`n=5` and :math:`q=8` we would write:
 
     >>> my_group = sg.ChevalleyD(5,8)
 
-The naming sense of all classes follows a similar convention as above. For instance, :code:`ExceptionalChevalleyE8` is
-the class for the Exceptional Chevalley groups :math:`E_8(q)`, :code:`Suzuki` refers to the Suzuki :math:`{}^2B_2(2^{2n+1})`
-groups with parameter :math:`n`, etc.
+The naming sense of all classes follows a similar convention as above. For instance,
+:py:class:`FiSGO.SimpleGroups.ExceptionalChevalleyE8` is
+the class for the Exceptional Chevalley groups :math:`E_8(q)`, :py:class:`FiSGO.SimpleGroups.Suzuki` refers
+to the Suzuki :math:`{}^2B_2(2^{2n+1})` groups with parameter :math:`n`, etc.
 
 .. tip::
     You can find all names for the classes representing the various simple groups
     under the section `Classes` in the documentation page
-    |FiSGO.SimpleGroups| of the module.
+    :py:mod:`FiSGO.SimpleGroups` of the module.
 
 With the group object created, we can access some of its methods, for instance, we may request some basic properties
 such as the order of the group or its Schur multiplier:
@@ -96,7 +97,7 @@ Now it returned :code:`{\rm O}^+_{10}(8)` which is the correct LaTeX string. Thi
 a file.
 
 .. tip::
-    You can check out all methods of the base class :code:`sg.SimpleGroup` in the documentation |FiSGO.SimpleGroups|.
+    You can check out all methods of the base class :code:`sg.SimpleGroup` in the documentation :py:mod:`FiSGO.SimpleGroups`.
     You can also check the documentation of any subclass by clicking on its name in the classes list.
 
 ------------------------
@@ -252,7 +253,7 @@ For the examples, we will use the group ``CA-3-5`` for the examples.
 .. admonition:: sg.SimpleGroup.GAP_name
 
     Returns a string with the name of the simple group in GAP4/Atlas like notation.
-    See :py:meth:`SimpleGroup.GAP_name` for the full documentation.
+    See :py:meth:`FiSGO.SimpleGroups.SimpleGroup.GAP_name` for the full documentation.
 
 >>> group.GAP_name()
 'L4(5)'
@@ -260,7 +261,7 @@ For the examples, we will use the group ``CA-3-5`` for the examples.
 .. admonition:: sg.SimpleGroup.hiss_malle_pirreps
 
     This function looks for projective representations of degree up to 250 from the Hiss-Malle database.
-    See `Section 4.2 <4.2.Hiss_Malle_Data>`_ and :py:meth:`SimpleGroup.hiss_malle_pirreps`
+    See `Section 4.2 <4.2.Hiss_Malle_Data>`_ and :py:meth:`FiSGO.SimpleGroups.SimpleGroup.hiss_malle_pirreps`
     for the full documentation.
 
 >>> group.hiss_malle_pirreps()
@@ -269,7 +270,7 @@ For the examples, we will use the group ``CA-3-5`` for the examples.
 .. admonition:: sg.SimpleGroup.lubeck_pirreps
 
     This function computes projective representations of Lie type groups of rank at most 8.
-    See `Section 4.3 <4.3.Lubeck_data>`_ and :py:meth:`SimpleGroup.lubeck_pirreps`
+    See `Section 4.3 <4.3.Lubeck_data>`_ and :py:meth:`lubeck_pirreps <FiSGO.SimpleGroups.SimpleGroup.lubeck_pirreps>`
     for the full documentation.
 
 >>> group.lubeck_pirreps() # Output shortened!
@@ -279,7 +280,7 @@ For the examples, we will use the group ``CA-3-5`` for the examples.
 
     Using the bounds of Seitz, Landazuri, Tiep and Zalesskii, returns the degree of the smallest non-trivial projective
     irreducible complex representation of the simple group.
-    See |FiSGO.SimpleGroups.SimpleGroup| for the full documentation.
+    See :py:class:`FiSGO.SimpleGroups.SimpleGroup` for the full documentation.
 
 >>> group.smallest_pirrep_degree()
 (155, 1)
@@ -290,7 +291,7 @@ For the examples, we will use the group ``CA-3-5`` for the examples.
  Interlude: Prime handling
 ==============================
 
-We open a brief interlude to talk about the ``FiSGO.PrimesHandler`` module. This should be regarded as an internal
+We open a brief interlude to talk about the :py:mod:`FiSGO.PrimesHandler` module. This should be regarded as an internal
 module, and it is unlikely the end-user would need to access it fully. It mainly contains routines devoted to prime
 factorization and listing primes. The main takeaway, and the reason we talk about it at all, is the following warning.
 
@@ -301,14 +302,13 @@ factorization and listing primes. The main takeaway, and the reason we talk abou
 
 While we consider it unlikely for any operation using FiSGO to exceed this limit, checks are put in place such that,
 should the need arise, the user will be notified or an error will be raised. In such scenario, the user can provide
-their own path to a larger list by changing the constant ``FiSGO.PrimesHandler.PRIMES_PATH``. The file should be a
+their own path to a larger list by changing the constant :py:const:`FiSGO.PrimesHandler.PRIMES_PATH`. The file should be a
 text file where each line contains a prime number, in ascending order (2 in the first line).
 
 There are a couple functions which may be situationally relevant, and we introduce them as needed throughout this
 tutorial as additional "tips". However, we won't go into much detail.
 
-Finally, should anyone wish to use any functions in the ``FiSGO.PrimesHandler`` module, it is fully documented
-in :py:mod:`FiSGO.PrimesHandler`.
+Finally, should anyone wish to use any functions in the :py:mod:`FiSGO.PrimesHandler` module, it is fully documented.
 
 .. _4. Origin:
 
@@ -317,10 +317,10 @@ in :py:mod:`FiSGO.PrimesHandler`.
 ==================================================
 
 Having established how to deal with the simple group objects and classes, we move on to one of the first applications
-of FiSGO, contained in the module ``FiSGO.OrderSearch``.
+of FiSGO, contained in the module :py:mod:`FiSGO.OrderSearch`.
 
 .. tip::
-    You can check out the full documentation for this section on :doc:`FiSGO.OrderSearch <_autosummary/FiSGO.OrderSearch>`
+    You can check out the full documentation for this section on :py:mod:`FiSGO.OrderSearch`.
 
 Let us first define what is the main goal of this module:
 
@@ -553,7 +553,7 @@ field           Description
 
 In a similar fashion as in the sporadic group case, we can access the database using the function
 :py:func:`FiSGO.SimpleGroups.hiss_malle_data`. This function returns a list of dictionaries, each containing
- keys corresponding to the above fields.
+keys corresponding to the above fields.
 
 >>> hm_data = sg.hiss_malle_data()
 >>> hm_data[0]['code'], hm_data[0]['char'], hm_data[0]['not_char'], hm_data[0]['degree']
@@ -660,7 +660,7 @@ was. To understand their meaning, let us go through the steps :py:func:`FiSGO.PI
        a projective representation within the range **must** have order dividing :math:`M`.
     #. Use :py:func:`FiSGO.OrderSearch.simple_group_by_order` to find all simple groups satisfying the previous bound.
        Henceforth call them group candidates.
-    #. Use the :py:meth:`SimpleGroup.smallest_pirrep_degree` method on all group candidates to discard those whose
+    #. Use the :py:meth:`FiSGO.SimpleGroups.SimpleGroup.smallest_pirrep_degree` method on all group candidates to discard those whose
        smallest projective representation exceeds the dimensional bound :math:`m`.
     #. All smallest representations that belong to the range are stored as partial data.
     #. Check all sporadic group candidates against the sporadic group database. This yields complete data.
@@ -677,8 +677,8 @@ Note we have partitioned the groups into two:
         All representations within the range are accounted for, all data for such group is available in the given range.
 
 .. note::
-    Bound :math:`M` is built using py:func:`FiSGO.PIrrepsSearch.build_bounds`. The bounds used are detailed in the
-    documentation of py:func:`FiSGO.PIrrepsSearch.build_single_bound`.
+    Bound :math:`M` is built using :py:func:`FiSGO.PIrrepsSearch.build_bounds`. The bounds used are detailed in the
+    documentation of :py:func:`FiSGO.PIrrepsSearch.build_single_bound`.
 
 As an example, we may search for all groups with projective representations in the range :math:`[12,15]`.
 
@@ -712,7 +712,9 @@ As a final example:
 
 .. note::
     The output of this function may not be the same if the tutorial has not been updated but refinements have been
-    made to py:func:`pirreps_search`.
+    made to :py:func:`FiSGO.PIrrepsSearch.pirreps_search`.
+
+
 
 ===========
 References
