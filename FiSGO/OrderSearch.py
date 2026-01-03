@@ -1060,13 +1060,17 @@ def candidates_SP(prime_bounds: list[int], abs_bound = None, return_codes = True
     group_candidates = []
     for group in sporadic_orders:
         # We check prime order compatibility
+        candidate = True
         try:
             for i, prime_power in enumerate(sporadic_orders[group]):
                 if prime_power > prime_bounds[i]:
-                    continue
+                    candidate = False
+                    break
         except IndexError:
             # If we have more elements in sporadic_orders[group] than in prime_bounds, the code raises IndexError,
             # meaning we are considering too few primes, so it is not a candidate.
+            continue
+        if not candidate:
             continue
         # Check the absolute bound:
         if abs_bound is not None and (ph.prime_reconstructor(sporadic_orders[group], 1) > abs_bound):
