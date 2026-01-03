@@ -121,4 +121,6 @@ ignore_all.remove('CC')
 
 # print(pis.pirreps_search(500))
 
-print(pis.pirreps_search([251,1001],ignore=["AA"], include_origin=True))
+# print(pis.pirreps_search([251,1001],ignore=["AA"], include_origin=True))
+
+print(Os.simple_group_by_order([4,2,1,2,1,0,1]))
