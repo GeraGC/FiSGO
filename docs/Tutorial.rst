@@ -654,7 +654,7 @@ of many compressed JSON files. This is due to the following warning.
     properly handle their evaluation in the various cases that arise.
 
     Should a user be interested in actually using the data provided by the function, all information on the data
-    structure, how to read it, and the polynomial encoding, may be found in :doc:`PrecomutedData`.
+    structure, how to read it, and the polynomial encoding, may be found in :doc:`PrecomputedData`.
 
 Instead, we provide two alternative ways of accessing the data in an already readable state. One of them has already
 been showcased in `Section 2 <2. Simple group classes>`_. That is, for any simple group of Lie type of rank at most 8,
