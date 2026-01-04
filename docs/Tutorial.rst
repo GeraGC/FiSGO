@@ -269,7 +269,8 @@ For the examples, we will use the group ``CA-3-5`` for the examples.
 
 .. admonition:: sg.SimpleGroup.lubeck_pirreps
 
-    This function computes projective representations of Lie type groups of rank at most 8.
+    This function computes degrees of projective representations of Lie type groups of rank at most 8. The multiplicity
+    corresponds to that of the linear irreducible characters of the Schur covering.
     See `Section 4.3 <4.3.Lubeck_data>`_ and :py:meth:`lubeck_pirreps <FiSGO.SimpleGroups.SimpleGroup.lubeck_pirreps>`
     for the full documentation.
 
@@ -630,7 +631,56 @@ By default, this search is done in characteristic 0. We can specify the characte
 ----------------------------
 4.3. Lübeck's Lie type data
 ----------------------------
-Soon\ :sup:`TM`...
+
+We move on to describe Lübeck's database on the character degrees and multiplicities of the standard coverings of
+the Lie type groups up to rank 8. This data can be found in
+`Lübeck's website <https://www.math.rwth-aachen.de/~Frank.Luebeck/chev/DegMult/index.html?LANG=en>`_
+from where it has been extracted and processed. Note that his website contains much more information than what we
+provide in this module. In his notation, we are interested in the simply connected groups.
+
+Similar to the previous databases, we can access the data using the function
+:py:func:`FiSGO.SimpleGroups.lubeck_data`. This function returns a list of dictionaries when given a group ID of a Lie
+type group.
+
+As you can see, we have yet to go into detail on the keys and ths structure of the database, which is given in the form
+of many compressed JSON files. This is due to the following warning.
+
+.. warning::
+    The direct access and usage of the data provided by :py:func:`FiSGO.SimpleGroups.lubeck_data` is discouraged.
+    This is partly due to the way the data is presented, and the difficulty in handling exceptions in the data.
+
+    Lübeck's original data consists of a list of polynomials in the parameter :math:`q`. To avoid security issues and
+    improve efficiency, these polynomials have been stored in a particular way, and FiSGO has internal functions to
+    properly handle their evaluation in the various cases that arise.
+
+    Should a user be interested in actually using the data provided by the function, all information on the data
+    structure, how to read it, and the polynomial encoding, may be found in :doc:`PrecomutedData`.
+
+Instead, we provide two alternative ways of accessing the data in an already readable state. One of them has already
+been showcased in `Section 2 <2. Simple group classes>`_. That is, for any simple group of Lie type of rank at most 8,
+we can compute the irreducible representations of its Schur covering as follows:
+
+>>> group = sg.simple_group("CA-3-5")
+>>> group.lubeck_pirreps() # Output shortened!
+[[155, 1], [156, 3], [248, 2], [403, 2], [496, 2], [650, 1],..., [24180, 3]]
+
+.. note::
+    This is equivalent to computing the degrees of projective representations of Lie type groups of rank at most 8.
+    The multiplicity still corresponds to that of the linear irreducible characters of the Schur covering.
+
+This method is convenient when we want the information for a single group. If one needs information on multiple groups
+at the same time, one should use :py:func:`FiSGO.PIrrepsSearch.lubeck_bulk_get`. Given a group ID and a list of group
+objects or codes with such ID, returns a tuple containing a dictionary pairing each group with a list of degree and
+multiplicity pairs, and a list of all groups whose data is unavailable.
+
+>>> pis.lubeck_bulk_get("CA", ["CA-2-3", "CA-9-2"])
+({'CA-2-3_1': [[12, 1], [13, 1], [16, 4], [26, 3], [27, 1], [39, 1]]}, ['CA-9-2_1'])
+
+And an example using group objects:
+
+>>> groups = [sg.simple_group(code) for code in ["CA-2-3", "CA-9-2"]]
+>>> pis.lubeck_bulk_get("CA", groups)
+({simple_group(CA-2-3_1): [[12, 1], [13, 1], [16, 4], [26, 3], [27, 1], [39, 1]]}, [simple_group(CA-9-2_1)])
 
 
 .. _6. Searching:
