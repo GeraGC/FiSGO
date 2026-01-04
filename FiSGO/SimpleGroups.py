@@ -697,7 +697,7 @@ class ChevalleyA(BiParamSimpleGroup):
                 return ["AA-5", "CA-1-2_2"]
             if self.q == 7 or self.q == (7,1):
                 return ["CA-2-2_1"]
-            if self.q == 9 or self.q == (9,1):
+            if self.q == 9 or self.q == (3,2):
                 return ["AA-6"]
         if self.n == 2 and (self.q == 2 or self.q == (2,1)):
             return ["CA-1-7_1"]
