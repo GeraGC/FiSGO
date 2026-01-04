@@ -270,15 +270,25 @@ def hiss_malle_range(degree_range: list[int], char: int=0, allow_duplicates: boo
     return list(sorted(set(pirreps_in_range)))
 
 
-def lubeck_bulk_get(group_id: str, groups:list[Sg.UniParamSimpleGroup] | list[Sg.BiParamSimpleGroup]) -> tuple[dict, list]:
+def lubeck_bulk_get(group_id: str, groups:list[Sg.UniParamSimpleGroup] | list[Sg.BiParamSimpleGroup] | list[str]) -> tuple[dict, list]:
     """
     Given a list of groups or group codes of the same type, returns their computed Lübeck data.
 
     :param group_id: Group ID of the codes in 'codes'
-    :param groups: List of group objects of the same type.
+    :param groups: List of group objects or group codes of the same type.
     :return: A tuple containing a dictionary pairing each group with a list of degree and multiplicity pairs
         of the projective representations, and a list of all groups whose data is unavailable.
     """
+
+    code_input = False
+    if type(groups[0]) is str:
+        try:
+            code_input = True
+            groups_objects = [Sg.simple_group(group) for group in groups]
+            groups = groups_objects
+        except AttributeError:
+            raise TypeError(f"The given groups list is invalid")
+
     pirreps_computed = dict()
     all_data = Sg.lubeck_data(group_id)
     # We start by filterning out exceptions
@@ -302,8 +312,6 @@ def lubeck_bulk_get(group_id: str, groups:list[Sg.UniParamSimpleGroup] | list[Sg
                     degree = Sg._sqrt_horner(pirrep["degree"], group.par, val=sqrt_value)
                     pirreps.append([degree, mult])
             pirreps_computed[group] = pirreps
-        return pirreps_computed, unavailable
-
     elif group_id in LUBECK_NO_MAX_RANK or group_id in LUBECK_MAX_RANK:
         if group_id in LUBECK_NO_MAX_RANK:
             group_type = "uni"
@@ -331,6 +339,10 @@ def lubeck_bulk_get(group_id: str, groups:list[Sg.UniParamSimpleGroup] | list[Sg
                     degree = Sg._horner(pirrep["degree"], q_value)
                     pirreps.append([degree, mult])
             pirreps_computed[group] = pirreps
-        return pirreps_computed, unavailable
     else:
-        return pirreps_computed, groups
+        unavailable = groups
+    if code_input:
+        pirreps_computed_codes = {key.normalized_code(): pirreps_computed[key] for key in pirreps_computed.keys()}
+        return pirreps_computed_codes, [group.normalized_code() for group in unavailable]
+    else:
+        return pirreps_computed, unavailable
