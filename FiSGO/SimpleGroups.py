@@ -47,6 +47,9 @@ class SimpleGroup:
         self.__order = None
         self.__schur_multiplier = None
 
+    def __repr__(self):
+        return f"simple_group({self.normalized_code()})"
+
     @classmethod
     def from_code(cls, code: str):
         """
@@ -272,7 +275,8 @@ class SimpleGroup:
 
     def lubeck_pirreps(self):
         """
-        This function computes projective representations of Lie type groups of rank at most 8.
+        This function computes projective representations of Lie type groups of rank at most 8. The multiplicity
+        corresponds to that of the linear irreducible characters of the Schur covering.
 
         :return: If available, returns a list of pairs containing the projective representations of the
             group alongside their multiplicities in the Schur covering.
@@ -1955,13 +1959,15 @@ def lubeck_data(code:str):
             return json.load(lubeck_data_file)
 
 
-def code_normalizer(code: str) -> str:
+def code_normalizer(code: str | None) -> str:
     """
     Given a simple group code, returns a normalized version of the code. Normalization is done by replacing the
 
     :param code: The code to normalize.
     :return: Normalized code.
     """
+    if code is None:
+        return ""
     if "_" in code:
         # Code is already in a normalized form.
         return code
