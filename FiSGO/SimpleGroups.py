@@ -387,7 +387,7 @@ class UniParamSimpleGroup(SimpleGroup):
             return []
         # We take exceptions into account
         if self.normalized_code() in EXCEPTIONAL_MULTIPLIER_CODES:
-            return []
+            return lubeck_exceptional_data()[self.normalized_code()]
         data = lubeck_data(code)[code]
         mod_group = modularity_group(self, data, "uni")
         pirreps_data = data["irreps"][mod_group]
@@ -515,7 +515,7 @@ class BiParamSimpleGroup(SimpleGroup):
     def lubeck_pirreps(self):
         # We take exceptions into account
         if self.normalized_code() in EXCEPTIONAL_MULTIPLIER_CODES:
-            return []
+            return lubeck_exceptional_data()[self.normalized_code()]
         # The available data is only up to rank 8
         if self.n > 8:
             return []
@@ -1956,6 +1956,25 @@ def lubeck_data(code:str):
     """
     with ires.as_file(PRECOMPUTED_DATA_DIR.joinpath(f'Lubeck/Lubeck_{code}.json.bz2')) as lubeck_data_path:
         with bz2.open(lubeck_data_path, 'rt') as lubeck_data_file:
+            return json.load(lubeck_data_file)
+
+
+def lubeck_exceptional_data():
+    """
+        Interface to the JSON file Lubeck_exceptional_mult.json.
+
+        The file contains data on projective representations degrees and multiplicities for the Lie type
+        groups with exceptional Schur multipliers. It is not complete! Groups with no data return an empty list.
+        For more information on the data, see the README's of `PrecomputedData`_.
+
+        The data can be accessed as a dictionary, each key being a normalized group code.
+
+        :return: Returns a decoded JSON object, i.e., a dictionary with all the data of the file.
+
+        .. _PrecomputedData: https://github.com/GeraGC/FiSGO/tree/master/FiSGO/PrecomputedData
+    """
+    with ires.as_file(PRECOMPUTED_DATA_DIR.joinpath(f'Lubeck/Lubeck_exceptional_mult.json')) as lubeck_data_path:
+        with open(lubeck_data_path, 'r') as lubeck_data_file:
             return json.load(lubeck_data_file)
 
 

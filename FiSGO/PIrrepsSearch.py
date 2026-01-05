@@ -10,7 +10,6 @@ import FiSGO.SimpleGroups as Sg
 import FiSGO.OrderSearch as Os
 import FiSGO.PrimesHandler as Ph
 
-
 # TODO: Handle Lübeck exceptions and test everything
 
 
@@ -291,9 +290,17 @@ def lubeck_bulk_get(group_id: str, groups:list[Sg.UniParamSimpleGroup] | list[Sg
 
     pirreps_computed = dict()
     all_data = Sg.lubeck_data(group_id)
-    # We start by filterning out exceptions
-    unavailable = [group for group in groups if group.normalized_code() in Sg.EXCEPTIONAL_MULTIPLIER_CODES]
-    avaliable: list[Sg.UniParamSimpleGroup] = [group for group in groups if group.normalized_code() not in Sg.EXCEPTIONAL_MULTIPLIER_CODES]
+    # We start by handling the groups with exceptional multiplier:
+    unavailable = []
+    exceptional = [group for group in groups if group.normalized_code() in Sg.EXCEPTIONAL_MULTIPLIER_CODES]
+    exceptional_data = Sg.lubeck_exceptional_data()
+    for group in exceptional:
+        if exceptional_data[group.normalized_code()]:
+            pirreps_computed[group] = exceptional_data[group.normalized_code()]
+        else:
+            unavailable.append(group)
+
+    available: list[Sg.UniParamSimpleGroup] = [group for group in groups if group.normalized_code() not in Sg.EXCEPTIONAL_MULTIPLIER_CODES]
 
     if group_id in LUBECK_SQRT_CODES:
         # We select the sqrt value depending on the group
@@ -303,7 +310,7 @@ def lubeck_bulk_get(group_id: str, groups:list[Sg.UniParamSimpleGroup] | list[Sg
             case _:
                 sqrt_value = 3
         # We compute the pirreps for each group
-        for group in avaliable:
+        for group in available:
             pirreps = []
             pirreps_data = all_data[group_id]["irreps"]["0"]
             for pirrep in pirreps_data:
@@ -320,10 +327,10 @@ def lubeck_bulk_get(group_id: str, groups:list[Sg.UniParamSimpleGroup] | list[Sg
             group_type = "bi"
             # We filter out those of rank greater than 8
             unavailable += [group for group in groups if group.n > 8]
-            avaliable: list[Sg.BiParamSimpleGroup] = [group for group in groups if group.n < 9 and group in avaliable]
+            available: list[Sg.BiParamSimpleGroup] = [group for group in groups if group.n < 9 and group in available]
 
         # We compute the pirreps for each group
-        for group in avaliable:
+        for group in available:
             if group_type == "bi":
                 data = all_data[f"{group_id}-{group.n}"]
                 q_value = group.q_value()
