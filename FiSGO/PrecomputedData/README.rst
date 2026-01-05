@@ -137,6 +137,12 @@ In the sequel, we describe the content of each file.
       Then :math:`p(q) = p_0(q^2) + \sqrt{k}q p_1(q^2)`. In this way, the evaluation is completely done over the rationals
       and we avoid precision problems.
 
+- ``Lubeck/Lubeck_exceptional_mult.json``: A JSON file containing the degrees and multiplicities of the linear irreducible
+  representations of the Schur coverings of Lie type groups with exceptional Schur multiplier. Currently some groups are
+  missing. The file contains a single JSON object with the normalized codes as fields. Each field provides an array
+  of (degree, multiplicity) pairs. The trivial representation is omitted.
+
+
 Source of the data
 ------------------
 
@@ -166,6 +172,12 @@ obtained. We give a description for each file:
 - ``Lubeck/Lubeck_[ID].json``: All data is sourced from
   `Lübeck's website <https://www.math.rwth-aachen.de/~Frank.Luebeck/chev/DegMult/index.html?LANG=en>`_ and should be
   credited to him.
+- ``Lubeck/Lubeck_exceptional_mult.json``: All data except for ``"SA-3-3_1"`` has been obtained using GAP. We have used
+  GAP's database of character tables for those whose Schur covering was present. We have used GAP's database of perfect
+  groups to find the remaining Schur covers, and used GAP standard functions to compute the character tables.
+  Finally, the character table of ``"SA-3-3_1"`` has been computed using GAP standard functions using a permutation
+  representation computed by A. Hulpke, it can be found in his `GitHub <https://github.com/hulpke/perfect/blob/main/particulars/coveru43.g>`_
+
 
 References
 ----------
