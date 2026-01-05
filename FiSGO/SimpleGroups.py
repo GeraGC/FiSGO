@@ -25,6 +25,8 @@ GLOBAL_VALIDATE = True
 PRECOMPUTED_DATA_DIR = ires.files("FiSGO.PrecomputedData")
 
 TITS_ORDER = [11, 3, 2, 0, 0, 1]
+TITS_PIRREPS = [[ 26, 2 ], [ 27, 2 ], [ 78, 1 ], [ 300, 1 ], [ 325, 1 ], [ 351, 3 ], [ 624, 2 ],
+                [ 650, 1 ], [ 675, 1 ],[ 702, 2 ], [ 1300, 2 ], [ 1728, 1 ], [ 2048, 2 ]]
 
 CHEVALLEY_E6_POWER_INDICES = [2,5,6,8,9,12]
 CHEVALLEY_E7_POWER_INDICES = [2,6,8,10,12,14,18]
@@ -1624,6 +1626,16 @@ class Tits(SimpleGroup):
     def GAP_name(self) -> str:
         return f"2F4(2)\'"
 
+    def pirreps_degrees(self) -> list[tuple[int, int]]:
+        """
+            List the degrees and multiplicities of the linear representations of the Tits group in characteristic 0.
+
+            :return: A list with the degrees of the projective irreducible representations in characteristic 0.
+        """
+        return TITS_PIRREPS
+
+    def smallest_pirrep_degree(self) -> tuple[int, int | None]:
+        return self.pirreps_degrees()[0]
 
 class Ree2G2(UniParamSimpleGroup):
     def __init__(self, n: int, validate = True):
