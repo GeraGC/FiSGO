@@ -157,6 +157,7 @@ def pirreps_search(n_range: list[int]|int, ignore: list[str] | None=None, use_ab
     pirreps = [] # Here goes a list of tuples (degree, code)
     complete_data = []
     partial_data = []  # We always have the smallest pirrep degree
+
     # Before proceeding further, we check if we can use Hiss-Malle
     if max_n <= 250:
         logging.info("Using Hiss-Malle data for the complete range...")
@@ -169,6 +170,7 @@ def pirreps_search(n_range: list[int]|int, ignore: list[str] | None=None, use_ab
         # We can partially use Hiss-Malle
         logging.info("Using Hiss-Malle data for degrees up to 250...")
         pirreps = [(a, b, "Hiss-Malle") for a,b in hiss_malle_range([min_n, 250])]
+
     # All bellow 250 is known with Hiss-Malle, so we search for the rest
     logging.info("Building bounds...")
     bound = build_bounds([max(min_n, 251), max_n+1])
@@ -182,6 +184,7 @@ def pirreps_search(n_range: list[int]|int, ignore: list[str] | None=None, use_ab
     logging.info("Starting group candidates identification...")
     group_candidates = Os.simple_group_by_order(bound, abs_bound=abs_bound, ignore=ignore, return_codes=False)
     logging.info("Successfully identified group candidates.")
+
     # We check the smallest pirrep degree of each group
     logging.info(f"Checking smallest pirrep degrees on {len(group_candidates)} group candidates...")
     for group in group_candidates.copy():
@@ -193,6 +196,7 @@ def pirreps_search(n_range: list[int]|int, ignore: list[str] | None=None, use_ab
             if min_n <= group.smallest_pirrep_degree()[0] <= max_n:
                 pirreps.append((group.smallest_pirrep_degree()[0], group.normalized_code(), "Smallest pirrep"))
     logging.info(f"Smallest pirrep degrees successfully checked with {len(group_candidates)} groups remaining.")
+
     # Here we check the sporadics -> gives complete_data
     logging.info("Checking sporadic pirreps...")
     for sporadic_group in (group for group in group_candidates.copy() if isinstance(group, Sg.Sporadic)):
@@ -206,6 +210,21 @@ def pirreps_search(n_range: list[int]|int, ignore: list[str] | None=None, use_ab
         if exists_pirrep:
             complete_data.append(sporadic_group.normalized_code())
     logging.info("Sporadic pirreps successfully checked.")
+
+    # We check the Tits group:
+    logging.info("Checking if the Tits group is present...")
+    tits_group = [group for group in group_candidates.copy() if isinstance(group, Sg.Tits)]
+    if tits_group:
+        logging.info("Tits group is present. Checking pirreps...")
+        for degree, mult in tits_group[0].pirreps_degrees():
+            if min_n <= degree <= max_n:
+                pirreps.append((degree, tits_group.normalized_code(), "Tits"))
+        group_candidates.remove(tits_group[0])
+        complete_data.append(tits_group[0].normalized_code())
+        logging.info("Tits group pirreps successfully checked.")
+    else:
+        logging.info("Tits group is not present.")
+
     # Here we check using Lubeck -> gives complete_data
     logging.info("Checking Lübeck data...")
     for lie_group_id in LIE_TYPE_GROUP_IDS:
