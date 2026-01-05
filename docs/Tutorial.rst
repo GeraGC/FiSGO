@@ -150,7 +150,7 @@ It is convenient to consider a few examples to get familiar with the group code 
 Group code          Description
 ==============      ============================================================================================
 CA-3-2              Chevalley group :math:`A_3(2)` with paramaters (n,q) = (3,2). Simple syntax.
-CC-7                Cyclic group :math:`C_7` of order 7.
+CY-7                Cyclic group :math:`C_7` of order 7.
 AA-26               Alternating :math:`A_{26}` group of order 26.
 CD-6-625            Chevalley group D :math:`D_6(625)` with parameters (n,q) = (6,625). Simple syntax.
 CD-6-5_4            Chevalley group D :math:`D_6(625)` with parameters (n,q) = (6,625=5^4). Normalized syntax.
