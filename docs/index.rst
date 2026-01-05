@@ -134,8 +134,8 @@ We breafly describe the status of the partially implemented features.
 All documentation for FiSGO can be found in its `readthedocs website`_, accessible through the previous link or
 by clicking the badge.
 
-A basic tutorial of all the main features and the general working of the program will be provided in the
-documentation website when the main features are all implemented.
+The documentation comes with a tutorial containing all you need to know to use FiSGO, alongside many examples!
+Check it out `here <https://fisgo.readthedocs.io/en/latest/Tutorial.html>`_.
 
 💻Installation
 ----------------
