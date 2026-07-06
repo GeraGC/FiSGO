@@ -21,7 +21,7 @@ FiSGO: Finite simple groups by order
    :target: https://doi.org/10.48550/arXiv.2510.00718
    :alt: Status WIP
 
-.. image:: https://img.shields.io/pypi/v/:FiSGO
+.. image:: https://img.shields.io/pypi/v/FiSGO
    :alt: PyPI Version
 
 
