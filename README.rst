@@ -21,8 +21,8 @@ FiSGO: Finite simple groups by order
    :target: https://doi.org/10.48550/arXiv.2510.00718
    :alt: Status WIP
 
-.. image:: https://img.shields.io/pypi/:period/:packageName
-   :alt: PyPI Downloads
+.. image:: https://img.shields.io/pypi/v/:FiSGO
+   :alt: PyPI Version
 
 
 FiSGO is a Python package that aims to provide a solution to the following problems:
