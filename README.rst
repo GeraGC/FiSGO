@@ -17,18 +17,13 @@
    :target: https://www.python.org/
    :alt: Python Version
 
-.. image:: https://img.shields.io/badge/status-WIP-orange
-   :target: #
-   :alt: Status WIP
-
 .. image:: https://zenodo.org/badge/DOI/10.48550/arXiv.2510.00718.svg
    :target: https://doi.org/10.48550/arXiv.2510.00718
    :alt: Status WIP
 
-..
-    .. image:: https://img.shields.io/pypi/dm/<package-name>.svg
-       :target: https://pypi.org/project/<package-name>/
-       :alt: PyPI Downloads
+.. image:: https://img.shields.io/pypi/dm/FiSGO.svg
+   :target: https://pypi.org/project/FiSGO/
+   :alt: PyPI Downloads
 
 
 FiSGO is a Python package that aims to provide a solution to the following problems:
@@ -123,9 +118,14 @@ Check it out `here <https://fisgo.readthedocs.io/en/latest/Tutorial.html>`_.
 
 💻Installation
 ------------
-FiSGO will be provided as a Python package available through PyPI when all its main features are implemented.
-As of today (17/09/2025), this is still a work in progress. For now, all modules can be imported manually by
-cloning the repository directory ``FiSGO/FiSGO/``, where all modules are contained.
+FiSGO is available on PyPI, and can be installed with the following command:
+
+.. code-block:: bash
+
+    pip install FiSGO
+
+Furthermore, all additional files not included in the PyPI package can be accessed by
+cloning the respective repository directory.
 
 
 🤝Acknowledgements
