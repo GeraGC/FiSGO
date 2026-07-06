@@ -2,7 +2,7 @@
     :format: latex html
 
 ==========================================
-🛠️[WIP]🛠️FiSGO: Finite simple groups by order
+FiSGO: Finite simple groups by order
 ==========================================
 
 .. image:: https://readthedocs.org/projects/fisgo/badge/?version=latest
